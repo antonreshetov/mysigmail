@@ -1,0 +1,33 @@
+{
+  "name": "email-signature-generator",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "element-ui": "^2.4.9",
+    "nprogress": "^0.2.0",
+    "vue": "^2.5.17",
+    "vue-analytics": "^5.16.0",
+    "vue-router": "^3.0.1",
+    "vuedraggable": "^2.16.0",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0",
+    "@vue/cli-plugin-eslint": "^3.0.0",
+    "@vue/cli-service": "^3.0.0",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
+    "lodash-es": "^4.17.11",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "vue-svg-loader": "^0.11.0",
+    "vue-template-compiler": "^2.5.17"
+  }
+}

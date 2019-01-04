@@ -1,0 +1,146 @@
+<template>
+  <div class="options">
+    <el-form label-position="left" label-width="150px">
+      <el-form-item label="Main color">
+        <el-color-picker v-model="mainColor"></el-color-picker>
+      </el-form-item>
+      <el-form-item label="Secondary color">
+        <el-color-picker v-model="secondaryColor"></el-color-picker>
+      </el-form-item>
+      <el-form-item label="Avatar size">
+        <el-slider v-model="avatarSize" :min="attributes.avatar.min" :max="attributes.avatar.max"></el-slider>
+      </el-form-item>
+      <el-form-item label="Avatar shape">
+        <el-select v-model="avatarShape">
+          <el-option
+            v-for="item in attributes.avatar.roundness"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          ></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="Font family">
+        <el-select v-model="fontFamily">
+          <el-option-group
+            v-for="group in attributes.font.family"
+            :key="group.value"
+            :label="group.label"
+          >
+            <el-option
+              v-for="item in group.options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            ></el-option>
+          </el-option-group>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="Font size">
+        <el-select v-model="fontSize">
+          <el-option
+            v-for="item in attributes.font.size"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          ></el-option>
+        </el-select>
+      </el-form-item>
+      <el-form-item label="Job separator">
+        <el-select v-model="separator">
+          <el-option
+            v-for="item in attributes.separator.options"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          ></el-option>
+        </el-select>
+      </el-form-item>
+    </el-form>
+  </div>
+</template>
+
+<script>
+import { mapState } from 'vuex'
+
+export default {
+  name: '',
+
+  data () {
+    return {
+    }
+  },
+
+  created () {
+    this.$ga.page(this.$router)
+  },
+
+  computed: {
+    ...mapState(['options', 'attributes', 'projects']),
+    mainColor: {
+      get () {
+        return this.options.color.main
+      },
+      set (v) {
+        this.$store.dispatch('updateColor', { main: v })
+      }
+    },
+    secondaryColor: {
+      get () {
+        return this.options.color.secondary
+      },
+      set (v) {
+        this.$store.dispatch('updateColor', { secondary: v })
+      }
+    },
+
+    fontSize: {
+      get () {
+        return this.options.font.size
+      },
+      set (v) {
+        this.$store.dispatch('updateFont', { size: v })
+      }
+    },
+    fontFamily: {
+      get () {
+        return this.options.font.family
+      },
+      set (v) {
+        this.$store.dispatch('updateFont', { family: v })
+      }
+    },
+    avatarShape: {
+      get () {
+        return this.options.avatar.roundness
+      },
+      set (v) {
+        this.$store.dispatch('updateAvatar', { roundness: v })
+      }
+    },
+    avatarSize: {
+      get () {
+        return this.options.avatar.size
+      },
+      set (v) {
+        this.$store.dispatch('updateAvatar', { size: v })
+      }
+    },
+    separator: {
+      get () {
+        return this.options.separator
+      },
+      set (v) {
+        this.$store.dispatch('updateSeparator', v)
+      }
+    }
+  }
+
+}
+</script>
+
+<style label="scss">
+.options {
+  margin-top: 30px;
+}
+</style>
