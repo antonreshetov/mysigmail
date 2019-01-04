@@ -10,18 +10,16 @@
       <tbody>
         <tr>
           <td style="vertical-align: top;">
-            <div
+            <img
               v-if="image"
+              :src="image"
               :style="{
-              'height': options.avatar.size + 'px',
-              'width': options.avatar.size + 'px',
-              'background-image': `url(${image})`,
-              'background-position': 'center center',
-              'background-size': options.avatar.size + 'px',
-              'margin-right': '10px',
-              'border-radius': options.avatar.roundness + 'px'
+                'width': options.avatar.size + 'px',
+                'height': options.avatar.size + 'px',
+                'border-radius': options.avatar.roundness + 'px',
+                'margin-right': '10px',
               }"
-            ></div>
+            >
             <div
               v-else
               style="margin-right: 10px; background: #eee;"
