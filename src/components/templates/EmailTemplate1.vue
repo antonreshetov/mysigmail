@@ -65,17 +65,21 @@
               </span>
             </template>
             <a
-              style="position: relative; width: 20px; height:20px; display: inline-block; padding: 4px; border-radius: 3px; box-sizing: border-box; margin: 10px 3px 0 0;"
-              :style="{background: options.color.main}"
+              style="display: inline-block; font-size: 0;"
               v-for="item in socials.installed"
               :key="item.name"
               :href="formatLink(item.link)"
             >
-              <img
-                style="width: 12px; height: 12px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
-                :src="`https://s3.eu-central-1.amazonaws.com/mysigmail/icons/${item.icon}.svg`"
-                alt=""
-              >
+              <span
+                style="width: 20px; height:20px; display: inline-block; padding: 4px; border-radius: 3px; box-sizing: border-box; margin: 10px 3px 0 0;"
+                :style="{
+                  background: options.color.main,
+                  backgroundImage: `url(https://s3.eu-central-1.amazonaws.com/mysigmail/icons/${item.icon}.png)`,
+                  backgroundSize: '12px',
+                  backgroundPosition: 'center center',
+                  backgroundRepeat: 'no-repeat'
+                }"
+              ></span>
             </a>
           </td>
         </tr>
