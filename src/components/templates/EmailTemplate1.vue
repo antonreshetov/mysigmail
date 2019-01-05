@@ -85,27 +85,6 @@
         </tr>
       </tbody>
     </table>
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <!-- <a
-              style="position: relative; width: 20px; height:20px; display: inline-block; padding: 4px; border-radius: 3px; box-sizing: border-box; margin-right: 3px;"
-              :style="{background: options.color.main}"
-              v-for="item in socials.installed"
-              :key="item.name"
-              :href="formatLink(item.link)"
-            >
-              <img
-                style="width: 12px; height: 12px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"
-                :src="`https://s3.eu-central-1.amazonaws.com/mysigmail/icons/${item.icon}.svg`"
-                alt=""
-              >
-            </a>-->
-          </td>
-        </tr>
-      </tbody>
-    </table>
     <table
       v-if="isAdded('disclaimer')"
       :style="{
