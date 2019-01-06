@@ -26,7 +26,9 @@ export default {
     },
     color: {
       main: '#409eff',
-      secondary: '#409eff'
+      mainPreview: undefined,
+      secondary: '#409eff',
+      secondaryPreview: undefined
     },
     separator: '/'
   },

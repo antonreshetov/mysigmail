@@ -34,7 +34,7 @@
             <span style="display: block;" :style="{fontSize: `${options.font.size + 2}px` }">
               <span
                 style="font-weight: 600"
-                :style="{color: options.color.main}"
+                :style="{color: options.color.mainPreview || options.color.main}"
               >{{ mainFields[0].value }}</span>
             </span>
             <span style="display: block; margin-bottom: 10px;">
@@ -49,7 +49,7 @@
               <span v-if="item.value" style="display: block;" :key="item.id">
                 <span
                   style="font-weight: 600;"
-                  :style="{color: options.color.secondary}"
+                  :style="{color: options.color.secondaryPreview || options.color.secondary}"
                 >{{ item.name }}:</span>
                 <a
                   v-if="item.type === 'link'"
@@ -73,7 +73,7 @@
               <span
                 style="width: 20px; height:20px; display: inline-block; padding: 4px; border-radius: 3px; box-sizing: border-box; margin: 10px 3px 0 0;"
                 :style="{
-                  backgroundColor: options.color.main,
+                  backgroundColor: options.color.mainPreview || options.color.main,
                   backgroundImage: `url(https://s3.eu-central-1.amazonaws.com/mysigmail/icons/${item.icon}.png)`,
                   backgroundSize: '12px',
                   backgroundPosition: 'center center',

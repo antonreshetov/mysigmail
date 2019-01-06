@@ -65,6 +65,10 @@ export default {
         }
       }
 
+      const options = { ...rootState.options }
+      delete options.color.mainPreview
+      delete options.color.secondaryPreview
+
       const project = {
         ...data,
         template: rootState.template.selected,
@@ -73,7 +77,7 @@ export default {
           installed: rootState.socials.installed
         },
         basic: { ...rootState.basic },
-        options: { ...rootState.options }
+        options
       }
 
       await updateProjectById(project)

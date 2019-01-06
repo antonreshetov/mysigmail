@@ -2,10 +2,14 @@
   <div class="options">
     <el-form label-position="left" label-width="150px">
       <el-form-item label="Main color">
-        <el-color-picker v-model="mainColor"></el-color-picker>
+        <el-color-picker ref="colorPicker" v-model="mainColor" @active-change="onPreviewMainColor"></el-color-picker>
       </el-form-item>
       <el-form-item label="Secondary color">
-        <el-color-picker v-model="secondaryColor"></el-color-picker>
+        <el-color-picker
+          ref="colorPicker2"
+          v-model="secondaryColor"
+          @active-change="onPreviewSecondaryColor"
+        ></el-color-picker>
       </el-form-item>
       <el-form-item label="Avatar size">
         <el-slider v-model="avatarSize" :min="attributes.avatar.min" :max="attributes.avatar.max"></el-slider>
@@ -75,6 +79,10 @@ export default {
     this.$ga.page(this.$router)
   },
 
+  mounted () {
+    this.onCloseColorPicker()
+  },
+
   watch: {
     'options.color.main' (v) {
       if (v === null) this.$store.commit('SET_COLOR', { main: '#000000' })
@@ -83,6 +91,7 @@ export default {
       if (v === null) this.$store.commit('SET_COLOR', { secondary: '#000000' })
     }
   },
+
   computed: {
     ...mapState(['options', 'attributes', 'projects']),
     mainColor: {
@@ -91,6 +100,7 @@ export default {
       },
       set (v) {
         this.$store.dispatch('updateColor', { main: v })
+        this.$store.commit('SET_COLOR', { mainPreview: undefined })
       }
     },
     secondaryColor: {
@@ -99,6 +109,7 @@ export default {
       },
       set (v) {
         this.$store.dispatch('updateColor', { secondary: v })
+        this.$store.commit('SET_COLOR', { secondaryPreview: undefined })
       }
     },
 
@@ -141,6 +152,27 @@ export default {
       set (v) {
         this.$store.dispatch('updateSeparator', v)
       }
+    }
+  },
+
+  methods: {
+    onPreviewMainColor (v) {
+      this.$store.commit('SET_COLOR', { mainPreview: v })
+    },
+    onPreviewSecondaryColor (v) {
+      this.$store.commit('SET_COLOR', { secondaryPreview: v })
+    },
+    resetPreviewColor () {
+      this.$store.commit('SET_COLOR', { mainPreview: undefined })
+      this.$store.commit('SET_COLOR', { secondaryPreview: undefined })
+    },
+    onCloseColorPicker () {
+      this.$refs.colorPicker.$children[0].$on('input', e => {
+        if (!e) this.resetPreviewColor()
+      })
+      this.$refs.colorPicker2.$children[0].$on('input', e => {
+        if (!e) this.resetPreviewColor()
+      })
     }
   }
 
