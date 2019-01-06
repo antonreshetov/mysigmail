@@ -70,19 +70,12 @@
       </div>
     </el-dialog>
     <div class="preview__footer" v-if="showSignature">
-      <div class="donate" @click="onDonate">
-        <a
-          href="https://paypal.me/antonreshetov"
-          target="_blank"
-          class="btn-donate paypal"
-        >buy me a coffee
-          <coffee-icon></coffee-icon>
+      <div class="support-project">
+        <span>support the project, put a star to</span>
+        <a href="https://github.com/antonreshetov/mysigmail" target="_blank">
+          <github-icon></github-icon>
         </a>
-      </div>
-      <div class="copyright">
-        Development with
-        <heart-icon/>by
-        <a href="https://github.com/antonreshetov">Anton Reshetov</a>
+        <span>repo :)</span>
       </div>
     </div>
   </div>
@@ -91,16 +84,15 @@
 <script>
 import { mapGetters } from 'vuex'
 import EmailTemplate1 from './templates/EmailTemplate1'
-import HeartIcon from '../assets/image/heart.svg'
-import CoffeeIcon from '../assets/image/coffee-cup.svg'
+
+import GithubIcon from '../assets/image/github.svg'
 
 export default {
   name: '',
   components: {
     // eslint-disable-next-line
     EmailTemplate1,
-    HeartIcon,
-    CoffeeIcon
+    GithubIcon
   },
 
   data () {
@@ -238,42 +230,24 @@ export default {
   text-align: right;
   margin-top: 20px;
 }
-.copyright {
-  font-size: 11px;
+.support-project {
   color: #aaa;
-  svg {
-    fill: #aaa;
-    width: 12px;
-    position: relative;
-    top: 2px;
-    padding: 0 4px 0 2px;
-  }
+  font-size: 12px;
   a {
-    color: inherit;
-    text-decoration: none;
+    display: inline-block;
+    padding: 0 5px;
+
     &:hover {
-      color: #555;
-    }
-  }
-}
-.btn-donate {
-  display: inline-block;
-  text-decoration: none;
-  // padding: 5px 5px;
-  // background-color: orange;
-  color: orange;
-  line-height: 25px;
-  &:hover {
-    color: lighten(orange, 20%);
-    svg {
-      fill: lighten(orange, 20%);
+      svg {
+        fill: $color-primary;
+      }
     }
   }
   svg {
+    width: 20px;
     position: relative;
-    top: 4px;
-    width: 24px;
-    fill: orange;
+    top: 5px;
+    transition: all 0.2s;
   }
 }
 </style>
