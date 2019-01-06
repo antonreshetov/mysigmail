@@ -75,6 +75,14 @@ export default {
     this.$ga.page(this.$router)
   },
 
+  watch: {
+    'options.color.main' (v) {
+      if (v === null) this.$store.commit('SET_COLOR', { main: '#000000' })
+    },
+    'options.color.secondary' (v) {
+      if (v === null) this.$store.commit('SET_COLOR', { secondary: '#000000' })
+    }
+  },
   computed: {
     ...mapState(['options', 'attributes', 'projects']),
     mainColor: {
