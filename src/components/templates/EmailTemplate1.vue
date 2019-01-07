@@ -75,7 +75,7 @@
                       :style="{fontSize: options.font.size + 'px'}"
                     >
                       <template v-for="item in otherFields">
-                        <tr :key="item.name">
+                        <tr v-if="item.value" :key="item.name">
                           <td>
                             <span
                               style="font-weight: 600;"
