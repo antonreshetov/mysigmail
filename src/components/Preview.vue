@@ -77,6 +77,9 @@
         </a>
         <span>repo :)</span>
       </div>
+      <div class="version">
+        <span>current version:&nbsp;{{ version }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -84,7 +87,6 @@
 <script>
 import { mapGetters } from 'vuex'
 import EmailTemplate1 from './templates/EmailTemplate1'
-
 import GithubIcon from '../assets/image/github.svg'
 
 export default {
@@ -99,7 +101,8 @@ export default {
     return {
       html: '',
       showSetup: false,
-      showSource: false
+      showSource: false,
+      version: require('../../package.json').version
     }
   },
 
@@ -249,5 +252,10 @@ export default {
     top: 5px;
     transition: all 0.2s;
   }
+}
+.version {
+  color: #aaa;
+  margin-top: 10px;
+  font-size: 12px;
 }
 </style>
