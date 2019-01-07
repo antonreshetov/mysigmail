@@ -13,7 +13,8 @@ export default {
       { name: 'WhatsApp', link: '', icon: 'whatsapp' },
       { name: 'Dribbble', link: '', icon: 'dribbble' },
       { name: 'Behance', link: '', icon: 'behance' },
-      { name: 'GitHub', link: '', icon: 'github' }
+      { name: 'GitHub', link: '', icon: 'github' },
+      { name: 'StackOverflow', link: '', icon: 'stackoverflow' }
     ]
   },
   getters: {},
