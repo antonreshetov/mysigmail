@@ -119,7 +119,6 @@
                               >
                                 <img
                                   width="12px"
-                                  height="12px"
                                   :src="`https://s3.eu-central-1.amazonaws.com/mysigmail/icons/${item.icon}.png`"
                                   alt=""
                                   style="vertical-align: middle;"
