@@ -22,13 +22,19 @@
       <div class="email">
         <div class="email-content">
           <div class="line short" style="margin-bottom: 30px;"></div>
-          <carbon-ad/>
-          <div class="line half"></div>
-          <div class="line half"></div>
-          <div class="line half"></div>
-          <div class="line half"></div>
-          <div class="line half"></div>
-          <div class="line half"></div>
+          <div class="flex">
+            <div class="column-1">
+              <div class="line long full"></div>
+              <div class="line long full"></div>
+              <div class="line long full"></div>
+              <div class="line long full"></div>
+              <div class="line long full"></div>
+              <div class="line long full"></div>
+            </div>
+            <div class="column-2">
+              <carbon-ad/>
+            </div>
+          </div>
           <div class="line long"></div>
           <div class="line long full"></div>
           <div class="line long full"></div>
@@ -228,6 +234,29 @@ export default {
       }
       &.full {
         width: 100%;
+      }
+    }
+    .flex {
+      display: flex;
+      width: 100%;
+      margin-bottom: -10px;
+      .column-1 {
+        .line {
+          &:first-of-type {
+            margin-top: 0;
+          }
+        }
+      }
+      .column-1,
+      .column-2 {
+        flex-grow: 1;
+      }
+      .column-1 {
+        width: 100%;
+      }
+      .column-2 {
+        flex-shrink: 0;
+        min-width: 320px;
       }
     }
   }
