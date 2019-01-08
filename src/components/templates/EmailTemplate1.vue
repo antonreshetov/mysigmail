@@ -101,29 +101,30 @@
                 <!-- Social icons -->
                 <tr>
                   <td>
-                    <table cellspacing="0" cellpadding="0" border="0" style=" margin-top: 5px;">
+                    <table
+                      cellspacing="2"
+                      cellpadding="0"
+                      border="0"
+                      style=" margin-top: 5px; margin-left: -2px;"
+                    >
                       <tbody>
                         <tr>
                           <td
                             v-for="item in socials.installed"
                             :key="item.name"
                             align="center"
-                            style="padding-right:3px;"
+                            style="width: 20px; height: 20px; border-radius: 3px;"
+                            :style="{
+                              backgroundColor: options.color.mainPreview || options.color.main,
+                            }"
                           >
                             <a :href="formatLink(item.link)">
-                              <div
-                                style="width: 20px; height:20px; border-radius: 3px; font-size: 12px; line-height: 18px;"
-                                :style="{
-                                  backgroundColor: options.color.mainPreview || options.color.main,
-                                }"
+                              <img
+                                width="12px"
+                                :src="`https://s3.eu-central-1.amazonaws.com/mysigmail/icons/${item.icon}.png`"
+                                alt=""
+                                style="display: table-cell; vertical-align: middle;"
                               >
-                                <img
-                                  width="12px"
-                                  :src="`https://s3.eu-central-1.amazonaws.com/mysigmail/icons/${item.icon}.png`"
-                                  alt=""
-                                  style="vertical-align: middle;"
-                                >
-                              </div>
                             </a>
                           </td>
                         </tr>
