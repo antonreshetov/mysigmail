@@ -87,13 +87,16 @@
 <script>
 import { mapGetters } from 'vuex'
 import EmailTemplate1 from './templates/EmailTemplate1'
+import EmailTemplate1WithoutAvatar from './templates/EmailTemplate1WithoutAvatar'
 import GithubIcon from '../assets/image/github.svg'
 
 export default {
   name: '',
   components: {
-    // eslint-disable-next-line
+    // eslint-disable-next-line vue/no-unused-components
     EmailTemplate1,
+    // eslint-disable-next-line vue/no-unused-components
+    EmailTemplate1WithoutAvatar,
     GithubIcon
   },
 
