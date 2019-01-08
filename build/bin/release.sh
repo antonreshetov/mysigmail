@@ -9,7 +9,7 @@ read -p "Releasing $VERSION - are you sure? (y/n)" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  npm run build
   npm version $VERSION -m "release $VERSION"
+  npm run build
   git push origin master
 fi
