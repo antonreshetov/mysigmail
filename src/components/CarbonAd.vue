@@ -32,13 +32,15 @@ export default {
 .carbon {
   min-height: 102px;
   max-width: 300px;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.4em;
   float: right;
   padding: 0 0 10px 10px;
   a {
     color: #444;
     font-weight: normal;
     display: inline !important;
+    text-decoration: none;
   }
   .carbon-img {
     float: left;
