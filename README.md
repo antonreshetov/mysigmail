@@ -1,6 +1,6 @@
-# MySigMail
-
-> UI Email Signature Generator
+<!-- # MySigMail -->
+<h1 align="center">MySigMail</h1>
+<p align="center">UI Email Signature Generator</p>
 
 <p align="center">
   <img src="./logo.png" width="130px">
@@ -11,7 +11,7 @@ Live demo - [https://mysigmail.com](https://mysigmail.com/)
 
 ## Purpose
 
-Creating an email signature is not a trivial idea, even for people who have knowledge of HTML and CSS. And what about ordinary users.
+Creating an email signature is not a trivial task, even for people who have knowledge of HTML and CSS. And what about ordinary users.
 
 There are many solutions on the Internet, and most of them are paid. There are free, but all of them are closed source. I wanted to make a free application with a user-friendly interface and open source code.
 
@@ -39,3 +39,10 @@ So let's make creating email signatures easier!
 npm i
 npm run serve
 ```
+
+## Support project
+
+If you liked the project, I am very grateful for the help to the project.
+
+- [Become a backer on Patreon](https://www.patreon.com/antonreshetov)
+- [Become a backer on Open Collective](https://opencollective.com/mysigmail)
