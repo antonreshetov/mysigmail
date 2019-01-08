@@ -58,9 +58,14 @@
                 <tr>
                   <td>
                     <span>{{ mainFields[1].value }}</span>
-                    <span
-                      v-if="mainFields[2].value && options.separator !== 'br'"
-                    >&nbsp;{{ options.separator }}&nbsp;</span>
+                    <span v-if="mainFields[2].value && options.separator !== 'br'">
+                      &nbsp;{{ options.separator }}&nbsp;
+                      <span>{{ mainFields[2].value }}</span>
+                    </span>
+                  </td>
+                </tr>
+                <tr v-if="options.separator === 'br'">
+                  <td>
                     <span>{{ mainFields[2].value }}</span>
                   </td>
                 </tr>
