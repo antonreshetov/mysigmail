@@ -32,7 +32,7 @@
               <div class="line long full"></div>
             </div>
             <div class="column-2">
-              <carbon-ad/>
+              <carbon-ad v-if="isProd"/>
             </div>
           </div>
           <div class="line long"></div>
@@ -81,7 +81,7 @@
         <el-button type="primary" @click="copySource">Copy</el-button>
       </div>
     </el-dialog>
-    <div class="preview__footer" v-if="true">
+    <div class="preview__footer" v-if="isProd">
       <div class="support-project">
         <span>support the project, put a star to</span>
         <a href="https://github.com/antonreshetov/mysigmail" target="_blank">
@@ -134,7 +134,7 @@ export default {
         this.$store.dispatch('updateTemplate', v)
       }
     },
-    showSignature () {
+    isProd () {
       return process.env.NODE_ENV === 'production'
     }
   },
