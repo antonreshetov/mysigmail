@@ -1,5 +1,5 @@
 <template>
-  <div class="socials__icon" :class="{'installed': isInstalled}" @click="addSocial">
+  <div class="socials__icon" :class="{'installed': isInstalled}" @click="toggleSocial">
     <svg-icon width="20" height="20" :icon="model.icon"></svg-icon>
   </div>
 </template>
@@ -30,12 +30,20 @@ export default {
       if (this.socials.installed.length > 0) {
         return this.socials.installed.find(i => i.icon === this.data.icon)
       }
+    },
+    index () {
+      if (!this.isInstalled) return -1
+      return this.socials.installed.findIndex(i => i.icon === this.data.icon)
     }
   },
 
   methods: {
-    addSocial () {
-      this.$store.dispatch('addSocial', this.model)
+    toggleSocial () {
+      if (this.index < 0) {
+        this.$store.dispatch('addSocial', this.model)
+      } else {
+        this.$store.dispatch('removeSocial', this.index)
+      }
     }
   }
 
