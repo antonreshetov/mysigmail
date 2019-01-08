@@ -146,7 +146,13 @@ export default {
       const file = new Blob([data], { type: 'application/json' })
       a.href = URL.createObjectURL(file)
       a.download = project.name
-      a.click()
+      a.dispatchEvent(
+        new MouseEvent(`click`, {
+          bubbles: true,
+          cancelable: true,
+          view: window
+        })
+      )
       this.gaEventClick('download project')
     },
     onFileSelected (e) {
