@@ -1,7 +1,3 @@
-<!-- # MySigMail -->
-<h1 align="center">MySigMail</h1>
-<p align="center">UI Email Signature Generator</p>
-
 <p align="center">
   <img src="./logo.png" width="130px">
   <img src="./screenshot.png">
