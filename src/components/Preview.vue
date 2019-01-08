@@ -21,13 +21,19 @@
       </div>
       <div class="email">
         <div class="email-content">
-          <div class="line short"></div>
-          <br>
-          <div class="line long full"></div>
+          <div class="line short" style="margin-bottom: 30px;"></div>
+          <carbon-ad/>
+          <div class="line half"></div>
+          <div class="line half"></div>
+          <div class="line half"></div>
+          <div class="line half"></div>
+          <div class="line half"></div>
+          <div class="line half"></div>
           <div class="line long"></div>
           <div class="line long full"></div>
           <div class="line long full"></div>
           <div class="line long"></div>
+          <div class="line long full"></div>
         </div>
         <div class="email-preview" ref="preview">
           <component ref="template" :is="selectTemplate"></component>
@@ -69,7 +75,7 @@
         <el-button type="primary" @click="copySource">Copy</el-button>
       </div>
     </el-dialog>
-    <div class="preview__footer" v-if="showSignature">
+    <div class="preview__footer" v-if="true">
       <div class="support-project">
         <span>support the project, put a star to</span>
         <a href="https://github.com/antonreshetov/mysigmail" target="_blank">
@@ -87,6 +93,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import EmailTemplate1 from './templates/EmailTemplate1'
+import CarbonAd from './CarbonAd'
 import GithubIcon from '../assets/image/github.svg'
 
 export default {
@@ -94,6 +101,7 @@ export default {
   components: {
     // eslint-disable-next-line
     EmailTemplate1,
+    CarbonAd,
     GithubIcon
   },
 
@@ -199,6 +207,11 @@ export default {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   &-content {
     padding: 20px;
+    p {
+      line-height: 1.5em;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
     .line {
       height: 10px;
       background-color: #eee;
@@ -209,6 +222,9 @@ export default {
       }
       &.long {
         width: 90%;
+      }
+      &.half {
+        width: 50%;
       }
       &.full {
         width: 100%;
