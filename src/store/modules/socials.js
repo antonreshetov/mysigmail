@@ -14,7 +14,8 @@ export default {
       { name: 'Dribbble', link: '', icon: 'dribbble' },
       { name: 'Behance', link: '', icon: 'behance' },
       { name: 'GitHub', link: '', icon: 'github' },
-      { name: 'StackOverflow', link: '', icon: 'stackoverflow' }
+      { name: 'StackOverflow', link: '', icon: 'stackoverflow' },
+      { name: 'Xing', link: '', icon: 'xing' }
     ]
   },
   getters: {},
