@@ -1,7 +1,8 @@
 const initState = {
   avatar: {
     size: 100,
-    roundness: 0
+    roundness: 0,
+    hidden: false
   },
   font: {
     size: 12,
@@ -18,7 +19,8 @@ export default {
   state: {
     avatar: {
       size: 100,
-      roundness: 0
+      roundness: 0,
+      hidden: false
     },
     font: {
       size: 12,

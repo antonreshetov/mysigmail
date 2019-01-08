@@ -37,6 +37,9 @@ export default {
       return this.basic.fields.filter(
         item => !this.filterFields.includes(item.name)
       )
+    },
+    showAvatar () {
+      return !this.options.avatar.hidden
     }
   },
   methods: {

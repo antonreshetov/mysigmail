@@ -13,7 +13,7 @@
       <tbody>
         <!-- Avatar column -->
         <tr>
-          <td style="vertical-align: top;">
+          <td style="vertical-align: top;" v-if="showAvatar">
             <img
               v-if="image"
               :src="image"
