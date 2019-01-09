@@ -38,6 +38,11 @@
             <div class="desc">
               <p>You can upload image or add the public link to image.</p>
               <p>The uploaded image will be converted to base64. The image should not be more than 10KB.</p>
+              <el-popover placement="top" width="300" trigger="click" class="image-tips">
+                <p>Some email client, like Gmail and Outlook do not support or may not display embedded images on base64 at all.</p>
+                <p>Use an image link instead of embedding it as base64.</p>
+                <strong slot="reference">Image tips</strong>
+              </el-popover>
             </div>
           </div>
         </div>
@@ -274,6 +279,13 @@ export default {
     i {
       color: darken(red, 20%);
     }
+  }
+}
+.image-tips {
+  display: block;
+  text-align: right;
+  .el-popover__reference {
+    cursor: pointer;
   }
 }
 </style>
