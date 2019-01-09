@@ -28,8 +28,10 @@ export default {
       state = Object.assign(state, data)
     },
     RESET_BASIC_FIELDS (state) {
-      state.image.link = ''
-      state.image.base64 = ''
+      state.image = {
+        base64: '',
+        link: ''
+      }
       state.fields = mainFields.basic
     }
   },
