@@ -11,19 +11,30 @@
           @active-change="onPreviewSecondaryColor"
         ></el-color-picker>
       </el-form-item>
-      <el-form-item label="Avatar size">
-        <el-slider v-model="avatarSize" :min="attributes.avatar.min" :max="attributes.avatar.max"></el-slider>
+      <el-form-item label="Avatar">
+        <el-switch v-model="showAvatar"></el-switch>
       </el-form-item>
-      <el-form-item label="Avatar shape">
-        <el-select v-model="avatarShape">
-          <el-option
-            v-for="item in attributes.avatar.roundness"
-            :key="item.value"
-            :label="item.label"
-            :value="item.value"
-          ></el-option>
-        </el-select>
-      </el-form-item>
+      <el-collapse-transition>
+        <div v-if="showAvatar">
+          <el-form-item label="Avatar size">
+            <el-slider
+              v-model="avatarSize"
+              :min="attributes.avatar.min"
+              :max="attributes.avatar.max"
+            ></el-slider>
+          </el-form-item>
+          <el-form-item label="Avatar shape">
+            <el-select v-model="avatarShape">
+              <el-option
+                v-for="item in attributes.avatar.roundness"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+        </div>
+      </el-collapse-transition>
       <el-form-item label="Font family">
         <el-select v-model="fontFamily">
           <el-option-group
@@ -127,6 +138,14 @@ export default {
       },
       set (v) {
         this.$store.dispatch('updateFont', { family: v })
+      }
+    },
+    showAvatar: {
+      get () {
+        return this.options.avatar.show
+      },
+      set (v) {
+        this.$store.dispatch('updateAvatar', { show: v })
       }
     },
     avatarShape: {
