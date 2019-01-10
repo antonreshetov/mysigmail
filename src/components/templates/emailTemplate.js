@@ -39,7 +39,7 @@ export default {
       )
     },
     showAvatar () {
-      return !this.options.avatar.hidden
+      return this.options.avatar.show
     }
   },
   methods: {
