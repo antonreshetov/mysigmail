@@ -39,8 +39,8 @@
               <p>You can upload image or add the public link to image.</p>
               <p>The uploaded image will be converted to base64. The image should not be more than 10KB.</p>
               <el-popover placement="top" width="300" trigger="click" class="image-tips">
-                <p>Some email client, like Gmail and Outlook do not support or may not display embedded images on base64 at all.</p>
-                <p>Use an image link instead of embedding it as base64.</p>
+                <p>Some email clients do not support or may not display embedded images as base64 at all. e.g. Gmail and Outlook</p>
+                <p>We recommend linking to an image online instead of uploading one as we embed it as base64.</p>
                 <strong slot="reference">Image tips</strong>
               </el-popover>
             </div>

@@ -58,7 +58,7 @@
       <input style="display: none;" type="file" @change="onFileSelected" ref="fileInput">
     </div>
     <div class="desc">
-      <p>Your changes and your projects only get stored in your browser's cache. Clearing your browsing data will result in losing your projects.</p>
+      <p>Your projects (and all changes) are stored in your browser's cache. Clearing your browsing data will result in losing your projects.</p>
     </div>
   </div>
 </template>
