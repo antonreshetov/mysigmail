@@ -14,7 +14,7 @@
                 :label="item.label"
                 :value="item.value"
               ></el-option>
-              <el-option value="-1" disabled>Soon more templates</el-option>
+              <el-option value="-1" disabled>More templates coming soon</el-option>
             </el-select>
           </el-col>
         </el-row>
