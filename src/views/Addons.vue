@@ -1,7 +1,7 @@
 <template>
   <div class="addons">
     <h3>Installed</h3>
-    <div class="desc" v-if="isEmpty">Addons is not installed</div>
+    <div class="desc" v-if="isEmpty">No addons installed</div>
     <addon-group>
       <addon-item
         v-for="item in addons.installed"
