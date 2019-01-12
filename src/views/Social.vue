@@ -1,19 +1,26 @@
 <template>
   <div class="social">
     <div class="socials">
-      <social-icon v-for="i in socials.list" :key="i.name" :data="i"></social-icon>
+      <social-icon
+        v-for="i in socials.list"
+        :key="i.name"
+        :data="i"
+      />
     </div>
-    <h3></h3>
+    <h3 />
     <el-form label-position="top">
-      <draggable v-model="sort" :options="{handle: '.drag'}">
+      <draggable
+        v-model="sort"
+        :options="{handle: '.drag'}"
+      >
         <social-field
           v-for="(i, index) in socials.installed"
           :key="i.name"
           :icon="i.icon"
           :index="index"
-        ></social-field>
+        />
       </draggable>
-      <el-form-item></el-form-item>
+      <el-form-item />
     </el-form>
   </div>
 </template>
@@ -41,10 +48,6 @@ export default {
     }
   },
 
-  created () {
-    this.$ga.page(this.$router)
-  },
-
   computed: {
     ...mapState(['socials']),
     sort: {
@@ -55,6 +58,10 @@ export default {
         this.$store.dispatch('updateSort', v)
       }
     }
+  },
+
+  created () {
+    this.$ga.page(this.$router)
   },
 
   methods: {

@@ -1,22 +1,39 @@
 <template>
   <div class="projects">
     <!-- <h3>Current: {{ projects.project.name}}</h3> -->
-    <el-table :data="allProjects" size="small" v-loading="loading" @cell-mouse-enter="onHover">
-      <el-table-column label="Name" prop="name">
+    <el-table
+      v-loading="loading"
+      :data="allProjects"
+      size="small"
+      @cell-mouse-enter="onHover"
+    >
+      <el-table-column
+        label="Name"
+        prop="name"
+      >
         <template slot-scope="scope">
           <span @click.stop="onEditName(scope.row)">
             <span v-if="clicked.id === scope.row.id">
               <el-row :gutter="10">
                 <el-col :span="18">
-                  <el-input size="mini" v-model="clicked.name"></el-input>
+                  <el-input
+                    v-model="clicked.name"
+                    size="mini"
+                  />
                 </el-col>
                 <el-col :span="6">
                   <div class="name-actions">
-                    <span @click.stop="onUpdateName" class="name-actions name-actions--success">
-                      <i class="el-icon-check"></i>
+                    <span
+                      class="name-actions name-actions--success"
+                      @click.stop="onUpdateName"
+                    >
+                      <i class="el-icon-check" />
                     </span>
-                    <span @click.stop="clicked = {}" class="name-actions name-actions--cancel">
-                      <i class="el-icon-close"></i>
+                    <span
+                      class="name-actions name-actions--cancel"
+                      @click.stop="clicked = {}"
+                    >
+                      <i class="el-icon-close" />
                     </span>
                   </div>
                 </el-col>
@@ -35,27 +52,54 @@
           <span v-else>{{ scope.row.name }}</span>-->
         </template>
       </el-table-column>
-      <el-table-column label="Actions" width="220">
+      <el-table-column
+        label="Actions"
+        width="220"
+      >
         <template slot-scope="scope">
-          <el-button type="text" size="mini" @click="onLoad(scope.row)">
+          <el-button
+            type="text"
+            size="mini"
+            @click="onLoad(scope.row)"
+          >
             Load
-            <i class="el-icon-upload2"></i>
+            <i class="el-icon-upload2" />
           </el-button>
-          <el-button type="text" size="mini" @click="download(scope.row)">
+          <el-button
+            type="text"
+            size="mini"
+            @click="download(scope.row)"
+          >
             Download
-            <i class="el-icon-download"></i>
+            <i class="el-icon-download" />
           </el-button>
-          <el-button type="text" size="mini" @click="onDelete(scope.row.id)">
+          <el-button
+            type="text"
+            size="mini"
+            @click="onDelete(scope.row.id)"
+          >
             Delete
-            <i class="el-icon-delete"></i>
+            <i class="el-icon-delete" />
           </el-button>
         </template>
       </el-table-column>
     </el-table>
     <div class="project-actions">
-      <el-button size="small" @click="onImportProject">Import project</el-button>
-      <el-button size="small" type="success" @click="onNew">New project</el-button>
-      <input style="display: none;" type="file" @change="onFileSelected" ref="fileInput">
+      <el-button
+        size="small"
+        @click="onImportProject"
+      >Import project</el-button>
+      <el-button
+        size="small"
+        type="success"
+        @click="onNew"
+      >New project</el-button>
+      <input
+        ref="fileInput"
+        style="display: none;"
+        type="file"
+        @change="onFileSelected"
+      >
     </div>
     <div class="desc">
       <p>Your changes and your projects only get stored in your browser's cache. Clearing your browsing data will result in losing your projects.</p>

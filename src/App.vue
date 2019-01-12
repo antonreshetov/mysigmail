@@ -1,8 +1,11 @@
 <template>
-  <div id="app" v-page-loading="app.loading">
-    <sidebar></sidebar>
-    <config-panel></config-panel>
-    <preview></preview>
+  <div
+    id="app"
+    v-page-loading="app.loading"
+  >
+    <sidebar />
+    <config-panel />
+    <preview />
   </div>
 </template>
 
@@ -13,21 +16,21 @@ import Preview from './components/Preview'
 import { mapState } from 'vuex'
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     Sidebar,
     ConfigPanel,
     Preview
   },
 
+  computed: {
+    ...mapState(['app', 'basic', 'options'])
+  },
+
   async created () {
     this.$store.commit('SET_LOADING', true)
     await this.$store.dispatch('addInitialProject')
     this.$store.commit('SET_LOADING', false)
-  },
-
-  computed: {
-    ...mapState(['app', 'basic', 'options'])
   }
 }
 </script>

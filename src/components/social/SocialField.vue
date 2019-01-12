@@ -2,14 +2,17 @@
   <el-form-item :label="model.name">
     <el-row>
       <el-col :span="21">
-        <el-input v-model="link"></el-input>
+        <el-input v-model="link" />
       </el-col>
       <el-col :span="3">
-        <span @click="onDelete(index)" class="social-field-action delete">
-          <i class="el-icon-delete"></i>
+        <span
+          class="social-field-action delete"
+          @click="onDelete(index)"
+        >
+          <i class="el-icon-delete" />
         </span>
         <span class="social-field-action drag">
-          <drag-icon></drag-icon>
+          <drag-icon />
         </span>
       </el-col>
     </el-row>
@@ -28,8 +31,14 @@ export default {
   },
 
   props: {
-    index: Number,
-    icon: String
+    index: {
+      type: Number,
+      default: 0
+    },
+    icon: {
+      type: String,
+      default: undefined
+    }
   },
 
   computed: {
