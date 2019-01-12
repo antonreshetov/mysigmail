@@ -1,5 +1,5 @@
 <template>
-  <component :is="selected"></component>
+  <component :is="selected" />
 </template>
 
 <script>
@@ -21,10 +21,6 @@ import XingIcon from '../assets/image/xing.svg'
 export default {
   name: 'SvgIcon',
 
-  props: {
-    icon: String
-  },
-
   components: {
     /* eslint-disable vue/no-unused-components */
     FacebookIcon,
@@ -41,6 +37,13 @@ export default {
     DribbbleIcon,
     StackoverflowIcon,
     XingIcon
+  },
+
+  props: {
+    icon: {
+      type: String,
+      default: undefined
+    }
   },
 
   data () {

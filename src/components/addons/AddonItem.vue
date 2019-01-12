@@ -1,12 +1,12 @@
 <template>
   <div class="addon-item">
     <div
-      @click="onEdit"
       class="addon-item__header"
       :style="{
-        'border-bottom-left-radius': this.open ? 0 : '3px',
-        'border-bottom-right-radius': this.open ? 0 : '3px'
+        'border-bottom-left-radius': open ? 0 : '3px',
+        'border-bottom-right-radius': open ? 0 : '3px'
       }"
+      @click="onEdit"
     >
       <div class="addon-item__header-title">{{ title }}</div>
       <div class="addon-item__header-actions">
@@ -14,14 +14,21 @@
           Edit
           <i class="el-icon-setting"></i>
         </el-button>-->
-        <el-button size="mini" type="text" @click.stop="onDelete">
+        <el-button
+          size="mini"
+          type="text"
+          @click.stop="onDelete"
+        >
           Delete
-          <i class="el-icon-delete"></i>
+          <i class="el-icon-delete" />
         </el-button>
       </div>
     </div>
-    <div class="addon-item__body" v-if="open">
-      <slot></slot>
+    <div
+      v-if="open"
+      class="addon-item__body"
+    >
+      <slot />
     </div>
   </div>
 </template>
@@ -31,8 +38,14 @@ export default {
   name: 'AddonItem',
 
   props: {
-    title: String,
-    name: String
+    title: {
+      type: String,
+      default: undefined
+    },
+    name: {
+      type: String,
+      default: undefined
+    }
   },
 
   data () {

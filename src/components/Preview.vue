@@ -6,86 +6,142 @@
           <el-col :span="12">
             <h2>Signature preview</h2>
           </el-col>
-          <el-col :span="12" style="text-align: right;">
-            <el-select placeholder="Select template" v-model="selectTemplate">
+          <el-col
+            :span="12"
+            style="text-align: right;"
+          >
+            <el-select
+              v-model="selectTemplate"
+              placeholder="Select template"
+            >
               <el-option
                 v-for="item in template.list"
                 :key="item.value"
                 :label="item.label"
                 :value="item.value"
-              ></el-option>
-              <el-option value="-1" disabled>Soon more templates</el-option>
+              />
+              <el-option
+                value="-1"
+                disabled
+              >Soon more templates</el-option>
             </el-select>
           </el-col>
         </el-row>
       </div>
       <div class="email">
         <div class="email-content">
-          <div class="line short" style="margin-bottom: 30px;"></div>
+          <div
+            class="line short"
+            style="margin-bottom: 30px;"
+          />
           <div class="flex">
             <div class="column-1">
-              <div class="line long full"></div>
-              <div class="line long full"></div>
-              <div class="line long full"></div>
-              <div class="line long full"></div>
-              <div class="line long full"></div>
-              <div class="line long full"></div>
+              <div class="line long full" />
+              <div class="line long full" />
+              <div class="line long full" />
+              <div class="line long full" />
+              <div class="line long full" />
+              <div class="line long full" />
             </div>
             <div class="column-2">
-              <carbon-ad v-if="isProd"/>
+              <carbon-ad v-if="isProd" />
             </div>
           </div>
-          <div class="line long"></div>
-          <div class="line long full"></div>
-          <div class="line long full"></div>
-          <div class="line long"></div>
-          <div class="line long full"></div>
+          <div class="line long" />
+          <div class="line long full" />
+          <div class="line long full" />
+          <div class="line long" />
+          <div class="line long full" />
         </div>
-        <div class="email-preview" ref="preview">
-          <component ref="template" :is="selectTemplate"></component>
+        <div
+          ref="preview"
+          class="email-preview"
+        >
+          <component
+            :is="selectTemplate"
+            ref="template"
+          />
         </div>
       </div>
       <div class="actions">
         <el-button-group>
-          <el-button size="small" type="" @click="viewSource">View source</el-button>
-          <el-button size="small" @click="copySelect">Copy as Select</el-button>
-          <el-button size="small" type="primary" @click="copyHTML">Copy as HTML</el-button>
+          <el-button
+            size="small"
+            type=""
+            @click="viewSource"
+          >View source</el-button>
+          <el-button
+            size="small"
+            @click="copySelect"
+          >Copy as Select</el-button>
+          <el-button
+            size="small"
+            type="primary"
+            @click="copyHTML"
+          >Copy as HTML</el-button>
         </el-button-group>
         <br>
         <el-button
-          size="small"
           v-if="!showSetup"
+          size="small"
           type="text"
           @click="showSetup = !showSetup"
         >Show setup instruction</el-button>
         <el-button
-          size="small"
           v-if="showSetup"
+          size="small"
           type="text"
           @click="showSetup = !showSetup"
         >Hide setup instruction</el-button>
       </div>
-      <div class="setup-instruction" v-if="showSetup">
+      <div
+        v-if="showSetup"
+        class="setup-instruction"
+      >
         <h3>Basic usage:</h3>
         <p>Click on "Copy as HTML" button and paste snippet of your signature into your email client settings.</p>
         <h3>Advance usage:</h3>
         <p>For some email clients, like gmail, you may using simply copy/paste highlight selection. Click on "Copy as Select" button and paste of your signature into your email client settings.</p>
       </div>
-      <textarea ref="html" v-model="html" style="opacity: 0"></textarea>
+      <textarea
+        ref="html"
+        v-model="html"
+        style="opacity: 0"
+      />
     </div>
-    <el-dialog title="Your email signature" :visible.sync="showSource">
+    <el-dialog
+      title="Your email signature"
+      :visible.sync="showSource"
+    >
       <p>Copy the HTML code below and paste it to your signature file</p>
       <br>
-      <el-input type="textarea" v-model="html" :rows="10" ref="dialogSource"></el-input>
-      <div style="text-align: right;" class="dialog-actions">
-        <el-button type="primary" @click="copySource">Copy</el-button>
+      <el-input
+        ref="dialogSource"
+        v-model="html"
+        type="textarea"
+        :rows="10"
+      />
+      <div
+        style="text-align: right;"
+        class="dialog-actions"
+      >
+        <el-button
+          type="primary"
+          @click="copySource"
+        >Copy</el-button>
       </div>
     </el-dialog>
-    <div class="preview__footer" v-if="isProd">
+    <div
+      v-if="isProd"
+      class="preview__footer"
+    >
       <div class="support-project">
         <span>support the project, put a star to</span>
-        <a href="https://github.com/antonreshetov/mysigmail" target="_blank">
-          <github-icon></github-icon>
+        <a
+          href="https://github.com/antonreshetov/mysigmail"
+          target="_blank"
+        >
+          <github-icon />
         </a>
         <span>repo :)</span>
       </div>

@@ -1,37 +1,59 @@
 <template>
   <el-form-item :label="name || 'No label'">
-    <el-popover placement="top" title="Edit field" width="350" trigger="manual" v-model="popover">
+    <el-popover
+      v-model="popover"
+      placement="top"
+      title="Edit field"
+      width="350"
+      trigger="manual"
+    >
       <div>
         <el-form size="small">
           <el-col :span="12">
             <el-form-item label="Label">
-              <el-input v-model.trim="name"></el-input>
+              <el-input v-model.trim="name" />
             </el-form-item>
           </el-col>
           <el-col :span="12">
             <el-form-item label="Type">
-              <el-select v-model="type" style="width:100%;">
+              <el-select
+                v-model="type"
+                style="width:100%;"
+              >
                 <el-option
                   v-for="item in attributes.types"
                   :key="item.value"
                   :value="item.value"
                   :label="item.label"
-                ></el-option>
+                />
               </el-select>
             </el-form-item>
           </el-col>
           <el-col :span="24">
             <el-form-item style="text-align: right;">
-              <el-button type="danger" @click="onRemoveFiled">Remove</el-button>
+              <el-button
+                type="danger"
+                @click="onRemoveFiled"
+              >Remove</el-button>
               <el-button @click="popover = false">Close</el-button>
             </el-form-item>
           </el-col>
         </el-form>
       </div>
-      <div slot="reference" class="popover-pos"></div>
+      <div
+        slot="reference"
+        class="popover-pos"
+      />
     </el-popover>
-    <i v-if="isAddonField" class="field-settings el-icon-setting" @click="onEdit"></i>
-    <el-input v-model.trim="value" tabindex="1"></el-input>
+    <i
+      v-if="isAddonField"
+      class="field-settings el-icon-setting"
+      @click="onEdit"
+    />
+    <el-input
+      v-model.trim="value"
+      tabindex="1"
+    />
   </el-form-item>
 </template>
 
@@ -46,7 +68,10 @@ export default {
       type: Boolean,
       default: false
     },
-    index: Number
+    index: {
+      type: Number,
+      default: 0
+    }
   },
 
   data () {

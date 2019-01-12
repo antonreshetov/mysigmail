@@ -1,11 +1,5 @@
 <script>
 export default {
-  render (h) {
-    return h('div', { class: 'carbon' })
-  },
-  mounted () {
-    this.load()
-  },
   watch: {
     $route (to, from) {
       if (
@@ -17,6 +11,9 @@ export default {
       }
     }
   },
+  mounted () {
+    this.load()
+  },
   methods: {
     load () {
       const s = document.createElement('script')
@@ -24,6 +21,9 @@ export default {
       s.src = `//cdn.carbonads.com/carbon.js?serve=CK7DEK7I&placement=antonreshetovgithubio`
       this.$el.appendChild(s)
     }
+  },
+  render (h) {
+    return h('div', { class: 'carbon' })
   }
 }
 </script>

@@ -1,7 +1,10 @@
 <template>
   <div class="addons">
     <h3>Installed</h3>
-    <div class="desc" v-if="isEmpty">Addons is not installed</div>
+    <div
+      v-if="isEmpty"
+      class="desc"
+    >Addons is not installed</div>
     <addon-group>
       <addon-item
         v-for="item in addons.installed"
@@ -10,19 +13,33 @@
         :title="item.label"
       >
         <template v-if="item.name ==='disclaimer'">
-          <el-input type="textarea" v-model="disclaimer" :rows="6"></el-input>
+          <el-input
+            v-model="disclaimer"
+            type="textarea"
+            :rows="6"
+          />
         </template>
       </addon-item>
     </addon-group>
     <h3>Addons</h3>
-    <el-table :data="addonsList" size="small">
-      <el-table-column label="Name" prop="label"></el-table-column>
+    <el-table
+      :data="addonsList"
+      size="small"
+    >
+      <el-table-column
+        label="Name"
+        prop="label"
+      />
       <el-table-column width="100px">
         <template slot-scope="scope">
           <div style="text-align: right;">
-            <el-button size="mini" type="text" @click="onAdd(scope.row)">
+            <el-button
+              size="mini"
+              type="text"
+              @click="onAdd(scope.row)"
+            >
               Add
-              <i class="el-icon-circle-plus-outline"></i>
+              <i class="el-icon-circle-plus-outline" />
             </el-button>
           </div>
         </template>
@@ -54,10 +71,6 @@ export default {
     }
   },
 
-  created () {
-    this.$ga.page(this.$router)
-  },
-
   computed: {
     ...mapState(['addons', 'attributes']),
     isEmpty () {
@@ -71,6 +84,10 @@ export default {
         this.$store.dispatch('updateDisclaimer', v)
       }
     }
+  },
+
+  created () {
+    this.$ga.page(this.$router)
   },
 
   methods: {

@@ -1,6 +1,14 @@
 <template>
-  <div class="socials__icon" :class="{'installed': isInstalled}" @click="addSocial">
-    <svg-icon width="20" height="20" :icon="model.icon"></svg-icon>
+  <div
+    class="socials__icon"
+    :class="{'installed': isInstalled}"
+    @click="addSocial"
+  >
+    <svg-icon
+      width="20"
+      height="20"
+      :icon="model.icon"
+    />
   </div>
 </template>
 
@@ -16,9 +24,18 @@ export default {
   },
 
   props: {
-    name: {},
-    icon: String,
-    data: Object
+    name: {
+      type: Object,
+      default: () => {}
+    },
+    icon: {
+      type: String,
+      default: undefined
+    },
+    data: {
+      type: Object,
+      default: () => {}
+    }
   },
 
   computed: {

@@ -1,18 +1,25 @@
 <template>
   <div class="options">
-    <el-form label-position="left" label-width="150px">
+    <el-form
+      label-position="left"
+      label-width="150px"
+    >
       <el-form-item label="Main color">
-        <el-color-picker ref="colorPicker" v-model="mainColor" @active-change="onPreviewMainColor"></el-color-picker>
+        <el-color-picker
+          ref="colorPicker"
+          v-model="mainColor"
+          @active-change="onPreviewMainColor"
+        />
       </el-form-item>
       <el-form-item label="Secondary color">
         <el-color-picker
           ref="colorPicker2"
           v-model="secondaryColor"
           @active-change="onPreviewSecondaryColor"
-        ></el-color-picker>
+        />
       </el-form-item>
       <el-form-item label="Avatar">
-        <el-switch v-model="showAvatar"></el-switch>
+        <el-switch v-model="showAvatar" />
       </el-form-item>
       <el-collapse-transition>
         <div v-if="showAvatar">
@@ -21,7 +28,7 @@
               v-model="avatarSize"
               :min="attributes.avatar.min"
               :max="attributes.avatar.max"
-            ></el-slider>
+            />
           </el-form-item>
           <el-form-item label="Avatar shape">
             <el-select v-model="avatarShape">
@@ -30,7 +37,7 @@
                 :key="item.value"
                 :label="item.label"
                 :value="item.value"
-              ></el-option>
+              />
             </el-select>
           </el-form-item>
         </div>
@@ -47,7 +54,7 @@
               :key="item.value"
               :label="item.label"
               :value="item.value"
-            ></el-option>
+            />
           </el-option-group>
         </el-select>
       </el-form-item>
@@ -58,7 +65,7 @@
             :key="item.value"
             :label="item.label"
             :value="item.value"
-          ></el-option>
+          />
         </el-select>
       </el-form-item>
       <el-form-item label="Job separator">
@@ -68,7 +75,7 @@
             :key="item.value"
             :label="item.label"
             :value="item.value"
-          ></el-option>
+          />
         </el-select>
       </el-form-item>
     </el-form>
@@ -83,23 +90,6 @@ export default {
 
   data () {
     return {
-    }
-  },
-
-  created () {
-    this.$ga.page(this.$router)
-  },
-
-  mounted () {
-    this.onCloseColorPicker()
-  },
-
-  watch: {
-    'options.color.main' (v) {
-      if (v === null) this.$store.commit('SET_COLOR', { main: '#000000' })
-    },
-    'options.color.secondary' (v) {
-      if (v === null) this.$store.commit('SET_COLOR', { secondary: '#000000' })
     }
   },
 
@@ -172,6 +162,23 @@ export default {
         this.$store.dispatch('updateSeparator', v)
       }
     }
+  },
+
+  watch: {
+    'options.color.main' (v) {
+      if (v === null) this.$store.commit('SET_COLOR', { main: '#000000' })
+    },
+    'options.color.secondary' (v) {
+      if (v === null) this.$store.commit('SET_COLOR', { secondary: '#000000' })
+    }
+  },
+
+  created () {
+    this.$ga.page(this.$router)
+  },
+
+  mounted () {
+    this.onCloseColorPicker()
   },
 
   methods: {

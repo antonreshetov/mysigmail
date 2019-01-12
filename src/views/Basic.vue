@@ -3,7 +3,10 @@
     <el-form>
       <el-form-item>
         <div class="image-preview-wrapper">
-          <div class="image-preview" :style="{'background-image': `url(${image})` }"></div>
+          <div
+            class="image-preview"
+            :style="{'background-image': `url(${image})` }"
+          />
           <div class="image-preview__actions">
             <el-upload
               ref="upload"
@@ -18,27 +21,39 @@
               <div slot="trigger">
                 <el-button>Upload image</el-button>
               </div>
-              <span v-if="basic.image.base64" class="remove-image" @click="onClearImage">
-                <i class="el-icon-circle-close"></i>
+              <span
+                v-if="basic.image.base64"
+                class="remove-image"
+                @click="onClearImage"
+              >
+                <i class="el-icon-circle-close" />
               </span>
             </el-upload>
             <el-row :gutter="20">
               <el-col :span="16">
                 <el-input
-                  placeholder="http://"
                   v-model="imageUrl"
+                  placeholder="http://"
                   clearable
                   @clear="onClearImageLink"
-                ></el-input>
+                />
               </el-col>
               <el-col :span="8">
-                <el-button @click="onAddLink" style="width: 100%">Add link</el-button>
+                <el-button
+                  style="width: 100%"
+                  @click="onAddLink"
+                >Add link</el-button>
               </el-col>
             </el-row>
             <div class="desc">
               <p>You can upload image or add the public link to image.</p>
               <p>The uploaded image will be converted to base64. The image should not be more than 10KB.</p>
-              <el-popover placement="top" width="300" trigger="click" class="image-tips">
+              <el-popover
+                placement="top"
+                width="300"
+                trigger="click"
+                class="image-tips"
+              >
                 <p>Some email client, like Gmail and Outlook do not support or may not display embedded images on base64 at all.</p>
                 <p>Use an image link instead of embedding it as base64.</p>
                 <strong slot="reference">Image tips</strong>
@@ -48,43 +63,71 @@
         </div>
       </el-form-item>
       <el-row :gutter="20">
-        <el-col :span="12" v-for="(item, index) in basic.fields" :key="item.id">
-          <field-item :is-addon-field="index > 5" :index="index"></field-item>
+        <el-col
+          v-for="(item, index) in basic.fields"
+          :key="item.id"
+          :span="12"
+        >
+          <field-item
+            :is-addon-field="index > 5"
+            :index="index"
+          />
         </el-col>
       </el-row>
       <el-form-item>
-        <el-button type="primary" style="width: 100%;" @click="onAddField">Add custom field</el-button>
+        <el-button
+          type="primary"
+          style="width: 100%;"
+          @click="onAddField"
+        >Add custom field</el-button>
       </el-form-item>
     </el-form>
-    <el-dialog title="Add new field" :visible.sync="showDialog">
-      <el-alert v-if="showAlert" title="Label is exist" type="error" :closable="false"></el-alert>
+    <el-dialog
+      title="Add new field"
+      :visible.sync="showDialog"
+    >
+      <el-alert
+        v-if="showAlert"
+        title="Label is exist"
+        type="error"
+        :closable="false"
+      />
       <el-form label-position="top">
         <el-row :gutter="20">
           <el-col :span="8">
             <el-form-item label="Label">
-              <el-input v-model.trim="fieldName" ref="fieldName"></el-input>
+              <el-input
+                ref="fieldName"
+                v-model.trim="fieldName"
+              />
             </el-form-item>
           </el-col>
           <el-col :span="8">
             <el-form-item label="Value">
-              <el-input v-model.trim="filedValue"></el-input>
+              <el-input v-model.trim="filedValue" />
             </el-form-item>
           </el-col>
           <el-col :span="8">
             <el-form-item label="Type">
-              <el-select v-model="filedType" style="width:100%;">
+              <el-select
+                v-model="filedType"
+                style="width:100%;"
+              >
                 <el-option
                   v-for="item in attributes.types"
                   :key="item.value"
                   :value="item.value"
                   :label="item.label"
-                ></el-option>
+                />
               </el-select>
             </el-form-item>
           </el-col>
         </el-row>
         <el-form-item style="text-align: right;">
-          <el-button type="primary" @click="addField">Add field</el-button>
+          <el-button
+            type="primary"
+            @click="addField"
+          >Add field</el-button>
         </el-form-item>
       </el-form>
     </el-dialog>
@@ -116,10 +159,6 @@ export default {
     }
   },
 
-  created () {
-    this.$ga.page(this.$router)
-  },
-
   computed: {
     ...mapState(['attributes', 'basic']),
     image () {
@@ -135,6 +174,10 @@ export default {
         this.$store.dispatch('updateImage', { link: v })
       }
     }
+  },
+
+  created () {
+    this.$ga.page(this.$router)
   },
 
   methods: {

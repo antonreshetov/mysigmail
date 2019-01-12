@@ -13,7 +13,10 @@
       <tbody>
         <!-- Avatar column -->
         <tr>
-          <td style="vertical-align: top;" v-if="showAvatar">
+          <td
+            v-if="showAvatar"
+            style="vertical-align: top;"
+          >
             <img
               v-if="image"
               :src="image"
@@ -28,11 +31,11 @@
               v-else
               style="margin-right: 10px; background: #eee;"
               :style="{
-            'height': options.avatar.size + 'px',
-            'width': options.avatar.size + 'px',
-            'border-radius': options.avatar.roundness + 'px'
-          }"
-            ></div>
+                'height': options.avatar.size + 'px',
+                'width': options.avatar.size + 'px',
+                'border-radius': options.avatar.roundness + 'px'
+              }"
+            />
           </td>
           <!-- Info column -->
           <td style="vertical-align: top;">
@@ -80,7 +83,10 @@
                       :style="{fontSize: options.font.size + 'px'}"
                     >
                       <template v-for="item in otherFields">
-                        <tr v-if="item.value" :key="item.name">
+                        <tr
+                          v-if="item.value"
+                          :key="item.name"
+                        >
                           <td>
                             <span
                               style="font-weight: 600;"

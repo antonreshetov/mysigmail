@@ -3,8 +3,8 @@
     <div class="sidebar__nav">
       <router-link
         v-for="item in nav"
-        :to="item.path"
         :key="item.name"
+        :to="item.path"
         tag="div"
         class="sidebar__nav-item"
       >{{ item.name }}</router-link>

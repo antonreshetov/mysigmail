@@ -1,6 +1,6 @@
 <template>
   <div class="addon-group">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
