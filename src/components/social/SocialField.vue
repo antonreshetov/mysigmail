@@ -44,7 +44,7 @@ export default {
   computed: {
     ...mapState(['socials']),
     model () {
-      return this.socials.list.find(i => i.icon === this.icon)
+      return this.socials.installed.find(i => i.icon === this.icon)
     },
     link: {
       get () {
