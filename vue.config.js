@@ -1,7 +1,7 @@
 const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
-  baseUrl: isProd ? '/create/' : '/',
+  publicPath: isProd ? '/create/' : '/',
   chainWebpack: config => {
     const svgRule = config.module.rule('svg')
     svgRule.uses.clear()
