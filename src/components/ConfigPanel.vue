@@ -3,7 +3,7 @@
     <div class="config-panel__header">
       <h2>{{ $route.meta.title }}</h2>
     </div>
-    <router-view></router-view>
+    <router-view />
   </div>
 </template>
 
