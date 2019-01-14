@@ -4,6 +4,7 @@
       cellspacing="0"
       cellpadding="0"
       border="0"
+      role="presentation"
       style="font-family: Arial, Helvetica, sans-serif; line-height: 1.5"
       :style="{
         fontSize: options.font.size + 'px',
@@ -26,6 +27,7 @@
                 'border-radius': options.avatar.roundness + 'px',
                 'margin-right': '10px',
               }"
+              alt="avatar"
             >
             <div
               v-else
@@ -43,6 +45,7 @@
               cellspacing="0"
               cellpadding="0"
               border="0"
+              role="presentation"
               :style="{fontSize: options.font.size + 'px'}"
             >
               <tbody>
@@ -79,6 +82,7 @@
                       cellspacing="0"
                       cellpadding="0"
                       border="0"
+                      role="presentation"
                       style="margin-top: 5px;"
                       :style="{fontSize: options.font.size + 'px'}"
                     >
@@ -116,6 +120,7 @@
                       cellspacing="2"
                       cellpadding="0"
                       border="0"
+                      role="presentation"
                       style=" margin-top: 5px; margin-left: -2px;"
                     >
                       <tbody>
@@ -133,7 +138,7 @@
                               <img
                                 width="12px"
                                 :src="`https://s3.eu-central-1.amazonaws.com/mysigmail/icons/${item.icon}.png`"
-                                alt=""
+                                :alt="`social-icon-${item.icon}`"
                                 style="display: table-cell; vertical-align: middle;"
                               >
                             </a>
@@ -152,6 +157,7 @@
     <!-- Addons -->
     <table
       v-if="isAdded('disclaimer')"
+      role="presentation"
       :style="{
         fontSize: options.font.size + 'px',
         fontFamily: options.font.family,
