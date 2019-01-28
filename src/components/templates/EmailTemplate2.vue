@@ -20,6 +20,7 @@
                 <span
                   :style="{
                     fontSize: `${options.font.size + 2}px`,
+                    fontWeight: '600'
                   }"
                 >{{ mainFields[0].value }}</span>
               </td>
@@ -27,7 +28,7 @@
             <!-- Job & company name fields -->
             <tr>
               <td
-                :style="{color: options.color.mainPreview || options.color.main, fontSize: `${options.font.size + 2}px`}"
+                :style="{color: options.color.mainPreview || options.color.main, fontSize: `${options.font.size}px`}"
               >
                 <span>{{ mainFields[1].value }}</span>
                 <span v-if="mainFields[2].value && options.separator !== 'br'">
