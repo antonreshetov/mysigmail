@@ -156,6 +156,7 @@
 import { mapGetters } from 'vuex'
 import EmailTemplate1 from './templates/EmailTemplate1'
 import EmailTemplate2 from './templates/EmailTemplate2'
+import EmailTemplate3 from './templates/EmailTemplate3'
 import CarbonAd from './CarbonAd'
 import GithubIcon from '../assets/image/github.svg'
 
@@ -166,6 +167,8 @@ export default {
     EmailTemplate1,
     // eslint-disable-next-line
     EmailTemplate2,
+    // eslint-disable-next-line
+    EmailTemplate3,
     CarbonAd,
     GithubIcon
   },
