@@ -13,7 +13,13 @@
     >
       <tbody>
         <tr>
-          <table>
+          <table
+            cellspacing="0"
+            cellpadding="0"
+            border="0"
+            role="presentation"
+            :style="{fontSize: options.font.size + 'px'}"
+          >
             <!-- Name field -->
             <tr>
               <td>
@@ -72,17 +78,18 @@
               }"
             />
           </td>
-          <!-- Other fields -->
           <td style="margin: 0; padding-top: 8px">
             <table
               style="margin: 0;"
               :style="{fontSize: `${options.font.size + 1}px`}"
             >
+              <!-- Phone number field -->
               <tr>
                 <td>
                   <span>{{ otherFields[2].value }}</span>
                 </td>
               </tr>
+              <!-- Email address & website fields -->
               <tr>
                 <td>
                   <span>
@@ -98,6 +105,7 @@
                   </span>
                 </td>
               </tr>
+              <!-- Other fields -->
               <template v-for="(item, index) in otherFields">
                 <tr
                   v-if="item.value && index > 2"
@@ -118,6 +126,7 @@
                   </td>
                 </tr>
               </template>
+              <!-- Social icons -->
               <tr>
                 <td>
                   <table
