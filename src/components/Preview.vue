@@ -67,7 +67,7 @@
         <el-button-group>
           <el-button
             size="small"
-            type=""
+            type
             @click="viewSource"
           >View source</el-button>
           <el-button
@@ -155,6 +155,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import EmailTemplate1 from './templates/EmailTemplate1'
+import EmailTemplate2 from './templates/EmailTemplate2'
 import CarbonAd from './CarbonAd'
 import GithubIcon from '../assets/image/github.svg'
 
@@ -163,6 +164,8 @@ export default {
   components: {
     // eslint-disable-next-line
     EmailTemplate1,
+    // eslint-disable-next-line
+    EmailTemplate2,
     CarbonAd,
     GithubIcon
   },
@@ -232,7 +235,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/scss/variables.scss';
+@import "../assets/scss/variables.scss";
 
 .preview {
   background-color: #f6f6f6;
