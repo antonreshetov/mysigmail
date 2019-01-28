@@ -66,7 +66,7 @@
               <tr>
                 <td
                   style="font-weight: bold;"
-                  :style="{marginTop: showAvatar ? '16px' : '0px'}"
+                  :style="{paddingTop: showAvatar ? '16px' : '0px'}"
                 >{{ mainFields[2].value }}</td>
               </tr>
               <!-- Email field -->
