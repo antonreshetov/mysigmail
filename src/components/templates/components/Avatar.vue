@@ -1,8 +1,8 @@
 <template>
   <div>
     <img
-      v-if="image"
-      :src="image"
+      v-if="src"
+      :src="src"
       :style="{
         'width': size + 'px',
         'height': size + 'px',
