@@ -25,7 +25,7 @@
               <tr>
                 <td>
                   <span
-                    :style="{color: options.color.mainPreview || options.color.main, fontWeight: 600}"
+                    :style="{color: options.color.mainPreview || options.color.main, fontWeight: 600, fontSize: `${options.font.size + 2}px`}"
                   >{{ mainFields[0].value }}</span>
                 </td>
               </tr>
@@ -66,7 +66,7 @@
               <tr>
                 <td
                   style="font-weight: bold;"
-                  :style="{paddingTop: showAvatar ? '16px' : '0px'}"
+                  :style="{paddingTop: showAvatar ? '8px' : '0px'}"
                 >{{ mainFields[2].value }}</td>
               </tr>
               <!-- Email field -->
@@ -77,7 +77,7 @@
                     <span>
                       <a
                         style="text-decoration: none; color: black; font-weight: normal;"
-                        :href="`mailto:${formatLink(otherFields[1].value)}`"
+                        :href="`mailto:${otherFields[1].value}`"
                       >{{ otherFields[1].value }}</a>
                     </span>
                   </span>
@@ -102,12 +102,7 @@
                 <td style="font-weight: 600;">
                   <span :style="{color: options.color.mainPreview || options.color.main}">
                     t.
-                    <span>
-                      <a
-                        style="text-decoration: none; color: black; font-weight: normal;"
-                        :href="`mailto:${formatLink(otherFields[2].value)}`"
-                      >{{ otherFields[2].value }}</a>
-                    </span>
+                    <span style="color: black; font-weight: normal;">{{ otherFields[2].value }}</span>
                   </span>
                 </td>
               </tr>
