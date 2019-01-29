@@ -95,7 +95,7 @@
                 <!-- Email address & website fields -->
                 <tr>
                   <td>
-                    <span>
+                    <span v-if="(otherFields[1].value || otherFields[0].value)">
                       <a
                         style="text-decoration: none; color: inherit;"
                         :href="`mailto:${otherFields[1].value}`"
@@ -104,7 +104,7 @@
                         style="text-decoration: none; color: inherit;"
                         :href="`${formatLink(otherFields[0].value
                         )}`"
-                      >{{ formatLink(otherFields[0].value) }}</a>
+                      >{{ otherFields[0].value }}</a>
                     </span>
                   </td>
                 </tr>
