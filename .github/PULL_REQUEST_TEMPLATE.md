@@ -10,6 +10,13 @@ Before submitting this PR, please make sure:
 - [ ] Feature
 - [ ] Refactor
 
+**If is a feature which add new template**
+
+- [ ] Testing copying: Copy as Select and Copy as HTML
+- [ ] Testing in Gmail (web client) via Copy as Select
+- [ ] Testing in other email client via Copy as HTML
+- [ ] Result is same as in preview in app
+
 **Importantly**
 
 To avoid wasting your time, it's best to open a suggestion issue first and wait for approval before working on PR
