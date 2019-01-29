@@ -18,25 +18,10 @@
             v-if="showAvatar"
             style="vertical-align: top;"
           >
-            <img
-              v-if="image"
+            <avatar
               :src="image"
-              :style="{
-                'width': options.avatar.size + 'px',
-                'height': options.avatar.size + 'px',
-                'border-radius': options.avatar.roundness + 'px',
-                'margin-right': '10px',
-              }"
-              alt="avatar"
-            >
-            <div
-              v-else
-              style="margin-right: 10px; background: #eee;"
-              :style="{
-                'height': options.avatar.size + 'px',
-                'width': options.avatar.size + 'px',
-                'border-radius': options.avatar.roundness + 'px'
-              }"
+              :size="options.avatar.size"
+              :roundness="options.avatar.roundness"
             />
           </td>
           <!-- Info column -->
@@ -178,8 +163,10 @@
 
 <script>
 import EmailTemplate from './emailTemplate'
+import Avatar from './components/Avatar'
 
 export default {
+  components: { Avatar },
   extends: EmailTemplate
 }
 </script>
