@@ -58,7 +58,10 @@
               <!-- Email field -->
               <tr>
                 <td style="padding-top: 8px; font-weight: 600;">
-                  <span :style="{color: options.color.mainPreview || options.color.main}">
+                  <span
+                    v-if="otherFields[1].value"
+                    :style="{color: options.color.mainPreview || options.color.main}"
+                  >
                     e.
                     <span>
                       <a
@@ -72,7 +75,10 @@
               <!-- Website field -->
               <tr>
                 <td style="font-weight: 600;">
-                  <span :style="{color: options.color.mainPreview || options.color.main}">
+                  <span
+                    v-if="otherFields[0].value"
+                    :style="{color: options.color.mainPreview || options.color.main}"
+                  >
                     w.
                     <span>
                       <a
@@ -86,7 +92,10 @@
               <!-- Phone number field -->
               <tr>
                 <td style="font-weight: 600;">
-                  <span :style="{color: options.color.mainPreview || options.color.main}">
+                  <span
+                    v-if="otherFields[2].value"
+                    :style="{color: options.color.mainPreview || options.color.main}"
+                  >
                     t.
                     <span style="color: black; font-weight: normal;">{{ otherFields[2].value }}</span>
                   </span>
