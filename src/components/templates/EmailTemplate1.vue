@@ -14,11 +14,9 @@
       <tbody>
         <!-- Avatar column -->
         <tr>
-          <td
-            v-if="showAvatar"
-            style="vertical-align: top;"
-          >
+          <td style="vertical-align: top;">
             <avatar
+              :show-avatar="showAvatar"
               :src="image"
               :size="options.avatar.size"
               :roundness="options.avatar.roundness"

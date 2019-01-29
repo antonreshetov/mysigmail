@@ -8,7 +8,7 @@
     }"
   >
     <img
-      v-if="src"
+      v-if="src && showAvatar"
       :src="src"
       :style="{
         'width': size + 'px',
@@ -24,6 +24,7 @@
 export default {
   name: 'Avatar',
   props: {
+    showAvatar: { type: Boolean, required: true },
     src: { type: String, required: true },
     size: { type: Number, required: true },
     roundness: { type: Number, required: true }

@@ -68,11 +68,9 @@
       <tbody>
         <tr>
           <!-- Avatar field -->
-          <td
-            v-if="showAvatar"
-            style="padding-top: 8px; vertical-align: top;"
-          >
+          <td style="padding-top: 8px; vertical-align: top;">
             <avatar
+              :show-avatar="showAvatar"
               :src="image"
               :size="options.avatar.size"
               :roundness="options.avatar.roundness"

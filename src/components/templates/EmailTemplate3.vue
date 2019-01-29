@@ -37,11 +37,9 @@
               </tr>
               <!-- Avatar field -->
               <tr>
-                <td
-                  v-if="showAvatar"
-                  style="padding-top: 8px;"
-                >
+                <td style="padding-top: 8px;">
                   <avatar
+                    :show-avatar="showAvatar"
                     :src="image"
                     :size="options.avatar.size"
                     :roundness="options.avatar.roundness"
