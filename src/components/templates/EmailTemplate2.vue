@@ -72,24 +72,10 @@
             v-if="showAvatar"
             style="padding-top: 8px; vertical-align: top;"
           >
-            <img
-              v-if="image"
+            <avatar
               :src="image"
-              :style="{
-                'width': options.avatar.size + 'px',
-                'height': options.avatar.size + 'px',
-                'border-radius': options.avatar.roundness + 'px',
-              }"
-              alt="avatar"
-            >
-            <div
-              v-else
-              style="margin-right: 10px; background: #eee;"
-              :style="{
-                'height': options.avatar.size + 'px',
-                'width': options.avatar.size + 'px',
-                'border-radius': options.avatar.roundness + 'px'
-              }"
+              :size="options.avatar.size"
+              :roundness="options.avatar.roundness"
             />
           </td>
           <td style="padding-top: 8px; vertical-align: top;">
@@ -209,8 +195,10 @@
 
 <script>
 import EmailTemplate from './emailTemplate'
+import Avatar from './components/Avatar'
 
 export default {
+  components: { Avatar },
   extends: EmailTemplate
 }
 </script>
