@@ -1,5 +1,12 @@
 <template>
-  <div>
+  <div
+    style="margin-right: 10px; background: #eee;"
+    :style="{
+      'height': size + 'px',
+      'width': size + 'px',
+      'border-radius': roundness + 'px'
+    }"
+  >
     <img
       v-if="src"
       :src="src"
@@ -10,15 +17,6 @@
       }"
       alt="avatar"
     >
-    <div
-      v-else
-      style="margin-right: 10px; background: #eee;"
-      :style="{
-        'height': size + 'px',
-        'width': size + 'px',
-        'border-radius': roundness + 'px'
-      }"
-    />
   </div>
 </template>
 
