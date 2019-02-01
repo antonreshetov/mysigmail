@@ -144,7 +144,7 @@
                                   v-for="item in socials.installed"
                                   :key="item.name"
                                   align="center"
-                                  style="width: 24px; height: 24px; border-radius: 3px;"
+                                  style="width: 20px; height: 20px; border-radius: 3px;"
                                   :style="{
                                     backgroundColor: options.color.mainPreview || options.color.main,
                                   }"
