@@ -202,7 +202,7 @@ export default {
       })
     },
     onAddLink () {
-      this.$store.dispatch('updateImage', { link: this.imageUrl })
+      this.$store.dispatch('updateImage', { base64: '', link: this.imageUrl })
     },
     onClearImage () {
       this.$refs.upload.clearFiles()
@@ -241,7 +241,7 @@ export default {
       if (!this.isLt10) {
         this.fileBase64 = await this.compressImage(this.fileBase64)
       }
-      this.$store.dispatch('updateImage', { base64: this.fileBase64 })
+      this.$store.dispatch('updateImage', { base64: this.fileBase64, link: '' })
     },
     async compressImage (base64) {
       const canvas = document.createElement('canvas')
