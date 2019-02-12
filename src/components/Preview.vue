@@ -213,7 +213,7 @@ export default {
     copySelect () {
       if (window.getSelection) {
         let range = document.createRange()
-        range.selectNode(this.$refs.preview.querySelector('table'))
+        range.selectNode(this.$refs.preview.querySelector('.email-preview div'))
         window.getSelection().removeAllRanges()
         window.getSelection().addRange(range)
         document.execCommand('copy')
