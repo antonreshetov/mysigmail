@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="src && showAvatar"
     style="margin-right: 10px; background: #eee;"
     :style="{
       'height': size + 'px',
@@ -8,7 +9,6 @@
     }"
   >
     <img
-      v-if="src && showAvatar"
       :src="src"
       :style="{
         'width': size + 'px',
