@@ -8,26 +8,17 @@
             :style="{'background-image': `url(${image})` }"
           />
           <div class="image-preview__actions">
-            <el-upload
-              ref="upload"
-              action=""
-              :on-change="onChange"
-              :http-request="upload"
-              :before-upload="onBeforeUpload"
-              :multiple="false"
-              :show-file-list="false"
+            <el-button
+              class="upload"
+              @click="openCropDialog"
+            >Upload image</el-button>
+            <span
+              v-if="basic.image.base64"
+              class="remove-image"
+              @click="onClearImage"
             >
-              <div slot="trigger">
-                <el-button>Upload image</el-button>
-              </div>
-              <span
-                v-if="basic.image.base64"
-                class="remove-image"
-                @click="onClearImage"
-              >
-                <i class="el-icon-circle-close" />
-              </span>
-            </el-upload>
+              <i class="el-icon-circle-close" />
+            </span>
             <el-row :gutter="20">
               <el-col :span="16">
                 <el-input
@@ -79,6 +70,7 @@
         >Add custom field</el-button>
       </el-form-item>
     </el-form>
+    <!-- Add new field dialog -->
     <el-dialog
       title="Add new field"
       :visible.sync="showDialog"
@@ -128,12 +120,55 @@
         </el-form-item>
       </el-form>
     </el-dialog>
+    <!-- Upload image dialog -->
+    <el-dialog
+      title="Upload and crop image"
+      :visible.sync="showCropDialog"
+    >
+      <div
+        v-show="image"
+        class="crop-preview"
+      >
+        <img
+          ref="cropper"
+          :src="image"
+          alt="crop-preview"
+        >
+      </div>
+      <el-upload
+        ref="upload"
+        action=""
+        :on-change="onChange"
+        :http-request="onUpload"
+        :before-upload="onBeforeUpload"
+        :multiple="false"
+        :show-file-list="false"
+        :auto-upload="false"
+      >
+        <div slot="trigger">
+          <button
+            ref="uploadButton"
+            style="display: none;"
+          />
+        </div>
+        <div class="upload-action">
+          <el-button @click="$refs.uploadButton.click()">Select image</el-button>
+          <el-button
+            v-if="image"
+            type="success"
+            @click="onUpload"
+          >Save</el-button>
+        </div>
+      </el-upload>
+    </el-dialog>
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import { guid } from '../util/helpers'
+import Cropper from 'cropperjs'
+import 'cropperjs/dist/cropper.css'
 import FieldItem from './FieldItem'
 
 export default {
@@ -148,12 +183,12 @@ export default {
       fieldName: '',
       filedValue: '',
       filedType: 'text',
-      fileList: '',
-      fileBase64: '',
       imageLink: '',
       showDialog: false,
+      showCropDialog: false,
       showAlert: false,
-      isLt10: false
+      isLt10: false,
+      cropper: undefined
     }
   },
 
@@ -211,34 +246,55 @@ export default {
       this.onAddLink()
     },
     onBeforeUpload (file) {
+      this.checkUploadedFile(file)
+    },
+    checkUploadedFile (file) {
       const isJPG = file.type === 'image/jpeg'
       const isPNG = file.type === 'image/png'
       this.isLt10 = file.size < 10000
 
-      if (!this.isLt10) {
-        this.$message({
-          message: 'Warning, uploaded file is more than 10KB, and will be compressed.',
-          type: 'warning'
-        })
-      }
-      if (!isJPG && !isPNG) {
-        this.$message({
-          message: 'Error, uploaded file should be a .jpg or .png.',
-          type: 'error'
-        })
-      }
+      return new Promise((resolve, reject) => {
+        if (!isJPG && !isPNG) {
+          const message = 'Uploaded file should be a .jpg or .png.'
 
-      return true
+          this.$message({ message, type: 'error' })
+
+          reject(new Error(message))
+          return
+        }
+
+        if (!this.isLt10) {
+          this.$message({
+            message: 'Warning, uploaded file is more than 10KB, and will be compressed.',
+            type: 'warning'
+          })
+          resolve(true)
+        }
+
+        resolve(true)
+      })
     },
-    onChange (file, fileList) {
-      this.fileList = fileList
-    },
-    async upload (data) {
-      this.fileBase64 = await this.getBase64ImageFromBlob(data.file)
-      if (!this.isLt10) {
-        this.fileBase64 = await this.compressImage(this.fileBase64)
+    async onChange (file, fileList) {
+      try {
+        await this.checkUploadedFile(file.raw)
+        const fileBase64 = await this.getBase64ImageFromBlob(file.raw)
+
+        this.fileList = fileList
+        this.$store.dispatch('updateImage', { base64: fileBase64, link: '' })
+
+        this.initCropper()
+      } catch (err) {
+        console.error(err)
       }
-      this.$store.dispatch('updateImage', { base64: this.fileBase64, link: '' })
+    },
+    async onUpload (data) {
+      const res = await this.getCroppedImage()
+      let fileBase64 = await this.getBase64ImageFromBlob(res.blob)
+
+      if (!this.isLt10) fileBase64 = await this.compressImage(fileBase64)
+
+      this.$store.dispatch('updateImage', { base64: fileBase64, link: '' })
+      this.showCropDialog = false
     },
     async compressImage (base64) {
       const canvas = document.createElement('canvas')
@@ -297,6 +353,34 @@ export default {
         }
         reader.readAsDataURL(blob)
       })
+    },
+    openCropDialog () {
+      this.showCropDialog = true
+      this.$nextTick(() => {
+        this.initCropper()
+      })
+    },
+    initCropper () {
+      if (typeof this.cropper === 'object') {
+        this.cropper.destroy()
+      }
+      this.$nextTick(() => {
+        this.cropper = new Cropper(this.$refs.cropper, {
+          aspectRatio: 1,
+          viewMode: 1,
+          autoCropArea: 1
+        })
+      })
+    },
+    getCroppedImage () {
+      return new Promise(resolve => {
+        this.cropper.getCroppedCanvas().toBlob(blob => {
+          resolve({
+            blob: blob,
+            url: URL.createObjectURL(blob)
+          })
+        })
+      })
     }
   }
 }
@@ -316,9 +400,14 @@ export default {
     border-radius: 100%;
     background-size: 100px;
     background-position: center center;
+    background-size: cover;
     flex-shrink: 0;
+    overflow: hidden;
     &__actions {
       width: 100%;
+      .upload {
+        margin-bottom: 20px;
+      }
     }
   }
   .remove-image {
@@ -374,5 +463,24 @@ export default {
   .el-popover__reference {
     cursor: pointer;
   }
+}
+.crop-preview {
+  padding: 2px 0;
+  overflow: hidden;
+  max-height: 250px;
+  margin-bottom: 20px;
+  img {
+     max-width: 100%;
+  }
+  &__placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #eee;
+    border: 1px dashed $color-info;
+    border-radius: 3px;
+  }
+}
+.upload-action {
+  text-align: center;
 }
 </style>
