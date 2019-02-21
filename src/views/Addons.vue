@@ -19,6 +19,7 @@
             :rows="6"
           />
         </template>
+        <mobile-app v-if="item.name === 'mobileApp'" />
       </addon-item>
     </addon-group>
     <h3>Addons</h3>
@@ -54,19 +55,22 @@
 import { mapState } from 'vuex'
 import AddonItem from '../components/addons/AddonItem'
 import AddonGroup from '../components/addons/AddonGroup'
+import MobileApp from '../components/addons/types/MobileApp'
 
 export default {
   name: '',
 
   components: {
     AddonItem,
-    AddonGroup
+    AddonGroup,
+    MobileApp
   },
 
   data () {
     return {
       addonsList: [
-        { label: 'Disclaimer', name: 'disclaimer' }
+        { label: 'Disclaimer', name: 'disclaimer' },
+        { label: 'Mobile app ', name: 'mobileApp' }
       ]
     }
   },
