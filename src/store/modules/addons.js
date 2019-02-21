@@ -1,20 +1,10 @@
-const placeholder =
-  'This email and any files transmitted with it are confidential and intended solely for the use of the individual or entity to whom they are addressed. If you have received this email in error please notify the system manager. This message contains confidential information and is intended only for the individual named. If you are not the named addressee you should not disseminate, distribute or copy this e-mail. Please notify the sender immediately by e-mail if you have received this e-mail by mistake and delete this e-mail from your system. If you are not the intended recipient you are notified that disclosing, copying, distributing or taking any action in reliance on the contents of this information is strictly prohibited.'
-const mobileApp = {
-  appStore: {
-    img: `${process.env.VUE_APP_AWS_S3}/app-store-badge.png`,
-    link: 'http://example.com'
-  },
-  googlePlay: {
-    img: `${process.env.VUE_APP_AWS_S3}/google-play-badge.png`,
-    link: 'http://example.com'
-  }
-}
+import data from './data'
+
 export default {
   state: {
     installed: [],
-    disclaimer: placeholder,
-    mobileApp
+    disclaimer: data.addons.disclaimer,
+    mobileApp: data.addons.mobileApp
   },
   getters: {},
   mutations: {
@@ -28,8 +18,8 @@ export default {
     },
     RESET_ADDONS (state) {
       state.installed = []
-      state.disclaimer = placeholder
-      state.mobileApp = mobileApp
+      state.disclaimer = data.addons.disclaimer
+      state.mobileApp = data.addons.mobileApp
     },
     SET_ADDONS_STATE (state, data) {
       state = Object.assign(state, data)
@@ -41,7 +31,7 @@ export default {
       state.mobileApp[data.key] = { ...state.mobileApp[data.key], ...data.payload }
     },
     RESET_MOBILE_APP (state) {
-      state.mobileApp = mobileApp
+      state.mobileApp = data.addons.mobileApp
     }
   },
   actions: {
@@ -51,7 +41,7 @@ export default {
     },
     async removeAddon ({ state, commit, dispatch, rootState }, name) {
       commit('REMOVE_ADDON', name)
-      if (name === 'disclaimer') commit('SET_DISCLAIMER', placeholder)
+      if (name === 'disclaimer') commit('SET_DISCLAIMER', data.addons.disclaimer)
       if (name === 'mobileApp') commit('RESET_MOBILE_APP')
       await dispatch('updateProject', rootState.projects.project)
     },
