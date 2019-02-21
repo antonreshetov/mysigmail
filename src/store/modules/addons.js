@@ -27,6 +27,9 @@ export default {
     SET_DISCLAIMER (state, data) {
       state.disclaimer = data
     },
+    RESET_DISCLAIMER (state) {
+      state.disclaimer = data.addons.disclaimer
+    },
     SET_MOBILE_APP (state, data) {
       state.mobileApp[data.key] = { ...state.mobileApp[data.key], ...data.payload }
     },
@@ -41,7 +44,7 @@ export default {
     },
     async removeAddon ({ state, commit, dispatch, rootState }, name) {
       commit('REMOVE_ADDON', name)
-      if (name === 'disclaimer') commit('SET_DISCLAIMER', data.addons.disclaimer)
+      if (name === 'disclaimer') commit('RESET_DISCLAIMER')
       if (name === 'mobileApp') commit('RESET_MOBILE_APP')
       await dispatch('updateProject', rootState.projects.project)
     },
