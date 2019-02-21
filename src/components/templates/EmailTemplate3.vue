@@ -121,7 +121,7 @@
                 </tr>
               </template>
               <!-- Social icons -->
-              <tr>
+              <tr v-if="socials.installed.length">
                 <td>
                   <table
                     cellspacing="2"
@@ -157,6 +157,38 @@
               </tr>
             </tbody>
           </table>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Addons -->
+    <table
+      v-if="isAdded('mobileApp')"
+      cellspacing="0"
+      cellpadding="0"
+      border="0"
+      role="presentation"
+      style="margin-top: 10px;"
+    >
+      <tbody>
+        <tr>
+          <td v-if="addons.mobileApp.appStore.link">
+            <a :href="addons.mobileApp.appStore.link">
+              <img
+                :src="addons.mobileApp.appStore.img"
+                style="height:35px; margin-right: 5px;"
+                alt="app store badge"
+              >
+            </a>
+          </td>
+          <td v-if="addons.mobileApp.googlePlay.link">
+            <a :href="addons.mobileApp.googlePlay.link">
+              <img
+                :src="addons.mobileApp.googlePlay.img"
+                style="height:35px;"
+                alt="google play badge"
+              >
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>
