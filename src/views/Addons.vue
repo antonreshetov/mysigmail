@@ -12,13 +12,7 @@
         :name="item.name"
         :title="item.label"
       >
-        <template v-if="item.name ==='disclaimer'">
-          <el-input
-            v-model="disclaimer"
-            type="textarea"
-            :rows="6"
-          />
-        </template>
+        <disclaimer v-if="item.name ==='disclaimer'" />
         <mobile-app v-if="item.name === 'mobileApp'" />
       </addon-item>
     </addon-group>
@@ -56,6 +50,7 @@ import { mapState } from 'vuex'
 import AddonItem from '../components/addons/AddonItem'
 import AddonGroup from '../components/addons/AddonGroup'
 import MobileApp from '../components/addons/types/MobileApp'
+import Disclaimer from '../components/addons/types/Disclaimer'
 
 export default {
   name: '',
@@ -63,7 +58,8 @@ export default {
   components: {
     AddonItem,
     AddonGroup,
-    MobileApp
+    MobileApp,
+    Disclaimer
   },
 
   data () {
@@ -79,14 +75,6 @@ export default {
     ...mapState(['addons', 'attributes']),
     isEmpty () {
       return this.addons.installed.length === 0
-    },
-    disclaimer: {
-      get () {
-        return this.addons.disclaimer
-      },
-      set (v) {
-        this.$store.dispatch('updateDisclaimer', v)
-      }
     }
   },
 
