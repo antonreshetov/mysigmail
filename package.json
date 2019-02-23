@@ -9,6 +9,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "aws-sdk": "^2.408.0",
     "cropperjs": "^1.4.3",
     "element-ui": "^2.4.9",
     "nprogress": "^0.2.0",
