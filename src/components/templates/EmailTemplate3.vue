@@ -144,7 +144,7 @@
                           <a :href="formatLink(item.link)">
                             <img
                               width="12px"
-                              :src="`https://s3.eu-central-1.amazonaws.com/mysigmail/icons/${item.icon}.png`"
+                              :src="`${s3url}/icons/${item.icon}.png`"
                               :alt="`social-icon-${item.icon}`"
                               style="display: table-cell; vertical-align: middle;"
                             >
