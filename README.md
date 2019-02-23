@@ -15,12 +15,12 @@ So let's make creating email signatures easier!
 
 ## Features
 
-- Upload image - upload image by url or embed via base64
+- Upload image - upload to AWS S3 or set public link
 - Custom fields - add custom fields
 - Social icons - add social icons
 - Options - customize signature
-- Addons - additional options (yet only one)
-- Templates - templates for signature (yet only one)
+- Addons - additional options
+- Templates - templates for signature
 - Projects - save, download or import projects
 - Signature preview - preview signature
 
@@ -30,6 +30,16 @@ So let's make creating email signatures easier!
 - Create more addons (PR Welcome)
 
 ## Development
+
+Set env variables
+
+```bash
+VUE_APP_AWS_S3_URL=
+VUE_APP_AWS_S3_BASKET=
+VUE_APP_AWS_S3_ID=
+VUE_APP_AWS_S3_KEY=
+```
+Run
 
 ```bash
 npm i
