@@ -5,20 +5,13 @@
         <div class="image-preview-wrapper">
           <div
             class="image-preview"
-            :style="{'background-image': `url(${image})` }"
+            :style="{'background-image': `url(${imageUrl})` }"
           />
           <div class="image-preview__actions">
             <el-button
               class="upload"
               @click="openCropDialog"
             >Upload image</el-button>
-            <span
-              v-if="basic.image.base64"
-              class="remove-image"
-              @click="onClearImage"
-            >
-              <i class="el-icon-circle-close" />
-            </span>
             <el-row :gutter="20">
               <el-col :span="16">
                 <el-input
@@ -34,18 +27,6 @@
             </el-row>
             <div class="desc">
               <p>You can upload image or add the public link to image.</p>
-              <p>The uploaded image will be converted to base64.
-                <el-popover
-                  placement="top"
-                  width="300"
-                  trigger="click"
-                  class="image-tips"
-                >
-                  <p>Some email client, like Gmail and Outlook do not support or may not display embedded images on base64 at all.</p>
-                  <p>Use an image link instead of embedding it as base64.</p>
-                  <span slot="reference">Tips.</span>
-                </el-popover>
-              </p>
             </div>
           </div>
         </div>
@@ -126,12 +107,12 @@
       :visible.sync="showCropDialog"
     >
       <div
-        v-show="image"
+        v-show="cropPreview"
         class="crop-preview"
       >
         <img
           ref="cropper"
-          :src="image"
+          :src="cropPreview"
           alt="crop-preview"
         >
       </div>
@@ -154,7 +135,7 @@
         <div class="upload-action">
           <el-button @click="$refs.uploadButton.click()">Select image</el-button>
           <el-button
-            v-if="image"
+            v-if="cropPreview"
             type="success"
             @click="onUpload"
           >Save</el-button>
@@ -167,9 +148,10 @@
 <script>
 import { mapState } from 'vuex'
 import { guid } from '../util/helpers'
+import FieldItem from './FieldItem'
+import AWS from 'aws-sdk'
 import Cropper from 'cropperjs'
 import 'cropperjs/dist/cropper.css'
-import FieldItem from './FieldItem'
 
 export default {
   name: '',
@@ -183,6 +165,7 @@ export default {
       fieldName: '',
       filedValue: '',
       filedType: 'text',
+      fileRaw: '',
       imageLink: '',
       showDialog: false,
       showCropDialog: false,
@@ -194,10 +177,10 @@ export default {
 
   computed: {
     ...mapState(['attributes', 'basic']),
-    image () {
-      return this.basic.image.link
-        ? this.basic.image.link
-        : this.basic.image.base64
+    cropPreview () {
+      if (this.fileRaw) {
+        return URL.createObjectURL(this.fileRaw)
+      }
     },
     imageUrl: {
       get () {
@@ -234,12 +217,7 @@ export default {
       })
     },
     onAddLink () {
-      this.$store.dispatch('updateImage', { base64: '', link: this.imageUrl })
-    },
-    onClearImage () {
-      this.$refs.upload.clearFiles()
-      this.fileBase64 = ''
-      this.$store.dispatch('updateImage', { base64: this.fileBase64 })
+      this.$store.dispatch('updateImage', { link: this.imageUrl })
     },
     onClearImageLink () {
       this.imageLink = ''
@@ -251,24 +229,13 @@ export default {
     checkUploadedFile (file) {
       const isJPG = file.type === 'image/jpeg'
       const isPNG = file.type === 'image/png'
-      this.isLt10 = file.size < 10000
 
       return new Promise((resolve, reject) => {
         if (!isJPG && !isPNG) {
           const message = 'Uploaded file should be a .jpg or .png.'
 
           this.$message({ message, type: 'error' })
-
           reject(new Error(message))
-          return
-        }
-
-        if (!this.isLt10) {
-          this.$message({
-            message: 'Warning, uploaded file is more than 10KB, and will be compressed.',
-            type: 'warning'
-          })
-          resolve(true)
         }
 
         resolve(true)
@@ -277,81 +244,44 @@ export default {
     async onChange (file, fileList) {
       try {
         await this.checkUploadedFile(file.raw)
-        const fileBase64 = await this.getBase64ImageFromBlob(file.raw)
-
-        this.fileList = fileList
-        this.$store.dispatch('updateImage', { base64: fileBase64, link: '' })
-
+        this.fileRaw = file.raw
         this.initCropper()
       } catch (err) {
         console.error(err)
       }
     },
     async onUpload (data) {
-      const res = await this.getCroppedImage()
-      let fileBase64 = await this.getBase64ImageFromBlob(res.blob)
+      const url = await this.uploadToS3()
 
-      if (!this.isLt10) fileBase64 = await this.compressImage(fileBase64)
-
-      this.$store.dispatch('updateImage', { base64: fileBase64, link: '' })
+      this.$store.dispatch('updateImage', { link: url })
       this.showCropDialog = false
+      this.fileRaw = ''
     },
-    async compressImage (base64) {
-      const canvas = document.createElement('canvas')
-      const img = document.createElement('img')
-
-      return new Promise((resolve, reject) => {
-        img.onload = function () {
-          let width = img.width
-          let height = img.height
-
-          const maxHeight = 200
-          const maxWidth = 200
-
-          if (width > height) {
-            if (width > maxWidth) {
-              height = Math.round(height *= maxWidth / width)
-              width = maxWidth
-            }
-          } else {
-            if (height > maxHeight) {
-              width = Math.round(width *= maxHeight / height)
-              height = maxHeight
-            }
-          }
-
-          canvas.width = width
-          canvas.height = height
-
-          const ctx = canvas.getContext('2d')
-          ctx.drawImage(img, 0, 0, width, height)
-
-          resolve(canvas.toDataURL('image/jpeg', 0.7))
-        }
-
-        img.onerror = function (err) {
-          reject(err)
-        }
-
-        img.src = base64
+    async uploadToS3 () {
+      const bucket = new AWS.S3({
+        accessKeyId: process.env.VUE_APP_AWS_S3_ID,
+        secretAccessKey: process.env.VUE_APP_AWS_S3_KEY,
+        region: 'eu-central-1'
       })
-    },
-    getBase64ImageFromBlob (blob) {
+
+      const name = this.fileRaw.name
+      const ext = name.match(/.jpg|.jpeg|.png$/i)[0]
+      const date = new Date().toJSON().substr(0, 10)
+      const file = `${date}-${guid()}${ext}`
+      const key = `upload/${file}`
+      const croppedImage = await this.getCroppedImage()
+
       return new Promise((resolve, reject) => {
-        const reader = new FileReader()
-
-        reader.addEventListener(
-          'load',
-          function () {
-            resolve(reader.result)
-          },
-          false
-        )
-
-        reader.onerror = (err) => {
-          return reject(new Error(err))
-        }
-        reader.readAsDataURL(blob)
+        bucket.putObject({
+          Bucket: process.env.VUE_APP_AWS_S3_BASKET,
+          Key: key,
+          ContentType: this.fileRaw.type,
+          Body: croppedImage.blob
+        }, (err, data) => {
+          if (err) return reject(err)
+          const res = process.env.VUE_APP_AWS_S3_URL + '/' + key
+          return resolve(res)
+        })
       })
     },
     openCropDialog () {
@@ -373,13 +303,21 @@ export default {
       })
     },
     getCroppedImage () {
+      const width = 200
+      const height = 200
+      const quality = 0.9
+
       return new Promise(resolve => {
-        this.cropper.getCroppedCanvas().toBlob(blob => {
+        this.cropper.getCroppedCanvas({
+          width,
+          height,
+          imageSmoothingQuality: 'medium'
+        }).toBlob(blob => {
           resolve({
             blob: blob,
             url: URL.createObjectURL(blob)
           })
-        })
+        }, this.fileRaw.type, quality)
       })
     }
   }
