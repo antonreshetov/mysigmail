@@ -132,21 +132,48 @@
       </div>
     </el-dialog>
     <div
-      v-if="isProd"
+      v-if="true"
       class="preview__footer"
     >
       <div class="support-project">
-        <span>support the project, put a star to</span>
-        <a
-          href="https://github.com/antonreshetov/mysigmail"
-          target="_blank"
+        <el-popover
+          v-model="showDonatePopup"
+          placement="top"
+          width="200"
         >
-          <github-icon />
-        </a>
-        <span>repo :)</span>
+          <p>If you liked the project, you may donate to support development and grow up 🌱</p>
+          <ul>
+            <li><a
+              href="https://www.paypal.me/antonreshetov"
+              target="_blank"
+            >PayPal</a></li>
+            <li><a
+              href="https://www.patreon.com/antonreshetov"
+              target="_blank"
+            >Patreon</a></li>
+            <li><a
+              href="https://opencollective.com/mysigmail"
+              target="_blank"
+            >Open Collective</a></li>
+          </ul>
+          <div
+            slot="reference"
+            class="support-shield"
+          >
+            Donate to grow project
+          </div>
+        </el-popover>
       </div>
       <div class="version">
         <span>current version:&nbsp;{{ version }}</span>
+        <span>
+          <a
+            href="https://github.com/antonreshetov/mysigmail"
+            target="_blank"
+          >
+            <github-icon />
+          </a>
+        </span>
       </div>
     </div>
   </div>
@@ -178,6 +205,7 @@ export default {
       html: '',
       showSetup: false,
       showSource: false,
+      showDonatePopup: false,
       version: require('../../package.json').version
     }
   },
@@ -343,6 +371,20 @@ export default {
 .support-project {
   color: #aaa;
   font-size: 12px;
+  .support-shield {
+    display: inline-block;
+    padding: 12px 20px;
+    color: #444;
+    border-radius: 5px;
+    font-weight: bold;
+    border: 2px solid lighten(orange, 25%);
+    outline: none;
+    cursor: pointer;
+    transition: all .2s;
+    &:hover {
+      border-color: orange;
+    }
+  }
   a {
     display: inline-block;
     padding: 0 5px;
@@ -364,5 +406,19 @@ export default {
   color: #aaa;
   margin-top: 10px;
   font-size: 12px;
+  span {
+    + span {
+      &::before {
+        content: "•";
+        padding: 0 5px;
+      }
+    }
+  }
+  svg {
+    width: 20px;
+    position: relative;
+    top: 5px;
+    transition: all 0.2s;
+  }
 }
 </style>
