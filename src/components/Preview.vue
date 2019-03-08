@@ -139,8 +139,9 @@
         <el-popover
           v-model="showDonatePopup"
           placement="top"
-          width="200"
+          width="260"
         >
+          <p>MySigMail is a free & open source project that develops one person without funding.</p>
           <p>If you liked the project, you may donate to support development and grow up 🌱</p>
           <ul>
             <li><a
@@ -156,11 +157,14 @@
               target="_blank"
             >Open Collective</a></li>
           </ul>
+          <p>Or just share the project to your friends.</p>
+          <p>You a blogger? Please tell about the project to subscribers.</p>
           <div
             slot="reference"
             class="support-shield"
+            @click="onClickHelp"
           >
-            Donate to grow project
+            Help to grow project
           </div>
         </el-popover>
       </div>
@@ -258,8 +262,8 @@ export default {
       document.execCommand('copy')
       this.gaEventClick('copy source')
     },
-    onDonate () {
-      this.gaEventClick('donate')
+    onClickHelp () {
+      this.gaEventClick('help open')
     }
   }
 }
