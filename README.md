@@ -52,3 +52,6 @@ If you liked the project, I am very grateful for the help to the project.
 
 - [Become a backer on Patreon](https://www.patreon.com/antonreshetov)
 - [Become a backer on Open Collective](https://opencollective.com/mysigmail)
+
+## Commercialization
+If you would like to commercialize MySigMail, please contact reshetov.art@gmail.com.
