@@ -75,6 +75,7 @@
             @click="copySelect"
           >Copy as Select</el-button>
           <el-button
+            ref="copyHTML"
             size="small"
             type="primary"
             @click="copyHTML"
@@ -105,7 +106,6 @@
       </div>
       <textarea
         ref="html"
-        v-model="html"
         style="opacity: 0"
       />
     </div>
@@ -234,12 +234,13 @@ export default {
   },
 
   methods: {
+    parseHTML () {
+      return this.$refs.template.$el.outerHTML.replace(/<!---->/g, '')
+    },
     copyHTML () {
-      this.html = this.$refs.template.$el.outerHTML.replace(/<!---->/g, '')
-      setTimeout(() => {
-        this.$refs.html.select()
-        document.execCommand('copy')
-      }, 10)
+      this.$refs.html.innerHTML = this.parseHTML()
+      this.$refs.html.select()
+      document.execCommand('copy')
       this.gaEventClick('copy as HTML')
     },
     copySelect () {
@@ -253,7 +254,7 @@ export default {
       }
     },
     viewSource () {
-      this.html = this.$refs.template.$el.outerHTML.replace(/<!---->/g, '')
+      this.html = this.parseHTML()
       this.showSource = true
       this.gaEventClick('view source')
     },
