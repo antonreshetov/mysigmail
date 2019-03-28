@@ -1,9 +1,14 @@
 <p align="center">
   <img src="./logo.png" width="130px">
   <img src="./screenshot.png">
+  Website - <a href="https://mysigmail.com">https://mysigmail.com</a>
 </p>
-
-Live demo - [https://mysigmail.com](https://mysigmail.com/)
+<h3 align="center">Sponsor</h3>
+<p align="center">
+  <a href="https://www.jetbrains.com/?from=mysigmail" target="_blank" rel="noopener">
+    <img src="./jetbrains.svg">
+  </a>
+</p>
 
 ## Purpose
 
@@ -26,8 +31,8 @@ So let's make creating email signatures easier!
 
 ## Roadmap
 
-- Create more templates (PR Welcome)
-- Create more addons (PR Welcome)
+- Create more templates
+- Create more addons
 
 ## Development
 
