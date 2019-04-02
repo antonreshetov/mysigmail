@@ -194,6 +194,9 @@
     </table>
     <table
       v-if="isAdded('disclaimer')"
+      cellspacing="0"
+      cellpadding="0"
+      border="0"
       role="presentation"
       :style="{
         fontSize: options.font.size + 'px',
@@ -210,15 +213,20 @@
         </tr>
       </tbody>
     </table>
+    <promote-signature />
   </div>
 </template>
 
 <script>
 import EmailTemplate from './emailTemplate'
 import Avatar from './components/Avatar'
+import PromoteSignature from './components/PromoteSignature'
 
 export default {
-  components: { Avatar },
+  components: {
+    Avatar,
+    PromoteSignature
+  },
   extends: EmailTemplate
 }
 </script>
