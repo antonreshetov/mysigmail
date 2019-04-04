@@ -41,6 +41,12 @@ export default {
     },
     showAvatar () {
       return this.options.avatar.show
+    },
+    fontBase () {
+      return {
+        fontSize: `${this.options.font.size}px`,
+        fontFamily: this.options.font.family
+      }
     }
   },
   methods: {
