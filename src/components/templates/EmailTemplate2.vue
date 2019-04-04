@@ -38,7 +38,7 @@
               >
                 <span>{{ mainFields[1].value }}</span>
                 <span v-if="mainFields[2].value && options.separator !== 'br'">
-                  &nbsp;{{ options.separator }}&nbsp;
+                  <span>&nbsp;{{ options.separator }}&nbsp;</span>
                   <span>{{ mainFields[2].value }}</span>
                 </span>
               </td>
