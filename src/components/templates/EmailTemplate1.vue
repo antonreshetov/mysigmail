@@ -187,7 +187,7 @@
         </tr>
       </tbody>
     </table>
-    <promote-signature />
+    <promote-signature v-if="app.promoteSignature" />
   </div>
 </template>
 

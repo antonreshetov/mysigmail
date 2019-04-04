@@ -159,6 +159,13 @@
           </ul>
           <p>Or just share the project to your friends.</p>
           <p>You a blogger? Please tell about the project to subscribers.</p>
+          <p>Finally, you can <span
+            :class="{'link': !app.promoteSignature}"
+            @click="togglePromo(true)"
+          >leave</span> a promotional message in the signature, or <span
+            :class="{'link': app.promoteSignature}"
+            @click="togglePromo(false)"
+          >delete</span> it, but it will be sad 😭</p>
           <div
             slot="reference"
             class="support-shield"
@@ -184,7 +191,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import EmailTemplate1 from './templates/EmailTemplate1'
 import CarbonAd from './CarbonAd'
 import GithubIcon from '../assets/image/github.svg'
@@ -209,6 +216,7 @@ export default {
   },
 
   computed: {
+    ...mapState(['app']),
     ...mapGetters({
       basic: 'getBasic',
       options: 'getOptions',
@@ -259,6 +267,14 @@ export default {
     },
     onClickHelp () {
       this.gaEventClick('help open')
+    },
+    togglePromo (bool) {
+      this.$store.commit('SET_PROMOTE_SIGNATURE', bool)
+      if (bool) {
+        this.gaEventClick('remove promote signature')
+      } else {
+        this.gaEventClick('add promote signature')
+      }
     }
   }
 }
@@ -419,5 +435,10 @@ export default {
     top: 5px;
     transition: all 0.2s;
   }
+}
+.link {
+  text-decoration: underline;
+  color: $color-primary;
+  cursor: pointer;
 }
 </style>
