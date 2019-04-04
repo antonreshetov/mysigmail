@@ -1,6 +1,6 @@
 <template>
   <table
-    style="margin-top: 10px;"
+    style="font-size: 0; margin-top: 10px;"
     cellspacing="0"
     cellpadding="0"
     border="0"

@@ -5,11 +5,7 @@
       cellpadding="0"
       border="0"
       role="presentation"
-      style="font-family: Arial, Helvetica, sans-serif; line-height: 1.5"
-      :style="{
-        fontSize: options.font.size + 'px',
-        fontFamily: options.font.family
-      }"
+      style="font-size: 0; line-height: 1.5"
     >
       <tbody>
         <!-- Avatar column -->
@@ -29,33 +25,33 @@
               cellpadding="0"
               border="0"
               role="presentation"
-              :style="{fontSize: options.font.size + 'px'}"
+              style="font-size: 0;"
             >
               <tbody>
                 <!-- Name and job fields -->
                 <tr>
                   <td>
                     <span
-                      style="font-weight: 600"
-                      :style="{
+                      :style="[fontBase, {
                         fontSize: `${options.font.size + 2}px`,
-                        color: options.color.mainPreview || options.color.main
-                      }"
+                        color: options.color.mainPreview || options.color.main,
+                        fontWeight: 700
+                      }]"
                     >{{ mainFields[0].value }}</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span>{{ mainFields[1].value }}</span>
+                    <span :style="fontBase">{{ mainFields[1].value }}</span>
                     <span v-if="mainFields[2].value && options.separator !== 'br'">
-                      <span>&nbsp;{{ options.separator }}&nbsp;</span>
-                      <span>{{ mainFields[2].value }}</span>
+                      <span :style="fontBase">&nbsp;{{ options.separator }}&nbsp;</span>
+                      <span :style="fontBase">{{ mainFields[2].value }}</span>
                     </span>
                   </td>
                 </tr>
                 <tr v-if="options.separator === 'br'">
                   <td>
-                    <span>{{ mainFields[2].value }}</span>
+                    <span :style="fontBase">{{ mainFields[2].value }}</span>
                   </td>
                 </tr>
                 <!-- Other fields -->
@@ -66,8 +62,7 @@
                       cellpadding="0"
                       border="0"
                       role="presentation"
-                      style="margin-top: 5px;"
-                      :style="{fontSize: options.font.size + 'px'}"
+                      style="margin-top: 5px; font-size: 0;"
                     >
                       <template v-for="item in otherFields">
                         <tr
@@ -76,20 +71,27 @@
                         >
                           <td>
                             <span
-                              style="font-weight: 600;"
-                              :style="{color: options.color.secondaryPreview || options.color.secondary}"
+                              :style="[fontBase, {
+                                color: options.color.secondaryPreview || options.color.secondary,
+                                fontWeight: 600
+                              }]"
                             >{{ item.name }}:&nbsp;</span>
                             <a
                               v-if="item.type === 'link'"
                               :href="formatLink(item.value)"
                               style="text-decoration: none; color: inherit;"
+                              :style="fontBase"
                             >{{ item.value }}</a>
                             <a
                               v-if="item.type === 'email'"
                               :href="`mailto:${item.value}`"
                               style="text-decoration: none; color: inherit;"
+                              :style="fontBase"
                             >{{ item.value }}</a>
-                            <span v-if="item.type === 'text'">{{ item.value }}</span>
+                            <span
+                              v-if="item.type === 'text'"
+                              :style="fontBase"
+                            >{{ item.value }}</span>
                           </td>
                         </tr>
                       </template>
@@ -104,7 +106,7 @@
                       cellpadding="0"
                       border="0"
                       role="presentation"
-                      style=" margin-top: 5px; margin-left: -2px;"
+                      style="margin-top: 5px; margin-left: -2px; font-size: 0;"
                     >
                       <tbody>
                         <tr>
@@ -144,7 +146,7 @@
       cellpadding="0"
       border="0"
       role="presentation"
-      style="margin-top: 10px;"
+      style="margin-top: 10px; font-size: 0;"
     >
       <tbody>
         <tr>
@@ -175,17 +177,12 @@
       cellpadding="0"
       border="0"
       role="presentation"
-      :style="{
-        fontSize: options.font.size + 'px',
-        fontFamily: options.font.family,
-        color: '#888',
-        marginTop: '10px'
-      }"
+      style="font-size: 0; color: #888; margin-top: 10px;"
     >
       <tbody>
         <tr>
           <td>
-            <span>{{ addons.disclaimer }}</span>
+            <span :style="fontBase">{{ addons.disclaimer }}</span>
           </td>
         </tr>
       </tbody>
