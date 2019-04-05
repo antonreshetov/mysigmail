@@ -13,8 +13,6 @@ export default {
     ...mapState(['basic', 'options', 'addons', 'socials', 'template']),
     image () {
       return this.basic.image.link
-        ? this.basic.image.link
-        : this.basic.image.base64
     },
     isEmpty () {
       return this.basic.fields.every(item => item.value.length === 0)

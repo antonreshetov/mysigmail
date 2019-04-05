@@ -3,7 +3,6 @@ import mainFields from '../../db/main-fields'
 export default {
   state: {
     image: {
-      base64: '',
       link: ''
     },
     fields: mainFields.basic
@@ -28,10 +27,7 @@ export default {
       state = Object.assign(state, data)
     },
     RESET_BASIC_FIELDS (state) {
-      state.image = {
-        base64: '',
-        link: ''
-      }
+      state.image.link = ''
       state.fields = mainFields.basic
     }
   },
