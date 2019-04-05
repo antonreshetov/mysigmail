@@ -30,7 +30,7 @@ export default {
       dispatch('resetProject')
 
       const project = {
-        template: 'EmailTemplate1',
+        template: 'SignatureTemplate1',
         basic: { ...rootState.basic },
         options: { ...rootState.options },
         addons: {
@@ -86,6 +86,12 @@ export default {
     },
     async setProject ({ commit, dispatch }, data) {
       dispatch('resetProject')
+
+      // Fallback to set correct name of signature template
+      // TODO: remove later
+      if (data.template === 'EmailTemplate1') {
+        data.template = 'SignatureTemplate1'
+      }
 
       commit('SET_PROJECT', data)
       commit('SET_BASIC_STATE', data.basic)
