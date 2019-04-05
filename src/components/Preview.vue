@@ -58,7 +58,7 @@
           class="email-preview"
         >
           <component
-            :is="selectTemplate"
+            :is="signatureTemplate"
             ref="template"
           />
         </div>
@@ -192,15 +192,13 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex'
-import EmailTemplate1 from './templates/EmailTemplate1'
 import CarbonAd from './CarbonAd'
 import GithubIcon from '../assets/image/github.svg'
 
 export default {
-  name: '',
+  name: 'Preview',
+
   components: {
-    // eslint-disable-next-line
-    EmailTemplate1,
     CarbonAd,
     GithubIcon
   },
@@ -222,6 +220,9 @@ export default {
       options: 'getOptions',
       template: 'getTemplate'
     }),
+    signatureTemplate () {
+      return () => import(`./templates/${this.template.selected}`)
+    },
     selectTemplate: {
       get () {
         return this.template.selected
