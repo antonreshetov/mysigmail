@@ -10,7 +10,7 @@ export default {
   },
 
   computed: {
-    ...mapState(['basic', 'options', 'addons', 'socials', 'app']),
+    ...mapState(['basic', 'options', 'addons', 'socials', 'template']),
     image () {
       return this.basic.image.link
         ? this.basic.image.link

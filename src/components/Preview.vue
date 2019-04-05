@@ -160,10 +160,10 @@
           <p>Or just share the project to your friends.</p>
           <p>You a blogger? Please tell about the project to subscribers.</p>
           <p>Finally, you can <span
-            :class="{'link': !app.promoteSignature}"
+            :class="{'link': !template.promoteSignature}"
             @click="togglePromo(true)"
           >leave</span> a promotional message in the signature, or <span
-            :class="{'link': app.promoteSignature}"
+            :class="{'link': template.promoteSignature}"
             @click="togglePromo(false)"
           >delete</span> it, but it will be sad 😭</p>
           <div
@@ -216,7 +216,7 @@ export default {
   },
 
   computed: {
-    ...mapState(['app']),
+    ...mapState(['template']),
     ...mapGetters({
       basic: 'getBasic',
       options: 'getOptions',

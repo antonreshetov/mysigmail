@@ -3,7 +3,8 @@ import templateList from '../../db/templates'
 export default {
   state: {
     selected: 'EmailTemplate1',
-    list: templateList
+    list: templateList,
+    promoteSignature: true
   },
   getters: {
     getTemplate: state => state
@@ -11,6 +12,9 @@ export default {
   mutations: {
     SET_TEMPLATE_SELECTED (state, data) {
       state.selected = data
+    },
+    SET_PROMOTE_SIGNATURE (state, data) {
+      state.promoteSignature = data
     }
   },
   actions: {
