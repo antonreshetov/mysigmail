@@ -1,6 +1,5 @@
 <template>
   <div class="projects">
-    <!-- <h3>Current: {{ projects.project.name}}</h3> -->
     <el-table
       v-loading="loading"
       :data="allProjects"
@@ -46,10 +45,6 @@
               <span v-else>{{ scope.row.name }}</span>
             </span>
           </span>
-          <!-- <span v-if="projects.project.id === scope.row.id">
-            <strong>{{ scope.row.name }}</strong>
-          </span>
-          <span v-else>{{ scope.row.name }}</span>-->
         </template>
       </el-table-column>
       <el-table-column
