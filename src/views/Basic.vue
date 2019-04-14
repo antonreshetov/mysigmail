@@ -106,15 +106,18 @@
       title="Upload and crop image"
       :visible.sync="showCropDialog"
     >
-      <div
-        v-show="cropPreview"
-        class="crop-preview"
-      >
-        <img
-          ref="cropper"
-          :src="cropPreview"
-          alt="crop-preview"
+      <div class="crop-preview-wrapper">
+
+        <div
+          v-show="cropPreview"
+          class="crop-preview"
         >
+          <img
+            ref="cropper"
+            :src="cropPreview"
+            alt="crop-preview"
+          >
+        </div>
       </div>
       <el-upload
         ref="upload"
@@ -131,6 +134,22 @@
             ref="uploadButton"
             style="display: none;"
           />
+        </div>
+        <div
+          v-if="cropPreview"
+          class="aspect-ratio-buttons"
+        >
+          <el-radio-group
+            v-model="aspectRatio"
+            size="mini"
+            @change="changeAspectRation"
+          >
+            <el-radio-button :label="1">1:1</el-radio-button>
+            <el-radio-button :label="4 / 3">4:3</el-radio-button>
+            <el-radio-button :label="2 / 3">2:3</el-radio-button>
+            <el-radio-button :label="16 / 9">16:9</el-radio-button>
+            <el-radio-button :label="NaN">Free</el-radio-button>
+          </el-radio-group>
         </div>
         <div class="upload-action">
           <el-button @click="$refs.uploadButton.click()">Select image</el-button>
@@ -171,7 +190,8 @@ export default {
       showCropDialog: false,
       showAlert: false,
       isLt10: false,
-      cropper: undefined
+      cropper: undefined,
+      aspectRatio: 1
     }
   },
 
@@ -302,6 +322,10 @@ export default {
         })
       })
     },
+    changeAspectRation (aspect) {
+      this.aspectRatio = aspect
+      this.cropper.setAspectRatio(this.aspectRatio)
+    },
     getCroppedImage () {
       const width = 200
       const height = 200
@@ -394,19 +418,19 @@ export default {
   }
 }
 .image-tips {
-  // display: block;
-  // text-align: right;
-  // position: relative;
   border-bottom: 1px dashed;
   .el-popover__reference {
     cursor: pointer;
   }
 }
+.crop-preview-wrapper {
+   overflow: hidden;
+   padding-bottom: 5px;
+}
 .crop-preview {
   padding: 2px 0;
-  overflow: hidden;
   max-height: 250px;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
   img {
      max-width: 100%;
   }
@@ -418,7 +442,10 @@ export default {
     border-radius: 3px;
   }
 }
-.upload-action {
+.upload-action, .aspect-ratio-buttons {
   text-align: center;
+}
+.aspect-ratio-buttons {
+  margin-bottom: 10px;
 }
 </style>

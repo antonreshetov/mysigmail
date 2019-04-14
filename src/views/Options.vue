@@ -37,6 +37,7 @@
                 :key="item.value"
                 :label="item.label"
                 :value="item.value"
+                :disabled="item.label ==='Round' && !isImageSquare"
               />
             </el-select>
           </el-form-item>
@@ -94,7 +95,7 @@ export default {
   },
 
   computed: {
-    ...mapState(['options', 'attributes', 'projects']),
+    ...mapState(['options', 'attributes', 'projects', 'basic']),
     mainColor: {
       get () {
         return this.options.color.main
@@ -161,6 +162,11 @@ export default {
       set (v) {
         this.$store.dispatch('updateSeparator', v)
       }
+    },
+    isImageSquare () {
+      const img = document.createElement('img')
+      img.src = this.basic.image.link
+      return img.width === img.height
     }
   },
 
