@@ -6,6 +6,7 @@
 import FacebookIcon from '../assets/image/facebook.svg'
 import BehanceIcon from '../assets/image/behance.svg'
 import GithubIcon from '../assets/image/github.svg'
+import GitlabIcon from '../assets/image/gitlab.svg'
 import InstagramIcon from '../assets/image/instagram.svg'
 import LinkedinIcon from '../assets/image/linkedin.svg'
 import TelegramIcon from '../assets/image/telegram.svg'
@@ -17,6 +18,12 @@ import SkypeIcon from '../assets/image/skype.svg'
 import DribbbleIcon from '../assets/image/dribbble.svg'
 import StackoverflowIcon from '../assets/image/stackoverflow.svg'
 import XingIcon from '../assets/image/xing.svg'
+import SlackIcon from '../assets/image/slack.svg'
+import MastodonIcon from '../assets/image/mastodon.svg'
+import DiasporaIcon from '../assets/image/diaspora.svg'
+import RedditIcon from '../assets/image/reddit.svg'
+import GitterIcon from '../assets/image/gitter.svg'
+import OkIcon from '../assets/image/ok.svg'
 
 export default {
   name: 'SvgIcon',
@@ -25,6 +32,7 @@ export default {
     /* eslint-disable vue/no-unused-components */
     FacebookIcon,
     GithubIcon,
+    GitlabIcon,
     InstagramIcon,
     LinkedinIcon,
     TelegramIcon,
@@ -36,7 +44,13 @@ export default {
     SkypeIcon,
     DribbbleIcon,
     StackoverflowIcon,
-    XingIcon
+    XingIcon,
+    SlackIcon,
+    DiasporaIcon,
+    MastodonIcon,
+    RedditIcon,
+    GitterIcon,
+    OkIcon
   },
 
   props: {

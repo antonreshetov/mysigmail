@@ -14,8 +14,15 @@ export default {
       { name: 'Dribbble', link: '', icon: 'dribbble' },
       { name: 'Behance', link: '', icon: 'behance' },
       { name: 'GitHub', link: '', icon: 'github' },
+      { name: 'GitLab', link: '', icon: 'gitlab' },
       { name: 'StackOverflow', link: '', icon: 'stackoverflow' },
-      { name: 'Xing', link: '', icon: 'xing' }
+      { name: 'Xing', link: '', icon: 'xing' },
+      { name: 'Diaspora', link: '', icon: 'diaspora' },
+      { name: 'Mastodon', link: '', icon: 'mastodon' },
+      { name: 'Slack', link: '', icon: 'slack' },
+      { name: 'Reddit', link: '', icon: 'reddit' },
+      { name: 'Gitter', link: '', icon: 'gitter' },
+      { name: 'OK', link: '', icon: 'ok' }
     ]
   },
   getters: {},
