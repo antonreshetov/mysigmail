@@ -1,7 +1,9 @@
 <p align="center">
   <img src="./logo.png" width="130px">
   <img src="./screenshot.png">
-  Website - <a href="https://mysigmail.com">https://mysigmail.com</a>
+</p>
+<p align="center">
+  Website - <a href="https://mysigmail.com">https://mysigmail.com</a> | Twitter - <a href="https://twitter.com/mysigmail">@mysigmail</a>
 </p>
 <h3 align="center">Sponsor</h3>
 <p align="center">
