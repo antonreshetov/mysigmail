@@ -281,7 +281,7 @@ export default {
       const bucket = new AWS.S3({
         accessKeyId: process.env.VUE_APP_AWS_S3_ID,
         secretAccessKey: process.env.VUE_APP_AWS_S3_KEY,
-        region: 'eu-central-1'
+        region: process.env.VUE_APP_AWS_S3_REGION
       })
 
       const name = this.fileRaw.name
