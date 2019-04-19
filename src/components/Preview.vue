@@ -162,12 +162,13 @@
             class="support-shield"
             @click="onClickHelp"
           >
-            Help to grow project
+            Donate
           </div>
         </el-popover>
       </div>
       <div class="version">
-        <span>current version:&nbsp;{{ version }}</span>
+        <span><a href="mailto:reshetov.art@gmail.com">contact us</a></span>
+        <span>v{{ version }}</span>
         <span>
           <a
             href="https://github.com/antonreshetov/mysigmail"
@@ -412,6 +413,9 @@ export default {
   color: #aaa;
   margin-top: 10px;
   font-size: 12px;
+  a {
+    color: #aaa;
+  }
   span {
     + span {
       &::before {
