@@ -101,7 +101,7 @@ export default {
         return this.options.color.main
       },
       set (v) {
-        this.$store.dispatch('updateColor', { main: v })
+        this.$store.dispatch('updateOptions', { color: { main: v } })
         this.$store.commit('SET_COLOR', { mainPreview: undefined })
       }
     },
@@ -110,17 +110,16 @@ export default {
         return this.options.color.secondary
       },
       set (v) {
-        this.$store.dispatch('updateColor', { secondary: v })
+        this.$store.dispatch('updateOptions', { color: { secondary: v } })
         this.$store.commit('SET_COLOR', { secondaryPreview: undefined })
       }
     },
-
     fontSize: {
       get () {
         return this.options.font.size
       },
       set (v) {
-        this.$store.dispatch('updateFont', { size: v })
+        this.$store.dispatch('updateOptions', { font: { size: v } })
       }
     },
     fontFamily: {
@@ -128,7 +127,7 @@ export default {
         return this.options.font.family
       },
       set (v) {
-        this.$store.dispatch('updateFont', { family: v })
+        this.$store.dispatch('updateOptions', { font: { family: v } })
       }
     },
     showAvatar: {
@@ -136,7 +135,7 @@ export default {
         return this.options.avatar.show
       },
       set (v) {
-        this.$store.dispatch('updateAvatar', { show: v })
+        this.$store.dispatch('updateOptions', { avatar: { show: v } })
       }
     },
     avatarShape: {
@@ -144,7 +143,7 @@ export default {
         return this.options.avatar.roundness
       },
       set (v) {
-        this.$store.dispatch('updateAvatar', { roundness: v })
+        this.$store.dispatch('updateOptions', { avatar: { roundness: v } })
       }
     },
     avatarSize: {
@@ -152,7 +151,7 @@ export default {
         return this.options.avatar.size
       },
       set (v) {
-        this.$store.dispatch('updateAvatar', { size: v })
+        this.$store.dispatch('updateOptions', { avatar: { size: v } })
       }
     },
     separator: {
@@ -160,7 +159,7 @@ export default {
         return this.options.separator
       },
       set (v) {
-        this.$store.dispatch('updateSeparator', v)
+        this.$store.dispatch('updateOptions', { separator: v })
       }
     },
     isImageSquare () {
@@ -207,7 +206,6 @@ export default {
       })
     }
   }
-
 }
 </script>
 
