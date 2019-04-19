@@ -1,6 +1,6 @@
 {
   "name": "email-signature-generator",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
