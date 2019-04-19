@@ -1,4 +1,6 @@
-const initState = {
+import { merge } from 'lodash-es'
+
+const INIT_STATE = {
   avatar: {
     size: 100,
     roundness: 0,
@@ -10,7 +12,9 @@ const initState = {
   },
   color: {
     main: '#409eff',
-    secondary: '#409eff'
+    mainPreview: undefined,
+    secondary: '#409eff',
+    secondaryPreview: undefined
   },
   separator: '/'
 }
@@ -40,23 +44,14 @@ export default {
   },
   mutations: {
     SET_OPTIONS (state, data) {
-      state.options = { ...state.options, ...data }
+      state = merge(state, data)
     },
     SET_COLOR (state, data) {
       state.color = { ...state.color, ...data }
     },
-    SET_AVATAR (state, data) {
-      state.avatar = { ...state.avatar, ...data }
-    },
-    SET_FONT (state, data) {
-      state.font = { ...state.font, ...data }
-    },
-    SET_SEPARATOR (state, data) {
-      state.separator = data
-    },
     RESET_OPTIONS (state) {
-      Object.keys(initState).forEach(k => {
-        state[k] = initState[k]
+      Object.keys(INIT_STATE).forEach(k => {
+        state[k] = INIT_STATE[k]
       })
     },
     SET_OPTION_STATE (state, data) {
@@ -64,26 +59,8 @@ export default {
     }
   },
   actions: {
-    async updateAvatar ({ rootState, dispatch, commit }, data) {
-      commit('SET_AVATAR', data)
-      if (rootState.projects.project.id) {
-        await dispatch('updateProject', rootState.projects.project)
-      }
-    },
-    async updateColor ({ rootState, dispatch, commit }, data) {
-      commit('SET_COLOR', data)
-      if (rootState.projects.project.id) {
-        await dispatch('updateProject', rootState.projects.project)
-      }
-    },
-    async updateFont ({ rootState, dispatch, commit }, data) {
-      commit('SET_FONT', data)
-      if (rootState.projects.project.id) {
-        await dispatch('updateProject', rootState.projects.project)
-      }
-    },
-    async updateSeparator ({ rootState, dispatch, commit }, data) {
-      commit('SET_SEPARATOR', data)
+    async updateOptions ({ commit, dispatch, rootState }, data) {
+      commit('SET_OPTIONS', data)
       if (rootState.projects.project.id) {
         await dispatch('updateProject', rootState.projects.project)
       }
