@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.408.0",
+    "chalk": "^2.4.2",
     "cropperjs": "^1.4.3",
     "element-ui": "^2.4.9",
     "nprogress": "^0.2.0",
@@ -36,7 +37,8 @@
     "vue-template-compiler": "^2.5.17"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "commit-msg": "node scripts/verify-commit.js"
   },
   "lint-staged": {
     "*.js": [
