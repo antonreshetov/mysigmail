@@ -9,6 +9,9 @@ import './assets/scss/element-ui.scss'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import VueAnalytics from 'vue-analytics'
+import SocialSharing from 'vue-social-sharing'
+import SvgIcon from './components/SvgIcon'
+Vue.component('svg-icon', SvgIcon)
 
 Vue.use(VueAnalytics, {
   id: 'UA-56182454-5',
@@ -27,6 +30,7 @@ Vue.mixin({
 })
 
 Vue.use(ElementUI)
+Vue.use(SocialSharing)
 locale.use(lang)
 NProgress.configure({ showSpinner: false })
 
