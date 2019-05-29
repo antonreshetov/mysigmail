@@ -25,13 +25,13 @@ So let's make creating email signatures easier!
 ## Features
 
 - Upload image - upload to AWS S3 or set public link
-- Custom fields - add custom fields
-- Social icons - add social icons
-- Options - customize signature
-- Addons - additional options
-- Templates - templates for signature
-- Projects - save, download or import projects
-- Signature preview - preview signature
+- Custom fields - add unlimited number of custom fields with different types such as: text, link, email
+- Social icons - add social media links to your signature
+- Options - customize your signature as you like, change color, avatar shape, font and more
+- Addons - additional options such as disclaimer, mobile application badges
+- Templates - templates for signature (so far, only one template)
+- Projects - ability to save, download or import a previously created signature. No need to create an account, everything is already available in the browser
+- Signature preview - hot reloading preview
 
 ## Roadmap
 
