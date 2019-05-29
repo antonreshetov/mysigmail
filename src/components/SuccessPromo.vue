@@ -67,19 +67,16 @@
       </social-sharing>
       <p>Your opinion is very important to us.</p>
       <br>
-      <p>Be a contributor!</p>
-      <div style="height: 20px; margin-top: 5px;">
-        <a
-          href="https://github.com/antonreshetov/mysigmail"
-          target="_blank"
-          aria-label="GitHub stars"
-        >
-          <img
-            src="https://img.shields.io/github/stars/antonreshetov/mysigmail.svg?style=social"
-            alt="GitHub stars"
-          >
-        </a>
-      </div>
+      <a
+        href="https://ko-fi.com/antonreshetov"
+        target="_blank"
+      ><img
+        height="36"
+        style="border:0px;height:36px;"
+        src="https://az743702.vo.msecnd.net/cdn/kofi4.png?v=2"
+        border="0"
+        alt="Buy Me a Coffee at ko-fi.com"
+      ></a>
       <br>
     </div>
   </el-dialog>

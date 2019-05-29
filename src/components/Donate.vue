@@ -9,6 +9,10 @@
       <p>If you liked the project, you may donate to support development and grow up 🌱</p>
       <ul>
         <li><a
+          href="https://ko-fi.com/antonreshetov"
+          target="_blank"
+        >Ko-fi</a></li>
+        <li><a
           href="https://www.paypal.me/antonreshetov"
           target="_blank"
         >PayPal</a></li>
