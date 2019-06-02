@@ -8,7 +8,11 @@
             :style="{'background-image': `url(${imageUrl})` }"
           />
           <div class="image-preview__actions">
-            <upload @upload="onUpload" />
+            <upload
+              :crop-width="200"
+              :crop-height="200"
+              @upload="onUpload"
+            />
             <el-row :gutter="20">
               <el-col :span="16">
                 <el-input
