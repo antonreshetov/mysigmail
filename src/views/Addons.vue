@@ -14,6 +14,7 @@
       >
         <disclaimer v-if="item.name ==='disclaimer'" />
         <mobile-app v-if="item.name === 'mobileApp'" />
+        <banner v-if="item.name === 'banner'" />
       </addon-item>
     </addon-group>
     <h3>Addons</h3>
@@ -51,6 +52,7 @@ import AddonItem from '../components/addons/AddonItem'
 import AddonGroup from '../components/addons/AddonGroup'
 import MobileApp from '../components/addons/types/MobileApp'
 import Disclaimer from '../components/addons/types/Disclaimer'
+import Banner from '../components/addons/types/Banner'
 
 export default {
   name: '',
@@ -59,14 +61,16 @@ export default {
     AddonItem,
     AddonGroup,
     MobileApp,
-    Disclaimer
+    Disclaimer,
+    Banner
   },
 
   data () {
     return {
       addonsList: [
         { label: 'Disclaimer', name: 'disclaimer' },
-        { label: 'Mobile app ', name: 'mobileApp' }
+        { label: 'Mobile app ', name: 'mobileApp' },
+        { label: 'Banner ', name: 'banner' }
       ]
     }
   },
