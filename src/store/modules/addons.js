@@ -4,9 +4,12 @@ export default {
   state: {
     installed: [],
     disclaimer: data.addons.disclaimer,
-    mobileApp: data.addons.mobileApp
+    mobileApp: data.addons.mobileApp,
+    banner: {
+      image: '',
+      link: ''
+    }
   },
-  getters: {},
   mutations: {
     ADD_ADDON (state, addon) {
       const index = state.installed.findIndex(i => i.name === addon.name)
@@ -20,6 +23,7 @@ export default {
       state.installed = []
       state.disclaimer = data.addons.disclaimer
       state.mobileApp = data.addons.mobileApp
+      state.banner.link = ''
     },
     SET_ADDONS_STATE (state, data) {
       state = Object.assign(state, data)
@@ -35,6 +39,13 @@ export default {
     },
     RESET_MOBILE_APP (state) {
       state.mobileApp = data.addons.mobileApp
+    },
+    SET_BANNER (state, data) {
+      state.banner = Object.assign(state.banner, data)
+    },
+    RESET_BANNER (state) {
+      state.banner.image = ''
+      state.banner.link = ''
     }
   },
   actions: {
@@ -46,6 +57,7 @@ export default {
       commit('REMOVE_ADDON', name)
       if (name === 'disclaimer') commit('RESET_DISCLAIMER')
       if (name === 'mobileApp') commit('RESET_MOBILE_APP')
+      if (name === 'banner') commit('RESET_BANNER')
       await dispatch('updateProject', rootState.projects.project)
     },
     async updateDisclaimer ({ state, commit, dispatch, rootState }, data) {
@@ -54,6 +66,10 @@ export default {
     },
     async updateMobileApp ({ state, commit, dispatch, rootState }, data) {
       commit('SET_MOBILE_APP', data)
+      await dispatch('updateProject', rootState.projects.project)
+    },
+    async updateBanner ({ commit, dispatch, rootState }, data) {
+      commit('SET_BANNER', data)
       await dispatch('updateProject', rootState.projects.project)
     }
   }

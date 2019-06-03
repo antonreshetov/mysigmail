@@ -172,6 +172,38 @@
       </tbody>
     </table>
     <table
+      v-if="isAdded('banner')"
+      cellspacing="0"
+      cellpadding="0"
+      border="0"
+      role="presentation"
+      style="font-size: 0; margin-top: 10px; width: 100%;"
+    >
+      <tbody>
+        <tr v-if="addons.banner.image">
+          <td>
+            <a
+              v-if="addons.banner.link"
+              :href="formatLink(addons.banner.link)"
+            >
+              <img
+                :src="addons.banner.image"
+                alt="banner"
+                style="max-width: 100%"
+              >
+            </a>
+            <img
+              v-else
+              :src="addons.banner.image"
+              alt="banner"
+              style="max-width: 100%"
+            >
+          </td>
+        </tr>
+        <banner-placeholder v-else />
+      </tbody>
+    </table>
+    <table
       v-if="isAdded('disclaimer')"
       cellspacing="0"
       cellpadding="0"
@@ -193,13 +225,15 @@
 
 <script>
 import EmailTemplate from './emailTemplate'
-import PromoteSignature from './components/PromoteSignature'
 import Avatar from './components/Avatar'
+import PromoteSignature from './components/PromoteSignature'
+import BannerPlaceholder from './components/BannerPlaceholder'
 
 export default {
   components: {
     Avatar,
-    PromoteSignature
+    PromoteSignature,
+    BannerPlaceholder
   },
   extends: EmailTemplate
 }
