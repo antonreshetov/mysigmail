@@ -252,9 +252,7 @@ $padding-inner: 40px 50px 20px 50px;
     max-width: 900px;
     text-align: right;
     align-self: flex-end;
-    &-inner {
-      padding: $padding-inner;
-    }
+    padding: $padding-inner;
   }
   h2 {
     line-height: 0;
