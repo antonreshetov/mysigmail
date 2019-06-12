@@ -14,7 +14,7 @@ import SvgIcon from './components/SvgIcon'
 Vue.component('svg-icon', SvgIcon)
 
 Vue.use(VueAnalytics, {
-  id: 'UA-56182454-5',
+  id: process.env.VUE_APP_GA || 'XX-XXXXXXXX-X',
   debug: {
     enabled: false,
     sendHitTask: process.env.NODE_ENV === 'production'
