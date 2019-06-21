@@ -20,8 +20,6 @@ There are many solutions on the Internet, and most of them are paid. There are f
 
 So let's make creating email signatures easier!
 
-<a href='https://ko-fi.com/Q5Q1VV1S' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi4.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-
 ## Features
 
 - Upload image - upload to AWS S3 or set public link
@@ -60,7 +58,8 @@ npm run serve
 
 If you liked the project, I am very grateful for the help to the project.
 
-
+- BTC - 1di5dpLQpcryUke4e5eq1NJv4if9faLhJ
+- [PayPal](https://www.paypal.me/antonreshetov) 
 - [Become a backer on Patreon](https://www.patreon.com/antonreshetov)
 - [Become a backer on Open Collective](https://opencollective.com/mysigmail)
 - [Become a backer on Ko-fi](https://ko-fi.com/antonreshetov)

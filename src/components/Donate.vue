@@ -3,11 +3,12 @@
     <el-popover
       v-model="show"
       placement="top"
-      width="260"
+      width="350"
     >
       <p>MySigMail is a free & open source project that develops one person without funding.</p>
       <p>If you liked the project, you may donate to support development and grow up 🌱</p>
       <ul>
+        <li>BTC - 1di5dpLQpcryUke4e5eq1NJv4if9faLhJ</li>
         <li><a
           href="https://ko-fi.com/antonreshetov"
           target="_blank"
