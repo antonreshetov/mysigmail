@@ -9,7 +9,7 @@
 <h3 align="center">Take a look at the new project</h3>
 <p align="center">
   <a href="https://mysigmail.com/card/?ref=github" target="_blank" rel="noopener">
-    <img width="400" src="https://mysigmail.s3.eu-central-1.amazonaws.com/upload/msmc-preview.gif">
+    <img width="400" src="./msmc-preview.gif">
   </a>
 </p>
 
