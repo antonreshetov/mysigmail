@@ -5,6 +5,19 @@
 <p align="center">
   Website - <a href="https://mysigmail.com">https://mysigmail.com</a> | Twitter - <a href="https://twitter.com/mysigmail">@mysigmail</a>
 </p>
+
+<h3 align="center">Take a look at the new project</h3>
+<p align="center">
+  <a href="https://mysigmail.com/card/?ref=github" target="_blank" rel="noopener">
+    <img width="400" src="https://mysigmail.s3.eu-central-1.amazonaws.com/upload/msmc-preview.gif">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://mysigmail.com/card/?ref=github" target="_blank" rel="noopener">Website</a>
+</p>
+
+
 <h3 align="center">Sponsor</h3>
 <p align="center">
   <a href="https://www.jetbrains.com/?from=mysigmail" target="_blank" rel="noopener">
