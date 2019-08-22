@@ -6,8 +6,12 @@
   Website - <a href="https://mysigmail.com">https://mysigmail.com</a> | Twitter - <a href="https://twitter.com/mysigmail">@mysigmail</a>
 </p>
 
+<p align="center" style="padding-top: 15px;">
+  <a href="https://www.producthunt.com/posts/mysigmail-2" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=142330&theme=dark&period=daily" alt="MySigMail - UI email signature generator on GitHub | Product Hunt Embed" style="widht: 250px;" /></a>
+</p>
+
 <h3 align="center">Take a look at the new project</h3>
-<p align="center">
+<p align="center" style="border: 1px solid #222; border-radius: 3px;">
   <a href="https://mysigmail.com/card/?ref=github" target="_blank" rel="noopener">
     <img width="400" src="./msmc-preview.gif">
   </a>
