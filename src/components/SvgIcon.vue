@@ -19,6 +19,7 @@ import DribbbleIcon from '../assets/image/dribbble.svg'
 import StackoverflowIcon from '../assets/image/stackoverflow.svg'
 import XingIcon from '../assets/image/xing.svg'
 import SlackIcon from '../assets/image/slack.svg'
+import MediumIcon from '../assets/image/medium.svg'
 import MastodonIcon from '../assets/image/mastodon.svg'
 import DiasporaIcon from '../assets/image/diaspora.svg'
 import RedditIcon from '../assets/image/reddit.svg'
@@ -47,6 +48,7 @@ export default {
     XingIcon,
     SlackIcon,
     DiasporaIcon,
+    MediumIcon,
     MastodonIcon,
     RedditIcon,
     GitterIcon,

@@ -18,6 +18,7 @@ export default {
       { name: 'StackOverflow', link: '', icon: 'stackoverflow' },
       { name: 'Xing', link: '', icon: 'xing' },
       { name: 'Diaspora', link: '', icon: 'diaspora' },
+      { name: 'Medium', link: '', icon: 'medium' },
       { name: 'Mastodon', link: '', icon: 'mastodon' },
       { name: 'Slack', link: '', icon: 'slack' },
       { name: 'Reddit', link: '', icon: 'reddit' },
