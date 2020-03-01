@@ -1,3 +1,5 @@
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/antonreshetov/mysigmail) 
+
 <p align="center">
   <img src="./logo.png" width="130px">
   <img src="./screenshot.png">
