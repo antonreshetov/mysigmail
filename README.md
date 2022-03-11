@@ -22,13 +22,6 @@
 </p>
 
 
-<h3 align="center">Sponsor</h3>
-<p align="center">
-  <a href="https://www.jetbrains.com/?from=mysigmail" target="_blank" rel="noopener">
-    <img src="./jetbrains.svg">
-  </a>
-</p>
-
 ## Purpose
 
 Creating an email signature is not a trivial task, even for people who have knowledge of HTML and CSS. And what about ordinary users.
