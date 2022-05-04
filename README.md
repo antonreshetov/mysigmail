@@ -1,11 +1,4 @@
->  🎉 I decided that the commercial product MySigMail Card will also become open source. https://github.com/mysigmail/card 🎉
-
-<p align="center" style="border: 1px solid #222; border-radius: 3px;">
-  <a href="https://mysigmail.com/card/?ref=github" target="_blank" rel="noopener">
-    <img width="400" src="./msmc-preview.gif">
-  </a>
-</p>
-<br/>
+> Project is no longer maintained, and may have bugs and security issues. Feel free to fork but no pull request or security alert will be answered
 
 <p align="center">
   <img src="./logo.png" width="130px">
