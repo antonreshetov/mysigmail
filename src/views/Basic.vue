@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <RouterView />
+  <LayoutsDefault> basic form </LayoutsDefault>
 </template>
