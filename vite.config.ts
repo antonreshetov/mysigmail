@@ -2,6 +2,8 @@ import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'node:path'
 import AutoImport from 'unplugin-auto-import/vite'
+import IconsResolver from 'unplugin-icons/resolver'
+import Icons from 'unplugin-icons/vite'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 
@@ -24,6 +26,14 @@ export default defineConfig({
           names: ['RouterLink', 'RouterView'],
         },
       ],
+      resolvers: [
+        IconsResolver({
+          prefix: false,
+        }),
+      ],
+    }),
+    Icons({
+      compiler: 'vue3',
     }),
   ],
   resolve: {
