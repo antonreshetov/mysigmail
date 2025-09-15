@@ -1,69 +1,100 @@
-> Project is no longer maintained, and may have bugs and security issues. Feel free to fork but no pull request or security alert will be answered
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/logo-white.png">
+    <source media="(prefers-color-scheme: light)" srcset=".github/logo-black.png">
+    <img src=".github/logo-black.png" width="100" alt="MySigMail Logo" />
+  </picture>
+</p>
 
 <p align="center">
-  <img src="./logo.png" width="130px">
-  <img src="./screenshot.png">
+  <img src=".github/hero.png" width="500" alt="MySigMail - Email Signature Generator" />
 </p>
+
+<h1 align="center">MySigMail</h1>
 <p align="center">
-  Website - <a href="https://mysigmail.com">https://mysigmail.com</a> | Twitter - <a href="https://twitter.com/mysigmail">@mysigmail</a>
+  <strong>An open-source email signature generator for Gmail, Outlook, Apple Mail, etc.</strong>
+  <br>
+  Build a sleek, professional-looking signature that enhances your brand.
 </p>
 
-<p align="center" style="padding-top: 15px;">
-  <a href="https://www.producthunt.com/posts/mysigmail-2" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=142330&theme=dark&period=daily" alt="MySigMail - UI email signature generator on GitHub | Product Hunt Embed" style="widht: 250px;" /></a>
+<p align="center">
+  <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/antonreshetov/mysigmail">
+  <img alt="GitHub" src="https://img.shields.io/github/license/antonreshetov/mysigmail">
 </p>
 
+<p align="center" >
+  <a href="https://www.producthunt.com/posts/mysigmail-2" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=142330&theme=dark&period=daily" alt="MySigMail - UI email signature generator on GitHub | Product Hunt Embed" style="width: 200px;" /></a>
+</p>
 
-## Purpose
+## About
+Creating an email signature is not a trivial task, especially for non-technical people.
+Most existing solutions are either paid or closed-source.
 
-Creating an email signature is not a trivial task, even for people who have knowledge of HTML and CSS. And what about ordinary users.
-
-There are many solutions on the Internet, and most of them are paid. There are free, but all of them are closed source. I wanted to make a free application with a user-friendly interface and open source code.
-
-So let's make creating email signatures easier!
+**MySigMail** makes it easy, free, and open-source.
+Let’s make creating professional signatures accessible for everyone!
 
 ## Features
-
-- Upload image - upload to AWS S3 or set public link
-- Custom fields - add unlimited number of custom fields with different types such as: text, link, email
-- Social icons - add social media links to your signature
-- Options - customize your signature as you like, change color, avatar shape, font and more
-- Addons - additional options such as disclaimer, mobile application badges
-- Templates - templates for signature (so far, only one template)
-- Projects - ability to save, download or import a previously created signature. No need to create an account, everything is already available in the browser
-- Signature preview - hot reloading preview
-
-## Roadmap
-
-- Create more templates
-- Create more addons
+- **Customization** – fonts, colors, avatar shapes, social icons, custom fields
+- **Templates** – ready-to-use layouts for quick start
+- **Add-ons** – disclaimer, call-to-action, and more
 
 ## Development
 
-Set env variables
+### Prerequisites
+
+The project uses Bun for building and running. Please make sure you have [Bun](https://bun.sh/) installed.
+
+### Quick Start
 
 ```bash
-VUE_APP_AWS_S3_URL=
-VUE_APP_AWS_S3_BASKET=
-VUE_APP_AWS_S3_ID=
-VUE_APP_AWS_S3_KEY=
-VUE_APP_AWS_S3_REGION=
+git clone https://github.com/antonreshetov/mysigmail
+cd mysigmail
+bun install
+bun run dev
 ```
-Run
+
+### Set env variables
+If you want to test image upload functionality, you need to set AWS S3 credentials.
+
+Create a `.env` file in the root directory and add the following variables:
 
 ```bash
-npm i
-npm run serve
+VITE_AWS_S3_URL=
+VITE_AWS_S3_BASKET=
+VITE_AWS_S3_ID=
+VITE_AWS_S3_KEY=
+VITE_AWS_S3_REGION=
 ```
 
-## Support project
+## SaaS Version
+Don’t want to deal with setup and running locally?
 
-If you liked the project, I am very grateful for the help to the project.
+Use the **[MySigMail](https://mysigmail.com)** – a production-ready version of app, hosted and packed with extra features.
 
-- BTC - 1di5dpLQpcryUke4e5eq1NJv4if9faLhJ
-- [PayPal](https://www.paypal.me/antonreshetov) 
-- [Become a backer on Patreon](https://www.patreon.com/antonreshetov)
-- [Become a backer on Open Collective](https://opencollective.com/mysigmail)
-- [Become a backer on Ko-fi](https://ko-fi.com/antonreshetov)
+### Key Features
+- **Manage multiple signatures** – create, save, and switch between multiple signatures effortlessly, all stored safely on our servers
+- **Analytics** – track clicks and engagement from your email signature
+- **Presets library** – professionally designed signature styles you can apply in one click
+- **Image hosting** – reliable CDN hosting for logos, banners, and photos
+
+### Tools
+Extend your signatures with powerful marketing and branding tools:
+
+- **Sign Off** – create a handwritten signature and add it as a personal sign-off to your email signature
+- **URL Builder** – generate UTM-tagged URLs and seamlessly track your campaigns in Google Analytics
+- **Banner Maker** *(coming soon)* – design and add eye-catching banners to promote events, offers, or announcements directly in your email signature
+
+Check out **[MySigMail](https://mysigmail.com)** and start creating professional email signatures in seconds.
+
+## Follow
+ - News and updates on [X](https://x.com/mysigmail).
+ - [Discussions](https://github.com/antonreshetov/mysigmail/discussions).
 
 ## Commercialization
 If you would like to commercialize MySigMail, please contact reshetov.art@gmail.com.
+
+## License
+
+[AGPL-3.0](https://github.com/antonreshetov/mysigmail/blob/master/LICENSE)
+
+Copyright (c) 2019-present, [Anton Reshetov](https://github.com/antonreshetov).
