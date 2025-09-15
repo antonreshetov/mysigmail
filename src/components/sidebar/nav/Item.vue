@@ -20,7 +20,7 @@ defineProps<Props>()
     >
       <component
         :is="icon"
-        class="w-5 h-5 mb-1"
+        class="w-5 h-5"
       />
       <div class="text-xs">
         {{ name }}
