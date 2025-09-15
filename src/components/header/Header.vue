@@ -10,7 +10,7 @@
         <img
           src="/logo.svg"
           alt="MySigMail"
-          class="h-[24px]"
+          class="w-[59px] dark:invert"
         >
       </div>
     </RouterLink>
