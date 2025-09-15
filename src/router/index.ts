@@ -33,7 +33,7 @@ const routes = [
     path: '/templates',
     component: () => import('@/views/Templates.vue'),
     meta: {
-      title: 'templates',
+      title: 'Templates',
     },
   },
   {
