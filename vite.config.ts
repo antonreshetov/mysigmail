@@ -14,6 +14,7 @@ export default defineConfig({
     tailwindcss(),
     AutoImport({
       imports: ['vue', 'vue-router'],
+      dirs: ['./src/composables/**'],
     }),
     Components({
       dts: true,
