@@ -16,17 +16,25 @@
     "lint:fix": "eslint . --fix",
     "release": "bumpp -c 'build: release v' -t",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks",
+    "add:shadcn": "pnpm dlx shadcn-vue@2.0.1 add"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.13",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.544.0",
+    "reka-ui": "^2.5.0",
+    "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.13",
+    "tw-animate-css": "^1.3.8",
     "vue": "^3.5.17"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^5.3.0",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
+    "@types/node": "^24.4.0",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/tsconfig": "^0.7.0",
     "eslint": "^9.35.0",
