@@ -98,7 +98,7 @@ const {
               <Base.Table width="auto">
                 <tr v-if="isAddonTool('videoConference')">
                   <td style="padding: 0px !important">
-                    />
+                    <Addons.VideoConference />
                   </td>
                 </tr>
                 <tr v-if="isAddonTool('banner')">
@@ -130,7 +130,7 @@ const {
               align="right"
               style="padding: 5px 0 0 0 !important; vertical-align: top"
             >
-              />
+              <Main.Social />
             </td>
           </tr>
         </Base.Table>
