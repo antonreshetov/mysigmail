@@ -20,6 +20,8 @@
     "add:shadcn": "pnpm dlx shadcn-vue@2.0.1 add"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.891.0",
+    "@aws-sdk/lib-storage": "^3.891.0",
     "@tailwindcss/vite": "^4.1.13",
     "@vueuse/core": "^13.9.0",
     "class-variance-authority": "^0.7.1",
