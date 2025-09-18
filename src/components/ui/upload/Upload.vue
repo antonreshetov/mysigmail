@@ -8,6 +8,12 @@ import Cropper from 'cropperjs'
 
 import { useSonner } from '@/composables/useSonner'
 
+const props = withDefaults(defineProps<Props>(), {
+  quality: 0.9,
+})
+
+const emit = defineEmits<Emits>()
+
 interface Props {
   cropWidth?: number
   cropHeight?: number
@@ -18,21 +24,23 @@ interface Emits {
   (e: 'uploaded', name: string): void
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  quality: 0.9,
-})
-
-const emit = defineEmits<Emits>()
-
 const { sonner } = useSonner()
 
-const s3Client = new S3Client({
-  region: import.meta.env.VITE_AWS_S3_REGION,
-  credentials: {
-    accessKeyId: import.meta.env.VITE_AWS_S3_ID,
-    secretAccessKey: import.meta.env.VITE_AWS_S3_KEY,
-  },
-})
+let s3Client: S3Client
+
+try {
+  s3Client = new S3Client({
+    region: import.meta.env.VITE_AWS_S3_REGION,
+    credentials: {
+      accessKeyId: import.meta.env.VITE_AWS_S3_ID,
+      secretAccessKey: import.meta.env.VITE_AWS_S3_KEY,
+    },
+  })
+}
+catch (err) {
+  console.error('Missing some of the AWS S3 credentials')
+  console.error(err)
+}
 
 let cropper: Cropper | null = null
 
@@ -72,6 +80,16 @@ const aspectRatios = [
     label: 'Free',
   },
 ]
+
+const isUploadAvailable = computed(() => {
+  return (
+    !!import.meta.env.VITE_AWS_S3_URL
+    && !!import.meta.env.VITE_AWS_S3_BASKET
+    && !!import.meta.env.VITE_AWS_S3_ID
+    && !!import.meta.env.VITE_AWS_S3_KEY
+    && !!import.meta.env.VITE_AWS_S3_REGION
+  )
+})
 
 const cropPreview = computed(() => {
   if (!file.value)
@@ -191,6 +209,7 @@ watch(croppedPreview, () => {
 <template>
   <UiButton
     variant="secondary"
+    :disabled="!isUploadAvailable"
     @click="onClick"
   >
     Upload <UilImage />
