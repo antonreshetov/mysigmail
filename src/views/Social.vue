@@ -1,5 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <LayoutsDefault> social form </LayoutsDefault>
+  <LayoutsDefault>
+    <SocialList />
+  </LayoutsDefault>
 </template>

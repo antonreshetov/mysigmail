@@ -1,5 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <LayoutsDefault> options form </LayoutsDefault>
+  <LayoutsDefault>
+    <OptionsForm />
+  </LayoutsDefault>
 </template>

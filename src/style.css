@@ -123,4 +123,40 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  h3 {
+    @apply text-lg font-bold mb-2;
+  }
+
+  p {
+    @apply mb-2;
+  }
+
+  kbd {
+    @apply bg-foreground text-background font-bold text-xs px-2 py-1 rounded-md;
+  }
+
+  ol {
+    @apply list-decimal;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+  }
+
+  ul {
+    @apply list-disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+  }
+
+  li {
+    @apply mb-1;
+  }
+
+  .desc {
+    @apply text-sm text-muted-foreground;
+  }
 }

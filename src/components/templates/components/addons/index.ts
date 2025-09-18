@@ -1,0 +1,6 @@
+export { default as Banner } from './Banner.vue'
+export { default as Cta } from './Cta.vue'
+export { default as Disclaimer } from './Disclaimer.vue'
+export { default as Logo } from './Logo.vue'
+export { default as MobileApp } from './MobileApp.vue'
+export { default as VideoConference } from './VideoConference.vue'
