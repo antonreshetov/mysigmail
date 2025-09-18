@@ -1,44 +1,45 @@
 <script setup lang="ts">
 const { isHtmlLarge, onCopyHTML, onCopySelect } = useCopySignature()
+const { downloadJSON, installed, uploadJSON } = useSignatures()
+const { sonner } = useSonner()
 
-const open = ref(false)
+const inputRef = ref<HTMLInputElement>()
+
+function onDownload() {
+  downloadJSON(installed.value)
+}
+
+function onFileSelected(e: Event) {
+  const file = (e.target as HTMLInputElement).files?.[0]
+
+  if (!file)
+    return
+
+  const reader = new FileReader()
+
+  reader.onload = async () => {
+    await uploadJSON(reader.result as string)
+    sonner({
+      title: 'Success',
+      type: 'success',
+      description: 'Signature uploaded successfully',
+    })
+  }
+
+  reader.readAsText(file)
+}
 </script>
 
 <template>
   <div class="flex items-center justify-between">
     <div />
     <div class="flex gap-2">
-      <UiDialog v-model:open="open">
-        <UiDialogTrigger>
-          <UiButton variant="link">
-            Support MySigMail
-          </UiButton>
-        </UiDialogTrigger>
-        <UiDialogContent>
-          <UiDialogHeader>
-            <UiDialogTitle>Made with ❤️, Powered by You</UiDialogTitle>
-          </UiDialogHeader>
-          <UiDialogDescription>
-            MySigMail is built and maintained with love as an open-source project. If you find it
-            useful, consider supporting us — your contribution helps us keep improving and building
-            new features for the community.
-          </UiDialogDescription>
-          <div class="flex flex-col gap-2">
-            <UiButton as-child>
-              <a
-                href="https://paypal.me/antongithub"
-                target="_blank"
-              > PayPal </a>
-            </UiButton>
-            <UiButton as-child>
-              <a
-                href="https://opencollective.com/masscode"
-                target="_blank"
-              > Open Collective </a>
-            </UiButton>
-          </div>
-        </UiDialogContent>
-      </UiDialog>
+      <UiButton
+        variant="outline"
+        @click="inputRef?.click()"
+      >
+        Upload JSON
+      </UiButton>
       <UiDropdownMenu>
         <UiDropdownMenuTrigger as-child>
           <UiButton variant="outline">
@@ -46,12 +47,16 @@ const open = ref(false)
             <UilAngleDown class="ml-1 -mr-1 opacity-50 w-5 h-5" />
           </UiButton>
         </UiDropdownMenuTrigger>
-        <UiDropdownMenuContent class="w-32">
+        <UiDropdownMenuContent _class="w-32">
           <UiDropdownMenuItem @click="onCopySelect">
             Copy as Select
           </UiDropdownMenuItem>
           <UiDropdownMenuItem @click="onCopyHTML">
             Copy as HTML
+          </UiDropdownMenuItem>
+          <UiDropdownMenuSeparator />
+          <UiDropdownMenuItem @click="onDownload">
+            Download JSON
           </UiDropdownMenuItem>
         </UiDropdownMenuContent>
       </UiDropdownMenu>
@@ -74,4 +79,11 @@ const open = ref(false)
       </UiAlertDescription>
     </UiAlert>
   </div>
+  <input
+    ref="inputRef"
+    style="display: none"
+    type="file"
+    accept=".json"
+    @change="onFileSelected"
+  >
 </template>
