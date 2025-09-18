@@ -1,7 +1,7 @@
 {
   "name": "mysigmail",
   "type": "module",
-  "version": "2.0.0-alpha.1",
+  "version": "2.0.0",
   "private": true,
   "description": "An open-source email signature generator for Gmail, Outlook, Apple Mail, etc.",
   "author": {
@@ -47,6 +47,7 @@
     "@types/node": "^24.4.0",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/tsconfig": "^0.7.0",
+    "bumpp": "^10.2.3",
     "eslint": "^9.35.0",
     "eslint-plugin-format": "^1.0.1",
     "eslint-plugin-import": "^2.32.0",
