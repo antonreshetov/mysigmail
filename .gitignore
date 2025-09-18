@@ -22,3 +22,8 @@ components.d.ts
 *.njsproj
 *.sln
 *.sw?
+
+# Local env files
+.env
+.env.*
+!.env.example
