@@ -90,11 +90,14 @@ Check out **[MySigMail](https://mysigmail.com)** and start creating professional
  - News and updates on [X](https://x.com/mysigmail).
  - [Discussions](https://github.com/antonreshetov/mysigmail/discussions).
 
-## Commercialization
-If you would like to commercialize MySigMail, please contact reshetov.art@gmail.com.
-
 ## License
 
-[AGPL-3.0](https://github.com/antonreshetov/mysigmail/blob/master/LICENSE)
+This project is licensed under the [AGPL-3.0](https://github.com/antonreshetov/mysigmail/blob/master/LICENSE) for non-commercial use.
+
+## Commercial Use
+
+For commercial use, please contact me for a commercial license at reshetov.art@gmail.com.
+
+By using this software, you agree to the terms of the license.
 
 Copyright (c) 2019-present, [Anton Reshetov](https://github.com/antonreshetov).
