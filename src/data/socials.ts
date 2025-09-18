@@ -1,0 +1,52 @@
+import type { Social } from '@/composables/signatures/types'
+
+export interface SocialData {
+  name: string
+  icon: Social
+}
+
+export const socials: SocialData[] = [
+  { name: 'Facebook', icon: 'facebook' },
+  { name: 'VK', icon: 'vk' },
+  { name: 'Twitter', icon: 'twitter' },
+  { name: 'Instagram', icon: 'instagram' },
+  { name: 'TikTok', icon: 'tiktok' },
+  { name: 'LinkedIn', icon: 'linkedin' },
+  { name: 'YouTube', icon: 'youtube' },
+  { name: 'Skype', icon: 'skype' },
+  { name: 'Hangouts', icon: 'hangouts' },
+  { name: 'Zoom', icon: 'zoom' },
+  { name: 'Teams', icon: 'teams' },
+  { name: 'Whereby', icon: 'whereby' },
+  { name: 'Telegram', icon: 'telegram' },
+  { name: 'WhatsApp', icon: 'whatsapp' },
+  { name: 'Dribbble', icon: 'dribbble' },
+  { name: 'Behance', icon: 'behance' },
+  { name: 'GitHub', icon: 'github' },
+  { name: 'GitLab', icon: 'gitlab' },
+  { name: 'StackOverflow', icon: 'stackoverflow' },
+  { name: 'Xing', icon: 'xing' },
+  { name: 'Diaspora', icon: 'diaspora' },
+  { name: 'Mastodon', icon: 'mastodon' },
+  { name: 'Slack', icon: 'slack' },
+  { name: 'Reddit', icon: 'reddit' },
+  { name: 'Gitter', icon: 'gitter' },
+  { name: 'OK', icon: 'ok' },
+  { name: 'Yelp', icon: 'yelp' },
+  { name: 'Zillow', icon: 'zillow' },
+  { name: 'Pinterest', icon: 'pinterest' },
+  { name: 'Wechat', icon: 'wechat' },
+  { name: 'Unsplash', icon: 'unsplash' },
+  { name: 'SoundCloud', icon: 'soundcloud' },
+  { name: 'Discord', icon: 'discord' },
+  { name: 'QQ', icon: 'qq' },
+  { name: 'Replit', icon: 'replit' },
+  { name: 'Signal', icon: 'signal' },
+  { name: 'Houzz', icon: 'houzz' },
+  { name: 'Shop', icon: 'shop' },
+  { name: 'Web', icon: 'web' },
+  { name: 'Apple Music', icon: 'apple-music' },
+  { name: 'Spotify', icon: 'spotify' },
+  { name: 'RSS', icon: 'rss' },
+  { name: 'Google Business', icon: 'google-business' },
+]
