@@ -18,12 +18,25 @@ interface Props {
   font?: object
   labelColor?: string
   textColor?: string
+  analyticTag?: string
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   type: 'td',
   display: 'block',
   showLabel: true,
+})
+
+const { options } = useSignatures()
+
+const computedTextColor = computed(() => {
+  if (props.model.color === 'main')
+    return options.value.mainColor
+
+  if (props.model.color === 'secondary')
+    return options.value.secondaryColor
+
+  return props.textColor || '#010101'
 })
 </script>
 
@@ -43,11 +56,20 @@ withDefaults(defineProps<Props>(), {
           style="padding-right: 0px; font-weight: 600"
           v-bind="$attrs"
           :style="{ color: labelColor }"
-        >{{ model.label }}:&nbsp;&nbsp;</span>
+        >{{ model.label }}{{ options?.labelSeparator ?? ':' }}&nbsp;&nbsp;</span>
         <Base.Link
           v-if="model.type !== 'text'"
-          v-bind="getAnchorAttrs(model, textColor || '#010101', enableAnalytics, analyticTag)"
-          :style="{ textDecoration: model.underline === false ? 'none' : 'underline' }"
+          v-bind="
+            getAnchorAttrs(model.type === 'hyperlink' ? { ...model, type: 'link' } : model, {
+              color: computedTextColor,
+              enableAnalytics,
+              analyticTag,
+            })
+          "
+          :style="{
+            textDecoration:
+              model.type === 'hyperlink' && model.underline ? 'underline' : 'none !important',
+          }"
           :title="model.title"
         >
           <template v-if="model.type === 'hyperlink'">
@@ -59,9 +81,11 @@ withDefaults(defineProps<Props>(), {
         </Base.Link>
         <span
           v-if="model.type === 'text'"
-          :style="{ color: textColor || '#010101' }"
+          :style="{ color: computedTextColor }"
           v-bind="$attrs"
-        >{{ model.value }}</span>
+        >{{
+          model.value
+        }}</span>
       </p>
     </td>
   </tr>

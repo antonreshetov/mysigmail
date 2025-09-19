@@ -17,6 +17,7 @@ const field = ref<BasicTool>({
   main: false,
   type: attributes.types[0].value as BasicTool['type'],
   underline: true,
+  color: 'default',
 })
 
 const open = ref(false)
@@ -39,12 +40,17 @@ function reset() {
   field.value.main = false
   field.value.type = attributes.types[0].value as BasicTool['type']
   field.value.underline = true
+  field.value.color = 'default'
 }
 
 watch(
   () => field.value.type,
   (newType) => {
     if (newType === 'hyperlink' && typeof field.value.underline === 'undefined') {
+      field.value.underline = true
+    }
+    else if (newType !== 'hyperlink' && typeof field.value.color === 'undefined') {
+      field.value.color = 'default'
       field.value.underline = true
     }
   },
@@ -101,10 +107,35 @@ watch(
             />
           </UiFieldFormItem>
           <UiFieldFormItem>
-            <UiCheckbox
-              v-model:checked="field.underline"
-              label="Display with underline"
-            />
+            <div class="flex items-center gap-2">
+              <UiCheckbox
+                id="underline-checkbox"
+                v-model:checked="field.underline"
+              />
+              <label for="underline-checkbox">Display with underline</label>
+            </div>
+          </UiFieldFormItem>
+        </template>
+        <template v-else>
+          <UiFieldFormItem label="Color">
+            <UiSelect v-model="field.color">
+              <UiSelectTrigger>
+                <UiSelectValue />
+              </UiSelectTrigger>
+              <UiSelectContent>
+                <UiSelectGroup>
+                  <UiSelectItem value="default">
+                    Default
+                  </UiSelectItem>
+                  <UiSelectItem value="main">
+                    Main Color
+                  </UiSelectItem>
+                  <UiSelectItem value="secondary">
+                    Secondary Color
+                  </UiSelectItem>
+                </UiSelectGroup>
+              </UiSelectContent>
+            </UiSelect>
           </UiFieldFormItem>
         </template>
       </UiFieldForm>

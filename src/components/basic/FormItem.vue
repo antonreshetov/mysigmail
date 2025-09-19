@@ -19,17 +19,19 @@ function onRemoveField() {
   installed.value.tools.basic.splice(itemIndex, 1)
 }
 
-watch(
-  () => item.value?.type,
-  (newType) => {
-    if (newType === 'hyperlink') {
+watchEffect(() => {
+  if (item.value) {
+    if (item.value.type === 'hyperlink') {
       if (item.value.title === undefined)
         item.value.title = ''
       if (item.value.underline === undefined)
         item.value.underline = false
     }
-  },
-)
+    else if (item.value.color === undefined) {
+      item.value.color = 'default'
+    }
+  }
+})
 </script>
 
 <template>
@@ -94,10 +96,38 @@ watch(
                         />
                       </UiFieldFormItem>
                       <UiFieldFormItem class="col-span-2">
-                        <UiCheckbox
-                          v-model="item.underline"
-                          label="Display with underline"
-                        />
+                        <div class="flex items-center gap-2">
+                          <UiCheckbox
+                            :id="`underline-checkbox-${item.id}`"
+                            v-model:checked="item.underline"
+                          />
+                          <label :for="`underline-checkbox-${item.id}`">Display with underline</label>
+                        </div>
+                      </UiFieldFormItem>
+                    </template>
+                    <template v-else>
+                      <UiFieldFormItem
+                        label="Color"
+                        class="col-span-2"
+                      >
+                        <UiSelect v-model="item.color">
+                          <UiSelectTrigger>
+                            <UiSelectValue />
+                          </UiSelectTrigger>
+                          <UiSelectContent>
+                            <UiSelectGroup>
+                              <UiSelectItem value="default">
+                                Default
+                              </UiSelectItem>
+                              <UiSelectItem value="main">
+                                Main Color
+                              </UiSelectItem>
+                              <UiSelectItem value="secondary">
+                                Secondary Color
+                              </UiSelectItem>
+                            </UiSelectGroup>
+                          </UiSelectContent>
+                        </UiSelect>
                       </UiFieldFormItem>
                     </template>
                   </UiFieldForm>

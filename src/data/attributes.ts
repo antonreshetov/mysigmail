@@ -49,6 +49,13 @@ export const attributes = {
       { label: 'New line', value: 'br' },
     ],
   },
+  labelSeparator: {
+    options: [
+      { label: ':', value: ':' },
+      { label: '-', value: ' -' },
+      { label: 'Blank', value: 'none' },
+    ],
+  },
   types: [
     { label: 'Text', value: 'text' },
     { label: 'Email', value: 'email' },
