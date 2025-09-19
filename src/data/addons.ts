@@ -25,7 +25,7 @@ export const addons: AddonTool[] = [
     value: {
       image: '',
       link: '',
-      width: 100,
+      width: 150,
     },
   },
   {
@@ -59,6 +59,7 @@ export const addons: AddonTool[] = [
     value: {
       image: '',
       link: '',
+      width: 150,
     },
   },
 ]

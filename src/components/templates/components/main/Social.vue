@@ -62,8 +62,8 @@ const computedStyle = computed(() => {
               style="display: inline-block; border-radius: 3px"
             >
               <img
-                width="20"
-                height="20"
+                width="30"
+                height="30"
                 :src="customSocialIcons[i.icon] || `/assets/icons/${i.icon}.png`"
                 :alt="`social-icon-${i.icon}`"
                 style="display: table-cell; vertical-align: middle; border-radius: 3px"

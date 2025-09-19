@@ -6,6 +6,7 @@ export interface AddonBanner {
 export interface AddonLogo {
   image: string
   link: string
+  width?: number
 }
 
 export interface AddonMobileApp {
@@ -112,6 +113,8 @@ export interface BasicTool {
   title?: string
   color?: 'main' | 'secondary' | 'default'
   underline?: boolean
+  bgColor?: string
+  textColor?: string
 }
 
 export interface OptionsTool {

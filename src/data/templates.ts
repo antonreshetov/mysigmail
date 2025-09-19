@@ -279,12 +279,39 @@ export function useTemplateData() {
       label: 'Template #10',
       isNew: true,
       tools: {
-        basic: DEFAULTS.basic,
+        basic: [
+          ...DEFAULTS.basic,
+          {
+            id: nanoid(8),
+            label: 'Schedule a meeting',
+            type: 'hyperlink',
+            main: false,
+            value: 'https://example.com/schedule-a-meeting',
+            title: 'Schedule a meeting with me',
+            underline: true,
+          },
+        ],
         options: {
           ...DEFAULTS.options,
           avatarSize: 96,
         },
-        addons: DEFAULTS.addons,
+        addons: DEFAULTS.addons.map(addon =>
+          addon.type === 'banner'
+            ? {
+                ...addon,
+                value: {
+                  ...(addon.value as AddonBanner),
+                  image: '/assets/mysigmail-promo-banner.png',
+                  width: 350,
+                },
+              }
+            : addon.type === 'logo'
+              ? {
+                  ...addon,
+                  value: { ...(addon.value as AddonLogo), width: 150 },
+                }
+              : addon,
+        ),
         socials: DEFAULTS.socials,
       },
       preview: 'template-9.png', // You can create and reference a 'template-10.png' here

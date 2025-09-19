@@ -36,7 +36,7 @@ function getComputedTextColor(item: BasicTool) {
   if (item.color === 'secondary')
     return options.value.secondaryColor
 
-  return props.textColor || '#000'
+  return props.textColor || item.textColor || '#000'
 }
 </script>
 
@@ -48,7 +48,7 @@ function getComputedTextColor(item: BasicTool) {
       style="font-size: 0"
     >
       <template v-if="separator !== 'br'">
-        <p :style="{ ...font }">
+        <p :style="{ ...font, backgroundColor: model[0]?.bgColor }">
           <span
             v-for="(i, index) in model"
             :key="index"
@@ -82,7 +82,7 @@ function getComputedTextColor(item: BasicTool) {
         <p
           v-for="(i, index) in model"
           :key="index"
-          :style="{ ...font }"
+          :style="{ ...font, backgroundColor: i.bgColor }"
         >
           <span
             v-if="showLabel && i.label"
