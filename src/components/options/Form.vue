@@ -76,6 +76,13 @@ const fontSize = computed({
   },
 })
 
+const labelSeparator = computed({
+  get: () => options.value.labelSeparator || 'none',
+  set: (val: string) => {
+    options.value.labelSeparator = val === 'none' ? '' : val
+  },
+})
+
 const jobSeparator = computed({
   get: () => options.value.jobSeparator,
   set: (val: string) => {
@@ -217,6 +224,24 @@ const jobSeparator = computed({
             <UiSelectGroup>
               <UiSelectItem
                 v-for="item in attributes.separator.options"
+                :key="item.value"
+                :value="item.value"
+              >
+                {{ item.label }}
+              </UiSelectItem>
+            </UiSelectGroup>
+          </UiSelectContent>
+        </UiSelect>
+      </UiFieldFormItem>
+      <UiFieldFormItem label="Label separator">
+        <UiSelect v-model="labelSeparator">
+          <UiSelectTrigger>
+            <UiSelectValue placeholder="Select a value" />
+          </UiSelectTrigger>
+          <UiSelectContent>
+            <UiSelectGroup>
+              <UiSelectItem
+                v-for="item in attributes.labelSeparator.options"
                 :key="item.value"
                 :value="item.value"
               >

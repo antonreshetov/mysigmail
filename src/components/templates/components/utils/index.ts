@@ -4,34 +4,34 @@ import type { BasicTool } from '@/composables/signatures/types'
 
 import { normalizeUrl } from '@/utils'
 
+interface AnchorAttrsOptions {
+  color: string
+  enableAnalytics?: boolean
+  analyticTag?: string
+}
+
 export function getAnchorAttrs(
   tool: BasicTool,
-  textColor: string,
+  options: AnchorAttrsOptions,
 ): AnchorHTMLAttributes | undefined {
+  const attrs: Record<string, any> = {
+    style: {
+      color: options.color,
+    },
+  }
+
+  let href = tool.value
+
   if (tool.type === 'link') {
-    return {
-      href: normalizeUrl(tool.value),
-      style: {
-        color: textColor,
-      },
-    }
+    href = normalizeUrl(href)
+  }
+  else if (tool.type === 'email') {
+    href = `mailto:${href}`
+  }
+  else if (tool.type === 'phone') {
+    href = `tel:${href}`
   }
 
-  if (tool.type === 'email') {
-    return {
-      href: `mailto:${tool.value}`,
-      style: {
-        color: textColor,
-      },
-    }
-  }
-
-  if (tool.type === 'phone') {
-    return {
-      href: `tel:${tool.value}`,
-      style: {
-        color: textColor,
-      },
-    }
-  }
+  attrs.href = href
+  return attrs
 }

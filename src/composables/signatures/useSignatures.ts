@@ -99,6 +99,7 @@ const isSecondColorAvailable = computed(() => {
     'SignatureTemplate6',
     'SignatureTemplate8',
     'SignatureTemplate9',
+    'SignatureTemplate10',
   ]
   return available.includes(installed.value.name)
 })

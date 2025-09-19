@@ -110,6 +110,7 @@ export interface BasicTool {
   type: Basic
   value: string
   title?: string
+  color?: 'main' | 'secondary' | 'default'
   underline?: boolean
 }
 
@@ -122,6 +123,7 @@ export interface OptionsTool {
   fontFamily: string
   fontSize: number
   jobSeparator: string
+  labelSeparator?: string
   mainColor: string
   secondaryColor: string
   column1Width?: number
