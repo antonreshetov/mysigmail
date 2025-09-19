@@ -24,9 +24,6 @@ withDefaults(defineProps<Props>(), {
   type: 'td',
   display: 'block',
   showLabel: true,
-  // если установить чисто черный то некоторые клиенты
-  // перекрашивают в дефолтный для ссылок
-  textColor: '#010101',
 })
 </script>
 
@@ -42,24 +39,29 @@ withDefaults(defineProps<Props>(), {
         :style="{ ...font, display }"
       >
         <span
-          v-if="showLabel && model.label"
+          v-if="showLabel && model.label && model.type !== 'hyperlink'"
           style="padding-right: 0px; font-weight: 600"
           v-bind="$attrs"
           :style="{ color: labelColor }"
         >{{ model.label }}:&nbsp;&nbsp;</span>
         <Base.Link
           v-if="model.type !== 'text'"
-          v-bind="getAnchorAttrs(model, textColor, enableAnalytics, analyticTag)"
+          v-bind="getAnchorAttrs(model, textColor || '#010101', enableAnalytics, analyticTag)"
+          :style="{ textDecoration: model.underline === false ? 'none' : 'underline' }"
+          :title="model.title"
         >
-          {{ model.value }}
+          <template v-if="model.type === 'hyperlink'">
+            {{ model.label }}
+          </template>
+          <template v-else>
+            {{ model.value }}
+          </template>
         </Base.Link>
         <span
           v-if="model.type === 'text'"
-          :style="{ color: textColor }"
+          :style="{ color: textColor || '#010101' }"
           v-bind="$attrs"
-        >{{
-          model.value
-        }}</span>
+        >{{ model.value }}</span>
       </p>
     </td>
   </tr>

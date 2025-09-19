@@ -274,6 +274,21 @@ export function useTemplateData() {
       },
       preview: 'template-9.png',
     },
+    {
+      name: 'SignatureTemplate10',
+      label: 'Template #10',
+      isNew: true,
+      tools: {
+        basic: DEFAULTS.basic,
+        options: {
+          ...DEFAULTS.options,
+          avatarSize: 96,
+        },
+        addons: DEFAULTS.addons,
+        socials: DEFAULTS.socials,
+      },
+      preview: 'template-9.png', // You can create and reference a 'template-10.png' here
+    },
   ]
 
   return {

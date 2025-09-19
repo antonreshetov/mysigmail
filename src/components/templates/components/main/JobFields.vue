@@ -25,7 +25,6 @@ withDefaults(defineProps<Props>(), {
   type: 'td',
   display: 'block',
   showLabel: true,
-  textColor: '#000',
 })
 </script>
 
@@ -55,17 +54,15 @@ withDefaults(defineProps<Props>(), {
             >{{ i.label }}:&nbsp;&nbsp;</span>
             <Base.Link
               v-if="i.type !== 'text'"
-              v-bind="getAnchorAttrs(i, textColor)"
+              v-bind="getAnchorAttrs(i, textColor || '#000')"
             >
               {{ i.value }}
             </Base.Link>
             <span
               v-if="i.type === 'text'"
-              :style="{ color: textColor }"
+              :style="{ color: textColor || '#000' }"
               v-bind="$attrs"
-            >{{
-              i.value
-            }}</span>
+            >{{ i.value }}</span>
           </span>
         </p>
       </template>
@@ -83,13 +80,13 @@ withDefaults(defineProps<Props>(), {
           >{{ i.label }}:&nbsp;&nbsp;</span>
           <Base.Link
             v-if="i.type !== 'text'"
-            v-bind="getAnchorAttrs(i, textColor)"
+            v-bind="getAnchorAttrs(i, textColor || '#000')"
           >
             {{ i.value }}
           </Base.Link>
           <span
             v-if="i.type === 'text'"
-            :style="{ color: textColor }"
+            :style="{ color: textColor || '#000' }"
             v-bind="$attrs"
           >{{
             i.value
