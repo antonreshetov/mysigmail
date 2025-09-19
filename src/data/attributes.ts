@@ -54,5 +54,6 @@ export const attributes = {
     { label: 'Email', value: 'email' },
     { label: 'Phone', value: 'phone' },
     { label: 'Link', value: 'link' },
+    { label: 'Hyperlink', value: 'hyperlink' },
   ],
 }

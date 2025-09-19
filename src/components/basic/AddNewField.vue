@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useFocus } from '@vueuse/core'
 import { nanoid } from 'nanoid'
+import { watch } from 'vue'
 
 import type { BasicTool } from '@/composables/signatures/types'
 
@@ -15,12 +16,13 @@ const field = ref<BasicTool>({
   value: '',
   main: false,
   type: attributes.types[0].value as BasicTool['type'],
+  underline: true,
 })
 
 const open = ref(false)
-const firstFiled = ref()
+const firstField = ref()
 
-useFocus(firstFiled, { initialValue: true })
+useFocus(firstField, { initialValue: true })
 
 function onAddField() {
   if (!installed.value)
@@ -36,7 +38,17 @@ function reset() {
   field.value.value = ''
   field.value.main = false
   field.value.type = attributes.types[0].value as BasicTool['type']
+  field.value.underline = true
 }
+
+watch(
+  () => field.value.type,
+  (newType) => {
+    if (newType === 'hyperlink' && typeof field.value.underline === 'undefined') {
+      field.value.underline = true
+    }
+  },
+)
 </script>
 
 <template>
@@ -53,12 +65,15 @@ function reset() {
       <UiFieldForm label-position="top">
         <UiFieldFormItem label="Label">
           <UiInput
-            ref="firstFiled"
+            ref="firstField"
             v-model="field.label"
           />
         </UiFieldFormItem>
         <UiFieldFormItem label="Value">
-          <UiInput v-model="field.value" />
+          <UiInput
+            v-model="field.value"
+            :placeholder="field.type === 'hyperlink' ? 'https://example.com' : ''"
+          />
         </UiFieldFormItem>
         <UiFieldFormItem label="Type">
           <UiSelect v-model="field.type">
@@ -78,6 +93,20 @@ function reset() {
             </UiSelectContent>
           </UiSelect>
         </UiFieldFormItem>
+        <template v-if="field.type === 'hyperlink'">
+          <UiFieldFormItem label="Link Title (Tooltip)">
+            <UiInput
+              v-model="field.title"
+              placeholder="e.g., Book a time on my calendar"
+            />
+          </UiFieldFormItem>
+          <UiFieldFormItem>
+            <UiCheckbox
+              v-model:checked="field.underline"
+              label="Display with underline"
+            />
+          </UiFieldFormItem>
+        </template>
       </UiFieldForm>
       <UiDialogFooter>
         <UiButton

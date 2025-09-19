@@ -46,7 +46,7 @@ export type Addon
     | 'cta'
     | 'logo'
 
-export type Basic = 'text' | 'link' | 'email' | 'phone' | 'image'
+export type Basic = 'text' | 'link' | 'email' | 'phone' | 'image' | 'hyperlink'
 export type AvatarShape = 'square' | 'round' | 'rounded-corner'
 
 export type Social
@@ -109,6 +109,8 @@ export interface BasicTool {
   main: boolean
   type: Basic
   value: string
+  title?: string
+  underline?: boolean
 }
 
 export interface OptionsTool {
@@ -144,5 +146,6 @@ export interface Signature {
     basic: BasicTool[]
     options: OptionsTool
     socials: SocialTool[]
+    customSocialIcons?: Record<string, string>
   }
 }
