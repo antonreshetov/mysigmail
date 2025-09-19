@@ -44,15 +44,7 @@ const otherFields = computed(() => {
   if (isMainFieldsEmpty.value) {
     return templates[0].tools.basic.slice(4)
   }
-  return mainFields.value.filter(i => !i.main)
-})
-
-const otherFieldsGroup2 = computed(() => {
-  return mainFields.value.filter(i => ['Phone', 'Email'].includes(i.label))
-})
-
-const otherFieldsGroup3 = computed(() => {
-  return mainFields.value.filter(i => i.label === 'Website')
+  return mainFields.value.slice(3)
 })
 
 const options = computed(() => installed.value.tools.options)
@@ -76,10 +68,6 @@ const fontAccent = computed(() => {
 const addons = computed(() => installed.value.tools.addons || [])
 
 const socials = computed(() => installed.value.tools.socials || [])
-
-const otherFieldsGroup4 = computed(() => {
-  return socials
-})
 
 const customSocialIcons = computed({
   get: () => {
@@ -282,9 +270,6 @@ export function useSignatures() {
     nameField,
     options,
     otherFields,
-    otherFieldsGroup2,
-    otherFieldsGroup3,
-    otherFieldsGroup4,
     patchAddonValue,
     resetInstalledToDefault,
     selectedId,

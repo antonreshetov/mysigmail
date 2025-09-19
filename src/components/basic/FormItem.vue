@@ -85,18 +85,6 @@ watchEffect(() => {
                         </UiSelectContent>
                       </UiSelect>
                     </UiFieldFormItem>
-                    <UiFieldFormItem
-                      label="Background Color"
-                      class="col-span-1"
-                    >
-                      <UiInput v-model="item.bgColor" />
-                    </UiFieldFormItem>
-                    <UiFieldFormItem
-                      label="Text Color"
-                      class="col-span-1"
-                    >
-                      <UiInput v-model="item.textColor" />
-                    </UiFieldFormItem>
                     <template v-if="item.type === 'hyperlink'">
                       <UiFieldFormItem
                         label="Link Title (Tooltip)"

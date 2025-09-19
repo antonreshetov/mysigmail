@@ -44,7 +44,6 @@ const socialList = computed({
     <UiFieldForm>
       <Draggable
         v-model="socialList"
-        item-key="id"
         handle=".handle"
       >
         <template #item="{ element: social }">

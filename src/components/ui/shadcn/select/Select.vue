@@ -3,8 +3,6 @@ import type { SelectRootEmits, SelectRootProps } from 'reka-ui'
 
 import { SelectRoot, useForwardPropsEmits } from 'reka-ui'
 
-defineOptions({ inheritAttrs: false })
-
 const props = defineProps<SelectRootProps>()
 const emits = defineEmits<SelectRootEmits>()
 

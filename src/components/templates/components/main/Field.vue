@@ -36,7 +36,7 @@ const computedTextColor = computed(() => {
   if (props.model.color === 'secondary')
     return options.value.secondaryColor
 
-  return props.model.textColor || props.textColor || '#010101'
+  return props.textColor || '#010101'
 })
 </script>
 
@@ -49,17 +49,7 @@ const computedTextColor = computed(() => {
     >
       <p
         v-if="model.value"
-        :style="{
-          ...font,
-          display,
-          backgroundColor: model.bgColor,
-          color: computedTextColor,
-          lineHeight: '150%',
-          paddingTop: '0px',
-          paddingBottom: '2px',
-          paddingRight: '2px',
-          paddingLeft: '2px',
-        }"
+        :style="{ ...font, display }"
       >
         <span
           v-if="showLabel && model.label && model.type !== 'hyperlink'"
