@@ -51,7 +51,7 @@ withDefaults(defineProps<Props>(), {
           :title="model.title"
         >
           <template v-if="model.type === 'hyperlink'">
-            {{ model.label }}
+            {{ model.label || model.value || 'Link' }}
           </template>
           <template v-else>
             {{ model.value }}
