@@ -36,6 +36,6 @@ function onUploaded(url: string) {
         :value="i"
       />
     </div>
-    <BasicAddNewFiled />
+    <BasicAddNewField />
   </div>
 </template>

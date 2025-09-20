@@ -1,39 +1,37 @@
 <script setup lang="ts">
 import { attributes } from '@/data/attributes'
-import { clone } from '@/utils'
 
 interface Props {
   index: number
-  value: BasicTool
 }
 
 const props = defineProps<Props>()
 
 const { installed } = useSignatures()
 
-const localValue = ref(clone<BasicTool>(props.value))
-
-// +1 потому что первый элемент это изображение
-const index = props.index + 1
-
-function update(tool: BasicTool) {
-  if (!installed.value)
-    return
-
-  const { label, type, value } = tool
-
-  installed.value.tools.basic[index].label = label
-  installed.value.tools.basic[index].type = type
-  installed.value.tools.basic[index].value = value
-}
+// +1 because the first element is an image
+const itemIndex = props.index + 1
+const item = computed(() => installed.value!.tools.basic[itemIndex])
 
 function onRemoveField() {
   if (!installed.value)
     return
-  installed.value.tools.basic.splice(index, 1)
+  installed.value.tools.basic.splice(itemIndex, 1)
 }
 
-watch(localValue, v => update(v), { deep: true })
+watchEffect(() => {
+  if (item.value) {
+    if (item.value.type === 'hyperlink') {
+      if (item.value.title === undefined)
+        item.value.title = ''
+      if (item.value.underline === undefined)
+        item.value.underline = false
+    }
+    else if (item.value.color === undefined) {
+      item.value.color = 'default'
+    }
+  }
+})
 </script>
 
 <template>
@@ -42,8 +40,11 @@ watch(localValue, v => update(v), { deep: true })
       <template #label>
         <UiFieldFormLabel>
           <div class="flex items-center justify-between w-full">
-            <div class="grow">
-              {{ localValue.label }}
+            <div
+              v-if="item"
+              class="grow"
+            >
+              {{ item.label }}
             </div>
             <div class="flex items-center">
               <UiPopover>
@@ -64,10 +65,10 @@ watch(localValue, v => update(v), { deep: true })
                     class="grid grid-cols-2 gap-4 space-y-0"
                   >
                     <UiFieldFormItem label="Label">
-                      <UiInput v-model="localValue.label" />
+                      <UiInput v-model="item.label" />
                     </UiFieldFormItem>
                     <UiFieldFormItem label="Type">
-                      <UiSelect v-model="localValue.type">
+                      <UiSelect v-model="item.type">
                         <UiSelectTrigger class="w-full">
                           <UiSelectValue placeholder="Select a timezone" />
                         </UiSelectTrigger>
@@ -84,11 +85,56 @@ watch(localValue, v => update(v), { deep: true })
                         </UiSelectContent>
                       </UiSelect>
                     </UiFieldFormItem>
+                    <template v-if="item.type === 'hyperlink'">
+                      <UiFieldFormItem
+                        label="Link Title (Tooltip)"
+                        class="col-span-2"
+                      >
+                        <UiInput
+                          v-model="item.title"
+                          placeholder="e.g., Book a time on my calendar"
+                        />
+                      </UiFieldFormItem>
+                      <UiFieldFormItem class="col-span-2">
+                        <div class="flex items-center gap-2">
+                          <UiCheckbox
+                            :id="`underline-checkbox-${item.id}`"
+                            v-model:checked="item.underline"
+                          />
+                          <label :for="`underline-checkbox-${item.id}`">Display with underline</label>
+                        </div>
+                      </UiFieldFormItem>
+                    </template>
+                    <template v-else>
+                      <UiFieldFormItem
+                        label="Color"
+                        class="col-span-2"
+                      >
+                        <UiSelect v-model="item.color">
+                          <UiSelectTrigger>
+                            <UiSelectValue />
+                          </UiSelectTrigger>
+                          <UiSelectContent>
+                            <UiSelectGroup>
+                              <UiSelectItem value="default">
+                                Default
+                              </UiSelectItem>
+                              <UiSelectItem value="main">
+                                Main Color
+                              </UiSelectItem>
+                              <UiSelectItem value="secondary">
+                                Secondary Color
+                              </UiSelectItem>
+                            </UiSelectGroup>
+                          </UiSelectContent>
+                        </UiSelect>
+                      </UiFieldFormItem>
+                    </template>
                   </UiFieldForm>
                 </UiPopoverContent>
               </UiPopover>
               <UiButton
-                v-if="!localValue.main"
+                v-if="item && !item.main"
                 variant="ghost"
                 size="icon-xs"
                 @click="onRemoveField"
@@ -99,7 +145,10 @@ watch(localValue, v => update(v), { deep: true })
           </div>
         </UiFieldFormLabel>
       </template>
-      <UiInput v-model="localValue.value" />
+      <UiInput
+        v-if="item"
+        v-model="item.value"
+      />
     </UiFieldFormItem>
   </UiFieldForm>
 </template>

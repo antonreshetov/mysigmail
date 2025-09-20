@@ -46,7 +46,7 @@ export type Addon
     | 'cta'
     | 'logo'
 
-export type Basic = 'text' | 'link' | 'email' | 'phone' | 'image'
+export type Basic = 'text' | 'link' | 'email' | 'phone' | 'image' | 'hyperlink'
 export type AvatarShape = 'square' | 'round' | 'rounded-corner'
 
 export type Social
@@ -109,6 +109,9 @@ export interface BasicTool {
   main: boolean
   type: Basic
   value: string
+  title?: string
+  color?: 'main' | 'secondary' | 'default'
+  underline?: boolean
 }
 
 export interface OptionsTool {
@@ -120,6 +123,7 @@ export interface OptionsTool {
   fontFamily: string
   fontSize: number
   jobSeparator: string
+  labelSeparator?: string
   mainColor: string
   secondaryColor: string
   column1Width?: number
@@ -144,5 +148,6 @@ export interface Signature {
     basic: BasicTool[]
     options: OptionsTool
     socials: SocialTool[]
+    customSocialIcons?: Record<string, string>
   }
 }

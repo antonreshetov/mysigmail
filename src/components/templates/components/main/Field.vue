@@ -18,15 +18,25 @@ interface Props {
   font?: object
   labelColor?: string
   textColor?: string
+  analyticTag?: string
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   type: 'td',
   display: 'block',
   showLabel: true,
-  // если установить чисто черный то некоторые клиенты
-  // перекрашивают в дефолтный для ссылок
-  textColor: '#010101',
+})
+
+const { options } = useSignatures()
+
+const computedTextColor = computed(() => {
+  if (props.model.color === 'main')
+    return options.value.mainColor
+
+  if (props.model.color === 'secondary')
+    return options.value.secondaryColor
+
+  return props.textColor || '#010101'
 })
 </script>
 
@@ -42,20 +52,36 @@ withDefaults(defineProps<Props>(), {
         :style="{ ...font, display }"
       >
         <span
-          v-if="showLabel && model.label"
+          v-if="showLabel && model.label && model.type !== 'hyperlink'"
           style="padding-right: 0px; font-weight: 600"
           v-bind="$attrs"
           :style="{ color: labelColor }"
-        >{{ model.label }}:&nbsp;&nbsp;</span>
+        >{{ model.label }}{{ options?.labelSeparator ?? ':' }}&nbsp;&nbsp;</span>
         <Base.Link
           v-if="model.type !== 'text'"
-          v-bind="getAnchorAttrs(model, textColor, enableAnalytics, analyticTag)"
+          v-bind="
+            getAnchorAttrs(model.type === 'hyperlink' ? { ...model, type: 'link' } : model, {
+              color: computedTextColor,
+              enableAnalytics,
+              analyticTag,
+            })
+          "
+          :style="{
+            textDecoration:
+              model.type === 'hyperlink' && model.underline ? 'underline' : 'none !important',
+          }"
+          :title="model.title"
         >
-          {{ model.value }}
+          <template v-if="model.type === 'hyperlink'">
+            {{ model.label || model.value || 'Link' }}
+          </template>
+          <template v-else>
+            {{ model.value }}
+          </template>
         </Base.Link>
         <span
           v-if="model.type === 'text'"
-          :style="{ color: textColor }"
+          :style="{ color: computedTextColor }"
           v-bind="$attrs"
         >{{
           model.value

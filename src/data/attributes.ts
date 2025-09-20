@@ -49,10 +49,18 @@ export const attributes = {
       { label: 'New line', value: 'br' },
     ],
   },
+  labelSeparator: {
+    options: [
+      { label: ':', value: ':' },
+      { label: '-', value: ' -' },
+      { label: 'Blank', value: 'none' },
+    ],
+  },
   types: [
     { label: 'Text', value: 'text' },
     { label: 'Email', value: 'email' },
     { label: 'Phone', value: 'phone' },
     { label: 'Link', value: 'link' },
+    { label: 'Hyperlink', value: 'hyperlink' },
   ],
 }

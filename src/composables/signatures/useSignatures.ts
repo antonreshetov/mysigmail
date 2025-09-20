@@ -69,6 +69,15 @@ const addons = computed(() => installed.value.tools.addons || [])
 
 const socials = computed(() => installed.value.tools.socials || [])
 
+const customSocialIcons = computed({
+  get: () => {
+    if (!installed.value.tools.customSocialIcons)
+      installed.value.tools.customSocialIcons = {}
+    return installed.value.tools.customSocialIcons
+  },
+  set: value => (installed.value.tools.customSocialIcons = value),
+})
+
 const isImageFieldEmpty = computed(() => !imageField.value)
 
 const isSocialsEmpty = computed(() => !socials.value.length)
@@ -90,6 +99,7 @@ const isSecondColorAvailable = computed(() => {
     'SignatureTemplate6',
     'SignatureTemplate8',
     'SignatureTemplate9',
+    'SignatureTemplate10',
   ]
   return available.includes(installed.value.name)
 })
@@ -236,6 +246,7 @@ watch(installed, () => (unsavedSignatureStore.value = JSON.stringify(installed.v
 export function useSignatures() {
   return {
     addons,
+    customSocialIcons,
     downloadJSON,
     fontAccent,
     fontBase,

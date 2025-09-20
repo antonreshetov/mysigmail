@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 
-import type { BasicTool } from '~/composables/signatures/types'
+import type { BasicTool } from '@/composables/signatures/types'
 
 import * as Base from '@/components/templates/components/base'
 
@@ -21,12 +21,23 @@ interface Props {
   separatorStyle?: HTMLAttributes['style']
 }
 
-withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<Props>(), {
   type: 'td',
   display: 'block',
   showLabel: true,
-  textColor: '#000',
 })
+
+const { options } = useSignatures()
+
+function getComputedTextColor(item: BasicTool) {
+  if (item.color === 'main')
+    return options.value.mainColor
+
+  if (item.color === 'secondary')
+    return options.value.secondaryColor
+
+  return props.textColor || '#000'
+}
 </script>
 
 <template>
@@ -52,20 +63,18 @@ withDefaults(defineProps<Props>(), {
               style="padding-right: 0px; font-weight: 600"
               v-bind="$attrs"
               :style="{ color: labelColor }"
-            >{{ i.label }}:&nbsp;&nbsp;</span>
+            >{{ i.label }}{{ options?.labelSeparator ?? ':' }}&nbsp;&nbsp;</span>
             <Base.Link
               v-if="i.type !== 'text'"
-              v-bind="getAnchorAttrs(i, textColor)"
+              v-bind="getAnchorAttrs(i, { color: getComputedTextColor(i) })"
             >
               {{ i.value }}
             </Base.Link>
             <span
               v-if="i.type === 'text'"
-              :style="{ color: textColor }"
+              :style="{ color: getComputedTextColor(i) }"
               v-bind="$attrs"
-            >{{
-              i.value
-            }}</span>
+            >{{ i.value }}</span>
           </span>
         </p>
       </template>
@@ -80,20 +89,18 @@ withDefaults(defineProps<Props>(), {
             style="padding-right: 0px; font-weight: 600"
             v-bind="$attrs"
             :style="{ color: labelColor }"
-          >{{ i.label }}:&nbsp;&nbsp;</span>
+          >{{ i.label }}{{ options?.labelSeparator ?? ':' }}&nbsp;&nbsp;</span>
           <Base.Link
             v-if="i.type !== 'text'"
-            v-bind="getAnchorAttrs(i, textColor)"
+            v-bind="getAnchorAttrs(i, { color: getComputedTextColor(i) })"
           >
             {{ i.value }}
           </Base.Link>
           <span
             v-if="i.type === 'text'"
-            :style="{ color: textColor }"
+            :style="{ color: getComputedTextColor(i) }"
             v-bind="$attrs"
-          >{{
-            i.value
-          }}</span>
+          >{{ i.value }}</span>
         </p>
       </template>
     </td>

@@ -8,7 +8,8 @@ import Template6 from '@/components/templates/Template6.vue'
 import Template7 from '@/components/templates/Template7.vue'
 import Template8 from '@/components/templates/Template8.vue'
 import Template9 from '@/components/templates/Template9.vue'
-// import { useCopySignature } from '@/composables/useCopySignature'
+import Template10 from '@/components/templates/Template10.vue'
+import { useCopySignature } from '@/composables/useCopySignature'
 
 const { getHtml } = useCopySignature()
 const { installed } = useSignatures()
@@ -36,6 +37,7 @@ const templates: Record<string, Component> = {
   SignatureTemplate7: Template7,
   SignatureTemplate8: Template8,
   SignatureTemplate9: Template9,
+  SignatureTemplate10: Template10,
 }
 </script>
 

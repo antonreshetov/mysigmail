@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import Draggable from 'vuedraggable'
 
-import type { Social } from '@/composables/signatures/types'
-import type { SocialData } from '@/data/socials'
+import type { SocialData } from '../../../data/socials'
 
-import { socials as socialData } from '@/data/socials'
+import { socials as socialData } from '../../../data/socials'
+import SocialLinkInput from '../../forms/SocialLinkInput.vue'
 
 const { installed, socials } = useSignatures()
 
@@ -46,16 +46,14 @@ const socialList = computed({
         v-model="socialList"
         handle=".handle"
       >
-        <template #item="{ element }">
-          <UiFieldFormItem
-            :label="element.label"
-            class="mb-4"
-          >
-            <div class="flex items-center gap-2">
-              <SocialUrlInput :type="element.icon" />
-              <UilElipsisDoubleVAlt class="handle cursor-grab text-muted-foreground" />
-            </div>
-          </UiFieldFormItem>
+        <template #item="{ element: social }">
+          <div class="flex items-start gap-2 mb-4">
+            <SocialLinkInput
+              :network-name="social.icon"
+              class="flex-grow"
+            />
+            <UilElipsisDoubleVAlt class="handle cursor-grab text-muted-foreground mt-2" />
+          </div>
         </template>
       </Draggable>
     </UiFieldForm>

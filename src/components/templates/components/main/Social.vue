@@ -14,7 +14,7 @@ const props = withDefaults(defineProps<Props>(), {
   center: false,
 })
 
-const { options, socials } = useSignatures()
+const { customSocialIcons, options, socials } = useSignatures()
 
 const computedStyle = computed(() => {
   let style = {}
@@ -52,7 +52,10 @@ const computedStyle = computed(() => {
         >
           <p
             style="margin: 0; border-radius: 3px"
-            :style="{ backgroundColor: options && options.mainColor }"
+            :style="{
+              backgroundColor:
+                !customSocialIcons[i.icon] && options ? options.mainColor : 'transparent',
+            }"
           >
             <a
               :href="normalizeUrl(i.value)"
@@ -61,10 +64,13 @@ const computedStyle = computed(() => {
               <img
                 width="20"
                 height="20"
-                :src="`/assets/icons/${i.icon}.png`"
+                :src="customSocialIcons[i.icon] || `/assets/icons/${i.icon}.png`"
                 :alt="`social-icon-${i.icon}`"
                 style="display: table-cell; vertical-align: middle; border-radius: 3px"
-                :style="{ backgroundColor: options && options.mainColor }"
+                :style="{
+                  backgroundColor:
+                    !customSocialIcons[i.icon] && options ? options.mainColor : 'transparent',
+                }"
               >
             </a>
           </p>
