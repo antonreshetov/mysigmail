@@ -1,0 +1,48 @@
+name: 🐞 Bug report
+description: Report an issue with MySigMail
+title: '[Bug]: '
+labels: [pending triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: describe
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is. If applicable, add screenshots to help explain your problem.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduse
+    attributes:
+      label: To reproduce
+      description: Steps to reproduce the behavior
+      value: |
+        1. Go to ...
+        2. Click on ...
+        3. Scroll down to ..
+        4. See error
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Browser
+      description: What browser are you using?
+      placeholder: e.g. Chrome, Safari
+    validations:
+      required: true
+  - type: checkboxes
+    id: validation
+    attributes:
+      label: Validations
+      description: Before submitting the issue, please make sure you do the following
+      options:
+        - label: Follow our [Code of Conduct](https://github.com/antonreshetov/mysigmail/blob/master/CODE_OF_CONDUCT.md)
+          required: true
+        - label: Check that there isn't [already an issue](https://github.com/antonreshetov/mysigmail/issues) that reports the same bug to avoid creating a duplicate.
+          required: true
+        - label: Check that this is a concrete bug. For Q&A open a [GitHub Discussion](https://github.com/antonreshetov/mysigmail/discussions).
+          required: true
