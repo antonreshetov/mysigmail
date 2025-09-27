@@ -73,6 +73,7 @@ Use the **[MySigMail](https://mysigmail.com)** – a production-ready version of
 
 ### Key Features
 - **Manage multiple signatures** – create, save, and switch between multiple signatures effortlessly, all stored safely on our servers
+- **Shared signatures** – share ready-to-use signatures that your teammates can copy and install
 - **Analytics** – track clicks and engagement from your email signature
 - **Presets library** – professionally designed signature styles you can apply in one click
 - **Image hosting** – reliable CDN hosting for logos, banners, and photos
