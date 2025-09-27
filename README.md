@@ -1,3 +1,90 @@
+> **⚠️ Fork Notice (Read First)**
+>
+> This repository is a **fork** of the original project (upstream).  
+> It includes **additional features** that are **not approved/merged by upstream** but which we believe add real value.  
+> To use these enhancements, deploy **this fork**.
+>
+> - **Upstream repo:** _<add link to original>_
+> - **This fork:** REVREBEL/email-signature (active)
+
+---
+
+## 🚀 What’s different in this fork?
+
+### New Features
+- **Customizable field text colors**  
+  Add a `color` attribute to **BasicTool** and UI controls to pick **default / main / secondary** text colors for form fields.
+- **Configurable label separators**  
+  Choose a **label separator** in options and apply it across signature templates.
+- **Hyperlink field type**  
+  New `hyperlink` field supports **title**, **underline**, and **label-based hyperlink display** in signatures.
+- **Custom social icons**  
+  `SocialLinkInput` lets users select defaults or supply **custom icon URLs**.
+- **New template: Template10**  
+  Registered and available for preview.
+
+### Enhancements
+- Refactor initialization with `watchEffect` to set **default field properties**.
+- **Dynamic text color** computed in `Field` and `JobFields` based on selected options.
+- `getAnchorAttrs` now accepts `{ color, analytics }` and unifies `href` assignment.
+- `FormItem` simplified with a computed item; streamlined Basic Tool updates.
+- Replaced `SocialUrlInput` with `SocialLinkInput` in social lists.
+
+### Build / Docs / Chores
+- **Docs:** Added `labelSeparator` options to attributes data.
+- **Chores:** Expanded `useSignatures` availability to include **SignatureTemplate10**.
+- **Build:** Updated `tsconfig.json` (target **ESNext**, module resolution, includes) and added base **tailwind.config.js**.
+- **Output:** HTML generator renders both default and custom icons as email-safe `<img>` tags.
+- **State:** JSON state loader/downloader + reactive signature store via `useSignatureData`.
+
+> **Summary (from Sourcery):**  
+> Add customizable hyperlink fields and social icons to the signature builder, introduce a new template, and refactor form and component handling for cleaner state management.
+
+---
+
+## 🧭 Using the fork
+- Everything from upstream works here.  
+- Fork-only features are available **by default** (no special flags).  
+- If you have questions or issues, please open them **on this fork**.
+
+---
+
+## 🔄 Keeping up with upstream
+If you routinely sync upstream changes, add new entries below under **Fork-Only Changelog** to track what’s unique here.
+
+---
+
+## 📝 Fork-Only Changelog
+> Add new entries by duplicating the template below. Keep this section focused on changes **not present** in upstream.
+
+### [Unreleased]
+**New**
+- (add)
+
+**Enhancements**
+- (add)
+
+**Fixes**
+- (add)
+
+**Docs**
+- (add)
+
+**Chores / Build**
+- (add)
+
+---
+
+<details>
+<summary>⬇️ Upstream README (unchanged)</summary>
+
+<!-- Leave everything from the original README below this line so readers can see upstream docs unchanged. -->
+
+
+
+
+
+
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/logo-white.png">
