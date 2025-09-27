@@ -49,9 +49,20 @@ Add customizable hyperlink fields and social icons to the signature builder, int
 ---
 
 ## 🔄 Keeping up with upstream
-If you routinely sync upstream changes, add new entries below under **Fork-Only Changelog** to track what’s unique here.
 
----
+### [2025-09-26] Upstream sync: shared signatures + community tooling
+
+**New Features**
+- Documented **Shared signatures** as a feature in the README.
+
+**CI**
+- Added GitHub Actions to auto-comment on issues labeled `need reproduction`.
+- Added a workflow to automatically close **stale** issues.
+
+**Documentation**
+- Added **CODE_OF_CONDUCT.md** and **CONTRIBUTING.md**.
+- Added **issue templates**, a **pull request template**, and issue configuration to guide contributions and support.
+
 
 ## 📝 Fork-Only Changelog
 > Add new entries by duplicating the template below. Keep this section focused on changes **not present** in upstream.
