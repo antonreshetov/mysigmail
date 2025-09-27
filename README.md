@@ -10,6 +10,7 @@
 ---
 
 ## 🚀 What’s different in this fork?
+Add customizable hyperlink fields and social icons to the signature builder, introduce a new template, and refactor form and component handling for cleaner state management.
 
 ### New Features
 - **Customizable field text colors**  
@@ -37,8 +38,6 @@
 - **Output:** HTML generator renders both default and custom icons as email-safe `<img>` tags.
 - **State:** JSON state loader/downloader + reactive signature store via `useSignatureData`.
 
-> **Summary (from Sourcery):**  
-> Add customizable hyperlink fields and social icons to the signature builder, introduce a new template, and refactor form and component handling for cleaner state management.
 
 ---
 
