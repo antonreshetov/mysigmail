@@ -85,6 +85,18 @@ watchEffect(() => {
                         </UiSelectContent>
                       </UiSelect>
                     </UiFieldFormItem>
+                    <UiFieldFormItem
+                      label="Background Color"
+                      class="col-span-1"
+                    >
+                      <UiInput v-model="item.bgColor" />
+                    </UiFieldFormItem>
+                    <UiFieldFormItem
+                      label="Text Color"
+                      class="col-span-1"
+                    >
+                      <UiInput v-model="item.textColor" />
+                    </UiFieldFormItem>
                     <template v-if="item.type === 'hyperlink'">
                       <UiFieldFormItem
                         label="Link Title (Tooltip)"
@@ -105,31 +117,30 @@ watchEffect(() => {
                         </div>
                       </UiFieldFormItem>
                     </template>
-                    <template v-else>
-                      <UiFieldFormItem
-                        label="Color"
-                        class="col-span-2"
-                      >
-                        <UiSelect v-model="item.color">
-                          <UiSelectTrigger>
-                            <UiSelectValue />
-                          </UiSelectTrigger>
-                          <UiSelectContent>
-                            <UiSelectGroup>
-                              <UiSelectItem value="default">
-                                Default
-                              </UiSelectItem>
-                              <UiSelectItem value="main">
-                                Main Color
-                              </UiSelectItem>
-                              <UiSelectItem value="secondary">
-                                Secondary Color
-                              </UiSelectItem>
-                            </UiSelectGroup>
-                          </UiSelectContent>
-                        </UiSelect>
-                      </UiFieldFormItem>
-                    </template>
+                    <UiFieldFormItem
+                      v-if="item.type !== 'hyperlink'"
+                      label="Color"
+                      class="col-span-2"
+                    >
+                      <UiSelect v-model="item.color">
+                        <UiSelectTrigger>
+                          <UiSelectValue />
+                        </UiSelectTrigger>
+                        <UiSelectContent>
+                          <UiSelectGroup>
+                            <UiSelectItem value="default">
+                              Default
+                            </UiSelectItem>
+                            <UiSelectItem value="main">
+                              Main Color
+                            </UiSelectItem>
+                            <UiSelectItem value="secondary">
+                              Secondary Color
+                            </UiSelectItem>
+                          </UiSelectGroup>
+                        </UiSelectContent>
+                      </UiSelect>
+                    </UiFieldFormItem>
                   </UiFieldForm>
                 </UiPopoverContent>
               </UiPopover>
