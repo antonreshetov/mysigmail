@@ -6,12 +6,14 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Icons from 'unplugin-icons/vite'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
+import { VueMcp } from 'vite-plugin-vue-mcp'
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
     tailwindcss(),
+    VueMcp(),
     AutoImport({
       imports: ['vue', 'vue-router'],
       dirs: ['./src/composables/**'],
