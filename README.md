@@ -87,6 +87,10 @@ Extend your signatures with powerful marketing and branding tools:
 
 Check out **[MySigMail](https://mysigmail.com)** and start creating professional email signatures in seconds.
 
+## Contribution Policy
+
+MySigMail is an open-source project but only accepting contributions for bug fixes. To get started, please read [CONTRIBUTING.md](https://github.com/antonreshetov/mysigmail/blob/master/CONTRIBUTING.md) for more details.
+
 ## Follow
  - News and updates on [X](https://x.com/mysigmail).
  - [Discussions](https://github.com/antonreshetov/mysigmail/discussions).

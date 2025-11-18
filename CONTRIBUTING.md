@@ -1,34 +1,34 @@
-Hey there! We are really excited that you are interested in contributing. Before submitting your contribution, please make sure to take a moment and read through the following guide:
-## Sending Pull Request
+Hey there! We're excited that you're interested in contributing.
+Before sending a pull request, please take a moment to read this quick guide:
+
+## Sending Pull Requests
 
 ### Discuss First
+Since the project only accepts **bug fixes**, please open an issue first to describe the problem and confirm that it needs a fix. This helps avoid unnecessary work for both sides.
 
-Before you start to work on a feature pull request, it's always better to open a feature request issue first to [discuss](https://github.com/antonreshetov/mysigmail/discussions) with the maintainers whether the feature is desired and the design of those features. This would help save time for both the maintainers and the contributors and help features to be shipped faster.
-
-For typo fixes, it's recommended to batch multiple typo fixes into one pull request to maintain a cleaner commit history.
+For small documentation or typo corrections, feel free to group them into a single PR to keep the history clean.
 
 ### Commit Convention
+We follow [Conventional Commits](https://www.conventionalcommits.org/).
+For this project, relevant types are:
 
-We use [Conventional Commits](https://www.conventionalcommits.org/) for commit messages, which allows the changelog to be auto-generated based on the commits. Please read the guide through if you aren't familiar with it already.
+- `fix:` — for actual bug fixes
+- `docs:` — for documentation or typo fixes
+- `chore:` — for small internal or tooling updates
 
-Only `fix:` and `feat:` will be presented in the changelog.
-
-Note that `fix:` and `feat:` are for actual code changes (that might affect logic). For typo or document changes, use docs: or chore: instead:
-
-- ~~`fix: typo`~~ -> `docs: fix typo`
+Avoid using `feat:` — new features aren’t accepted.
 
 ### Pull Request
+If you're new to PRs, GitHub has a great [guide](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).
 
-If you don't know how to send a Pull Request, we recommend reading the [guide](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request).
+When opening a PR:
 
-When sending a pull request, make sure your PR's title also follows the Commit Convention.
-
-If your PR fixes or resolves an existing issue, please add the following line in your PR description (replace 123 with a real issue number):
+- Make sure your title follows the commit convention.
+- If your PR fixes an issue, add this in the description:
 
 ```
 fix #123
 ```
 
-It's ok to have multiple commits in a single PR, you don't need to rebase or force push for your changes as we will use Squash and Merge to squash the commits into one commit when merging.
-
-And of course please test your code before PR.
+No need to squash your commits — we’ll do that on merge.
+And of course, please test your changes before submitting.
