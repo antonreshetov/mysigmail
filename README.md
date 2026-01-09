@@ -27,6 +27,7 @@
 </p>
 
 ## About
+
 Creating an email signature is not a trivial task, especially for non-technical people.
 Most existing solutions are either paid or closed-source.
 
@@ -34,6 +35,7 @@ Most existing solutions are either paid or closed-source.
 Let’s make creating professional signatures accessible for everyone!
 
 ## Features
+
 - **Customization** – fonts, colors, avatar shapes, social icons, custom fields
 - **Templates** – ready-to-use layouts for quick start
 - **Add-ons** – disclaimer, call-to-action, and more
@@ -54,6 +56,7 @@ bun run dev
 ```
 
 ### Set env variables
+
 If you want to test image upload functionality, you need to set AWS S3 credentials.
 
 Create a `.env` file in the root directory and add the following variables:
@@ -66,12 +69,37 @@ VITE_AWS_S3_KEY=
 VITE_AWS_S3_REGION=
 ```
 
+## Running with Docker
+
+You can run MySigMail using Docker and Docker Compose (or Podman with podman-compose).
+
+### Prerequisites
+
+- [Docker](https://docs.docker.com/get-docker/) or [Podman](https://podman.io/)
+- [Docker Compose](https://docs.docker.com/compose/) or [Podman Compose](https://github.com/containers/podman-compose)
+
+### Quick Start
+
+```bash
+git clone https://github.com/antonreshetov/mysigmail
+cd mysigmail
+docker-compose up --build
+```
+
+The application will be available at `http://localhost:3000`.
+
+### Environment Variables
+
+If you want to enable image upload functionality, set the AWS S3 credentials in a `.env` file or pass them as environment variables.
+
 ## SaaS Version
+
 Don’t want to deal with setup and running locally?
 
 Use the **[MySigMail](https://mysigmail.com)** – a production-ready version of app, hosted and packed with extra features.
 
 ### Key Features
+
 - **Manage multiple signatures** – create, save, and switch between multiple signatures effortlessly, all stored safely on our servers
 - **Shared signatures** – share ready-to-use signatures that your teammates can copy and install
 - **Analytics** – track clicks and engagement from your email signature
@@ -79,11 +107,12 @@ Use the **[MySigMail](https://mysigmail.com)** – a production-ready version of
 - **Image hosting** – reliable CDN hosting for logos, banners, and photos
 
 ### Tools
+
 Extend your signatures with powerful marketing and branding tools:
 
 - **Sign Off** – create a handwritten signature and add it as a personal sign-off to your email signature
 - **URL Builder** – generate UTM-tagged URLs and seamlessly track your campaigns in Google Analytics
-- **Banner Maker** *(coming soon)* – design and add eye-catching banners to promote events, offers, or announcements directly in your email signature
+- **Banner Maker** _(coming soon)_ – design and add eye-catching banners to promote events, offers, or announcements directly in your email signature
 
 Check out **[MySigMail](https://mysigmail.com)** and start creating professional email signatures in seconds.
 
@@ -92,8 +121,9 @@ Check out **[MySigMail](https://mysigmail.com)** and start creating professional
 MySigMail is an open-source project but only accepting contributions for bug fixes. To get started, please read [CONTRIBUTING.md](https://github.com/antonreshetov/mysigmail/blob/master/CONTRIBUTING.md) for more details.
 
 ## Follow
- - News and updates on [X](https://x.com/mysigmail).
- - [Discussions](https://github.com/antonreshetov/mysigmail/discussions).
+
+- News and updates on [X](https://x.com/mysigmail).
+- [Discussions](https://github.com/antonreshetov/mysigmail/discussions).
 
 ## License
 
